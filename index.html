@@ -77,8 +77,6 @@ button,a,input,select,textarea,summary{touch-action:manipulation;-webkit-tap-hig
 .note{display:none;border:1.5px dashed #C9A400;background:#FFF8D6;color:var(--ink);border-radius:12px;padding:12px 16px;font-size:.9rem;margin-top:24px;max-width:72ch}
 .note b{display:block;font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;color:var(--warn);margin-bottom:2px}
 body.show-notes .note{display:block}
-.notes-toggle{position:fixed;right:16px;bottom:calc(16px + env(safe-area-inset-bottom,0px));z-index:60;background:var(--ink);color:#fff;border:0;border-radius:999px;padding:10px 16px;font-size:.82rem;box-shadow:0 8px 24px rgba(0,0,0,.2);cursor:pointer}
-.notes-toggle[aria-pressed="true"]{background:var(--lime);color:var(--ink)}
 
 /* header: solid light bar (inspiration/theme/image.png) */
 header.site{position:fixed;inset:0 0 auto;z-index:50;background:rgba(255,255,255,.97);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
@@ -313,13 +311,13 @@ section{padding-block:clamp(72px,9vw,128px)}
 .ref{font-weight:600}
 .side{display:grid;gap:20px}
 /* step 1: search trigger + picked chips */
-.search-trigger{display:flex;align-items:center;gap:16px;width:100%;padding:16px 18px;border:1.5px solid var(--line);border-radius:var(--r);background:#fff;text-align:left;cursor:pointer;transition:border-color .2s ease,box-shadow .2s ease}
+.search-trigger{display:flex;align-items:center;gap:12px;width:100%;padding:10px 14px;border:1.5px solid var(--line);border-radius:var(--r);background:#fff;text-align:left;cursor:pointer;transition:border-color .2s ease,box-shadow .2s ease}
 .search-trigger:hover{border-color:var(--ink);box-shadow:0 0 0 4px rgba(220,243,95,.45)}
-.st-icon{display:grid;place-items:center;width:48px;height:48px;border-radius:50%;background:var(--lime);flex:none}
-.st-icon svg{width:20px;height:20px}
+.st-icon{display:grid;place-items:center;width:36px;height:36px;border-radius:50%;background:var(--lime);flex:none}
+.st-icon svg{width:16px;height:16px}
 .st-txt{flex:1;min-width:0}
-.st-txt b{display:block;font-weight:500;font-size:1.05rem}
-.st-txt small{display:block;color:var(--muted);font-size:.88rem;margin-top:2px}
+.st-txt b{display:block;font-weight:500;font-size:.98rem}
+.st-txt small{display:block;color:var(--muted);font-size:.82rem;margin-top:1px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .st-go{font-size:1.2rem;color:var(--muted)}
 .picked{margin-top:14px;padding:14px;border-radius:var(--r);background:var(--soft)}
 .picked-head{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:10px;font-weight:500;font-size:.95rem}
@@ -479,7 +477,6 @@ footer{padding-top:clamp(64px,8vw,96px);overflow:hidden}
 </style></head><body>
 
 <a class="skip" href="#main">Skip to content</a>
-<button class="notes-toggle" id="notesToggle" type="button" aria-pressed="false">Show design notes</button>
 
 <header class="site" id="siteHeader"><div class="wrap">
   <a class="logo" href="#top" translate="no"><svg class="mark" viewBox="0 0 32 32" aria-hidden="true"><path d="M16 29V16" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/><path d="M16 18C16 10.5 11 5 3.5 5 3.5 12.5 8.5 18 16 18Z" fill="currentColor"/><path d="M16 21.5c0-6.5 4.6-11 12.5-11 0 6.5-5 11-12.5 11Z" fill="currentColor" opacity=".7"/></svg><span>Mann Farm Fresh<small>Direct from our farms</small></span></a>
@@ -827,9 +824,6 @@ lemon 2 dozen</textarea>
   const $=id=>document.getElementById(id);
   const esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
 
-  // design notes
-  const nt=$('notesToggle');
-  nt.addEventListener('click',()=>{const on=document.body.classList.toggle('show-notes');nt.setAttribute('aria-pressed',on);nt.textContent=on?'Hide design notes':'Show design notes';});
 
   // header: solid once the hero scrolls away
 
