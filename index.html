@@ -270,7 +270,25 @@ section{padding-block:clamp(72px,9vw,128px)}
 .card-body{padding:20px 24px}
 .field-label{display:block;font-weight:500;font-size:1.05rem;margin-bottom:4px}
 .hint{font-size:.88rem;color:var(--muted);margin-top:8px}
-.drop{border:2px dashed var(--line);border-radius:var(--r);padding:32px 16px;text-align:center;background:var(--soft)}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+.drop{display:flex;flex-direction:column;align-items:center;gap:6px;border:2px dashed #D4D4D4;border-radius:var(--r-lg);padding:36px 20px;text-align:center;background:var(--soft);cursor:pointer;transition:border-color .2s ease,background-color .2s ease}
+.drop:hover,.drop.over{border-color:var(--ink);background:#FBFDF0}
+.drop:focus-within{border-color:var(--ink);box-shadow:0 0 0 4px rgba(220,243,95,.55)}
+.drop-icon{display:grid;place-items:center;width:52px;height:52px;border-radius:50%;background:var(--lime);color:var(--ink);margin-bottom:8px;transition:transform .2s ease}
+.drop-icon svg{width:24px;height:24px}
+.drop:hover .drop-icon,.drop.over .drop-icon{transform:translateY(-2px)}
+.drop-title{font-weight:500;font-size:1.02rem}
+.drop-title u{text-underline-offset:3px;color:var(--leaf)}
+.drop-sub{font-size:.88rem;color:var(--muted);max-width:36ch}
+.drop-types{display:flex;flex-wrap:wrap;justify-content:center;gap:6px;margin-top:10px}
+.drop-types span{font-size:.74rem;font-weight:500;letter-spacing:.03em;padding:3px 9px;border-radius:999px;background:#fff;border:1px solid var(--line);color:var(--ink-2)}
+.file-card{display:flex;align-items:center;gap:14px;margin-top:12px;padding:12px 8px 12px 12px;border:1.5px solid var(--ink);border-radius:var(--r-lg);background:#fff}
+.fc-thumb{display:grid;place-items:center;width:56px;height:56px;border-radius:10px;background:var(--soft) center/cover no-repeat;flex:none;font-size:.72rem;font-weight:600;color:var(--ink-2);letter-spacing:.04em}
+.fc-info{flex:1;min-width:0}
+.fc-info b{display:block;font-weight:500;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.fc-info small{display:flex;align-items:center;gap:6px;font-size:.84rem;color:var(--ok)}
+.fc-info small svg{width:12px;height:12px}
+.drop[hidden],.file-card[hidden]{display:none}
 .list-hint{font-size:.92rem;color:var(--muted);margin:0 0 12px}
 .list-hint kbd{font-family:var(--font);font-size:.86rem;background:var(--soft);border:1px solid var(--line);border-radius:6px;padding:1px 7px;color:var(--ink)}
 .composer{border:1.5px solid var(--line);border-radius:var(--r);background:#fff;transition:border-color .2s ease,box-shadow .2s ease}
@@ -400,7 +418,24 @@ dialog.picker::backdrop{background:rgba(10,14,11,.55);backdrop-filter:blur(2px)}
 .field input[aria-invalid="true"]{border-color:var(--tomato)}
 .err{color:var(--tomato);font-size:.86rem;font-weight:400}
 .done-panel{padding:clamp(28px,4vw,48px) 24px;text-align:center;flex-direction:column;align-items:center;overflow-y:auto;overscroll-behavior:contain}
-.done-panel:not([hidden]){display:flex}
+.done-panel:not([hidden]){display:flex;justify-content:center}
+.done-panel .done-icon{width:96px;height:96px;margin-bottom:22px;box-shadow:0 0 0 12px rgba(220,243,95,.3)}
+.done-panel .done-icon svg{width:44px;height:44px}
+.see-details{margin:6px 0 18px;color:var(--leaf);text-decoration:underline;text-underline-offset:3px;font-size:.9rem}
+/* sent quote details modal */
+dialog.sent{width:min(520px,calc(100vw - 32px));max-height:min(86vh,720px);padding:0;border:0;border-radius:var(--r-lg);background:#fff;color:var(--ink);box-shadow:0 30px 80px rgba(0,0,0,.35);overflow:hidden}
+dialog.sent[open]{display:flex;flex-direction:column}
+dialog.sent::backdrop{background:rgba(10,14,11,.55);backdrop-filter:blur(2px)}
+.sent-head{display:flex;justify-content:space-between;align-items:flex-start;gap:16px;padding:22px 24px 6px}
+.sent-head h3{font-size:1.3rem}
+.sent-head p{font-size:.92rem;margin-top:4px}
+.sent-body{flex:1;min-height:0;overflow:auto;overscroll-behavior:contain;padding:0 24px 20px}
+.sent-body .summary{max-width:none;margin:14px 0 0}
+.sent-items{list-style:none;margin:0;padding:0}
+.sent-items li{display:flex;justify-content:space-between;gap:16px;padding:9px 0;border-bottom:1px dashed var(--line);font-size:.94rem}
+.sent-items li span:last-child{color:var(--ink-2);font-variant-numeric:tabular-nums;white-space:nowrap}
+.sent-items li.flag span:first-child{color:var(--warn)}
+.sent-foot{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:14px 24px;border-top:1px solid var(--line);background:var(--soft)}
 .done-icon{display:grid;place-items:center;width:68px;height:68px;border-radius:50%;background:var(--lime);color:var(--ink);margin-bottom:18px}
 .done-icon svg{width:30px;height:30px}
 .done-panel h3{font-size:1.6rem}
@@ -420,7 +455,21 @@ dialog.picker::backdrop{background:rgba(10,14,11,.55);backdrop-filter:blur(2px)}
 .chips{display:flex;gap:6px;flex-wrap:wrap;margin-top:12px}
 .chip{border:1.5px solid var(--line);border-radius:999px;padding:6px 14px;min-height:38px;font-size:.88rem;background:#fff;cursor:pointer;color:var(--ink-2)}
 .chip:hover{border-color:var(--ink);color:var(--ink)}
+.chips-label{align-self:center;font-size:.84rem;color:var(--muted);margin-right:2px}
+.btn .spinner{display:none;width:16px;height:16px;border-radius:50%;border:2px solid currentColor;border-right-color:transparent;animation:spin .7s linear infinite}
+.btn.loading{pointer-events:none;opacity:.85}
+.btn.loading i svg{display:none}
+.btn.loading .spinner{display:block}
+@keyframes spin{to{transform:rotate(360deg)}}
 .result{margin-top:16px}
+.result.checking{display:flex;align-items:center;gap:10px;padding:14px 16px;border-radius:var(--r);background:var(--soft);color:var(--ink-2);font-size:.92rem}
+.result.checking .spinner{display:block;width:16px;height:16px;border-radius:50%;border:2px solid var(--ink-2);border-right-color:transparent;animation:spin .7s linear infinite;flex:none}
+.result .res-card{padding:14px 16px;border-radius:var(--r);border:1.5px solid #CFE6B8;background:#F6FBEF}
+.result .res-card.warn{border-color:#F0DCAE;background:#FFF8E8}
+.result .res-card .status{margin-bottom:2px}
+.result.stale{opacity:.5}
+.result .res-card + dl{margin-top:6px}
+@media (prefers-reduced-motion:reduce){.btn .spinner,.result.checking .spinner{animation-duration:1.6s}}
 .status{display:inline-flex;align-items:center;gap:8px;font-weight:600;font-size:.92rem;margin-bottom:6px}
 .status::before{content:"";width:10px;height:10px;border-radius:50%;background:currentColor}
 .status.ok{color:var(--ok)}
@@ -563,11 +612,18 @@ lemon 2 dozen</textarea>
             </div>
           </div>
           <div id="tabUpload" role="tabpanel" hidden>
-            <div class="drop">
-              <p><b>Add a photo of your list, or an Excel or PDF file</b></p>
-              <p class="hint">We read it and add the items for you.</p>
-              <input type="file" id="fileIn" name="list-file" aria-label="Upload list file" accept="image/*,.pdf,.xlsx,.xls,.csv" style="margin-top:14px;max-width:100%">
-              <p class="hint" id="fileName" aria-live="polite"></p>
+            <label class="drop" id="dropZone" for="fileIn">
+              <input type="file" id="fileIn" name="list-file" class="sr-only" accept="image/*,.pdf,.xlsx,.xls,.csv">
+              <span class="drop-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 16V5m0 0-4.5 4.5M12 5l4.5 4.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M4 15v3a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-3" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></span>
+              <span class="drop-title">Drop a photo or file here, or <u>browse</u></span>
+              <span class="drop-sub">A photo of your handwritten list works fine. We read it and add the items for you.</span>
+              <span class="drop-types" aria-hidden="true"><span>JPG</span><span>PNG</span><span>PDF</span><span>Excel</span><span>CSV</span></span>
+            </label>
+            <div class="file-card" id="fileCard" hidden aria-live="polite">
+              <span class="fc-thumb" id="fcThumb" aria-hidden="true"></span>
+              <span class="fc-info"><b id="fileName"></b><small id="fileMeta"></small></span>
+              <button type="button" class="link-btn" id="fileChange">Change</button>
+              <button type="button" class="rm" id="fileRemove" aria-label="Remove file"><svg viewBox="0 0 14 14" aria-hidden="true"><path d="M3.5 3.5l7 7M10.5 3.5l-7 7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></button>
             </div>
           </div>
         </div>
@@ -600,12 +656,14 @@ lemon 2 dozen</textarea>
       <div class="wz-panel" id="wz3" data-step="3" hidden>
         <div class="card-head"><div><span class="step-label">Step 3 of 4 · Delivery</span><h3 tabindex="-1">Where should we deliver?</h3></div></div>
         <div class="card-body" id="fit">
+          <label class="field-label" for="fitInput">Delivery pincode or city</label>
+          <p class="list-hint">We'll check that we deliver there and show your order cut-off, delivery window and minimum order.</p>
           <form class="fit-form" id="fitForm">
-            <input id="fitInput" name="location" autocomplete="postal-code" placeholder="Pincode or city…" aria-label="Pincode or city" value="160062">
-            <button class="btn dark sm" type="submit">Check<i><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M5 11 11 5M6 5h5v5" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></i></button>
+            <input id="fitInput" name="location" autocomplete="postal-code" placeholder="e.g. 160062 or Mohali…" value="160062">
+            <button class="btn dark sm" id="fitBtn" type="submit"><span class="fit-btn-txt">Check delivery</span><i><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M5 11 11 5M6 5h5v5" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="spinner" aria-hidden="true"></span></i></button>
           </form>
           <div class="chips" id="fitChips">
-            <button class="chip" type="button">Chandigarh</button><button class="chip" type="button">Zirakpur</button><button class="chip" type="button">Ludhiana</button><button class="chip" type="button">Gurugram</button>
+            <span class="chips-label">Popular:</span><button class="chip" type="button">Chandigarh</button><button class="chip" type="button">Zirakpur</button><button class="chip" type="button">Ludhiana</button><button class="chip" type="button">Gurugram</button>
           </div>
           <div class="result" id="fitResult" aria-live="polite"></div>
 
@@ -626,12 +684,7 @@ lemon 2 dozen</textarea>
         <span class="done-icon" aria-hidden="true"><svg viewBox="0 0 28 28"><path d="M7 14.5l4.5 4.5L21 9" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
         <h3 tabindex="-1">Request received</h3>
         <p class="muted">Thank you. Your quote is on its way.</p>
-        <dl class="summary" id="review">
-          <div><dt>Reference</dt><dd class="ref" id="refNo"></dd></div>
-          <div><dt>Items</dt><dd id="sumItems"></dd></div>
-          <div><dt>Deliver to</dt><dd id="sumArea"></dd></div>
-          <div><dt>We'll contact</dt><dd id="sumPhone"></dd></div>
-        </dl>
+        <button type="button" class="link-btn see-details" id="seeDetails" aria-haspopup="dialog" aria-controls="sentDetails">See details</button>
         <div class="done-next">
           <h4>What happens next</h4>
           <ol class="next-steps">
@@ -640,8 +693,6 @@ lemon 2 dozen</textarea>
             <li><b>3</b>Approve it on WhatsApp and we deliver before 7am.</li>
           </ol>
         </div>
-        <p class="hint">This is a quote request, not an order. Prototype only: nothing has been sent.</p>
-        <button class="btn ghost on-light sm" id="wzRestart" type="button" style="margin-top:20px">Start a new list</button>
       </div>
     </div>
 
@@ -654,6 +705,26 @@ lemon 2 dozen</textarea>
     </div>
   </div>
 </div></section>
+
+<dialog class="sent" id="sentDetails" aria-labelledby="sentTitle">
+  <div class="sent-head">
+    <div><h3 id="sentTitle">Your quote request</h3><p class="muted">Reference <b class="ref" id="refNo"></b></p></div>
+    <button type="button" class="pk-close" id="sentClose" aria-label="Close"><svg viewBox="0 0 14 14" width="14" height="14" aria-hidden="true"><path d="M3.5 3.5l7 7M10.5 3.5l-7 7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></button>
+  </div>
+  <div class="sent-body">
+    <dl class="summary">
+      <div><dt>Deliver to</dt><dd id="sumArea"></dd></div>
+      <div><dt>We'll contact</dt><dd id="sumPhone"></dd></div>
+      <div><dt>Items</dt><dd id="sumItems"></dd></div>
+    </dl>
+    <ul class="sent-items" id="sentItems"></ul>
+    <p class="hint">This is a quote request, not an order. Prototype only: nothing has been sent.</p>
+  </div>
+  <div class="sent-foot">
+    <button class="btn ghost on-light sm" id="wzRestart" type="button">Start a new list</button>
+    <button class="btn dark sm" id="sentDone" type="button" style="padding-right:18px">Close</button>
+  </div>
+</dialog>
 
 <dialog class="picker" id="picker" aria-labelledby="pickerTitle">
   <div class="pk-head">
@@ -908,7 +979,28 @@ lemon 2 dozen</textarea>
     document.querySelectorAll('#wz1 .tabs button').forEach(x=>x.setAttribute('aria-selected',x===b));
     const up=b.dataset.tab==='upload';$('tabPaste').hidden=up;$('tabUpload').hidden=!up;
   }));
-  $('fileIn').addEventListener('change',e=>{const f=e.target.files[0];$('fileName').textContent=f?`Attached: ${f.name}`:'';});
+  // upload: drop zone + attached file card
+  const fileIn=$('fileIn'),drop=$('dropZone');let thumbUrl='';
+  const fmtSize=b=>b<1024*1024?`${Math.max(1,Math.round(b/1024))} KB`:`${(b/1024/1024).toFixed(1)} MB`;
+  function showFile(){
+    const f=fileIn.files[0];
+    if(thumbUrl){URL.revokeObjectURL(thumbUrl);thumbUrl='';}
+    drop.hidden=!!f;$('fileCard').hidden=!f;
+    if(!f)return;
+    const th=$('fcThumb'),img=f.type.startsWith('image/');
+    if(img){thumbUrl=URL.createObjectURL(f);th.style.backgroundImage=`url("${thumbUrl}")`;th.textContent='';}
+    else{th.style.backgroundImage='';th.textContent=(f.name.split('.').pop()||'FILE').toUpperCase().slice(0,4);}
+    $('fileName').textContent=f.name;
+    $('fileMeta').innerHTML=`${ICON_OK}<span>Attached · ${fmtSize(f.size)}</span>`;
+    const e=$('wzErr1');if(e.classList.contains('is-err')){e.textContent='Free quote · no commitment';e.classList.remove('is-err');}
+  }
+  function clearFile(){fileIn.value='';showFile();}
+  fileIn.addEventListener('change',showFile);
+  $('fileChange').addEventListener('click',()=>fileIn.click());
+  $('fileRemove').addEventListener('click',()=>{clearFile();fileIn.focus();});
+  ['dragenter','dragover'].forEach(t=>drop.addEventListener(t,e=>{e.preventDefault();drop.classList.add('over');}));
+  ['dragleave','drop'].forEach(t=>drop.addEventListener(t,e=>{e.preventDefault();drop.classList.remove('over');}));
+  drop.addEventListener('drop',e=>{const fs=e.dataTransfer.files;if(!fs.length)return;const dt=new DataTransfer();dt.items.add(fs[0]);fileIn.files=dt.files;showFile();});
 
   function renderPicked(){
     const box=$('picked');box.hidden=!picked.size;
@@ -1003,12 +1095,19 @@ lemon 2 dozen</textarea>
     const biz=$('bizName').value.trim();
     $('refNo').textContent='MFF-Q'+(1000+Math.floor(Math.random()*9000));
     $('sumItems').textContent=[rows.length?plural(rows.length,'item'):'',fileChosen()?$('fileIn').files[0].name:''].filter(Boolean).join(' + ');
-    $('sumArea').textContent=lastArea||$('fitInput').value.trim()||'To confirm';
+    const loc=$('fitInput').value.trim();$('sumArea').textContent=(loc===checkedFor?lastArea:loc)||'To confirm';
     $('sumPhone').textContent=(biz?biz+' · ':'')+digits.replace(/(\d{5})(\d{5})/,'$1 $2');
+    $('sentItems').innerHTML=rows.map(r=>`<li${r.ok?'':' class="flag"'}><span>${esc(r.name)}</span><span>${esc(r.qty)} ${esc(r.unit)}</span></li>`).join('')
+      +(fileChosen()?`<li><span>📎 ${esc($('fileIn').files[0].name)}</span><span>We'll read it</span></li>`:'');
     go(4);
   });
+  const sent=$('sentDetails');
+  $('seeDetails').addEventListener('click',()=>sent.showModal());
+  $('sentClose').addEventListener('click',()=>sent.close());
+  $('sentDone').addEventListener('click',()=>sent.close());
+  sent.addEventListener('click',e=>{if(e.target===sent)sent.close();});
   $('bizPhone').addEventListener('input',()=>{const ph=$('bizPhone');if(ph.getAttribute('aria-invalid')==='true'){ph.setAttribute('aria-invalid','false');$('phoneErr').hidden=true;}});
-  $('wzRestart').addEventListener('click',()=>{input.value='';updateLineCount();picked.clear();memo={};$('fileIn').value='';$('fileName').textContent='';renderPicked();go(1);});
+  $('wzRestart').addEventListener('click',()=>{input.value='';updateLineCount();picked.clear();memo={};clearFile();renderPicked();if(sent.open)sent.close();go(1);});
 
   // ---------- delivery check ----------
   const ROUTES=[
@@ -1019,17 +1118,29 @@ lemon 2 dozen</textarea>
     {test:/^1341|panchkula/i,area:"Panchkula",cut:"10pm the night before",win:"6am to 8am",min:"₹2,000",days:"Daily"},
     {test:/^1406|zirakpur|dera ?bassi/i,area:"Zirakpur and Dera Bassi",cut:"9pm the night before",win:"6am to 8am",min:"₹2,500",days:"Daily"}
   ];
-  const out=$('fitResult');
-  function check(v){
-    v=v.trim();if(!v){out.innerHTML='<p class="hint">Enter a pincode or city to see your delivery times.</p>';return;}
+  const out=$('fitResult'),fitBtn=$('fitBtn'),fitIn=$('fitInput');let checkT=0,checkedFor='';
+  function render(v){
     let r=null;for(const x of ROUTES)if(x.test.test(v))r=x;
-    lastArea=r?`${r.area} · ${v}`:v;
-    out.innerHTML=r?`<p class="status ok">We deliver here</p><dl><dt>Area</dt><dd>${r.area}</dd><dt>Order by</dt><dd>${r.cut}</dd><dt>Delivery</dt><dd>${r.win}</dd><dt>Days</dt><dd>${r.days}</dd><dt>Minimum order</dt><dd>${r.min}</dd></dl><p class="fine">Sample route rules for the prototype.</p>`
-      :`<p class="status warn">Let us check</p><p class="hint" style="margin-top:0">We don't have a fixed route to <b>${esc(v)}</b> yet. Send your list and our team will confirm within 2 working hours.</p>`;
+    lastArea=r?`${r.area} · ${v}`:v;checkedFor=v;
+    out.className='result';
+    out.innerHTML=r?`<div class="res-card"><p class="status ok">Yes, we deliver to ${esc(v)}</p><p class="hint" style="margin-top:0">${r.area} route. Here's how delivery works for you:</p></div><dl><dt>Order by</dt><dd>${r.cut}</dd><dt>Delivery</dt><dd>${r.win}</dd><dt>Days</dt><dd>${r.days}</dd><dt>Minimum order</dt><dd>${r.min}</dd></dl><p class="fine">Sample route rules for the prototype.</p>`
+      :`<div class="res-card warn"><p class="status warn">No fixed route to ${esc(v)} yet</p><p class="hint" style="margin-top:0">You can still send your list. Our team will confirm delivery within 2 working hours.</p></div>`;
   }
-  $('fitForm').addEventListener('submit',e=>{e.preventDefault();check($('fitInput').value);});
-  document.querySelectorAll('#fitChips .chip').forEach(c=>c.addEventListener('click',()=>{$('fitInput').value=c.textContent;check(c.textContent);}));
-  check('160062');
+  function check(v,instant){
+    v=v.trim();clearTimeout(checkT);
+    if(!v){out.className='result';out.innerHTML='<p class="hint" style="margin-top:0">Enter a pincode or city above, then tap <b>Check delivery</b>.</p>';fitIn.focus();return;}
+    if(instant){render(v);return;}
+    fitBtn.classList.add('loading');fitBtn.setAttribute('aria-busy','true');fitBtn.querySelector('.fit-btn-txt').textContent='Checking…';
+    out.className='result checking';out.innerHTML=`<span class="spinner" aria-hidden="true"></span><span>Checking delivery to <b>${esc(v)}</b>…</span>`;
+    checkT=setTimeout(()=>{
+      fitBtn.classList.remove('loading');fitBtn.removeAttribute('aria-busy');fitBtn.querySelector('.fit-btn-txt').textContent='Check delivery';
+      render(v);
+    },700);
+  }
+  $('fitForm').addEventListener('submit',e=>{e.preventDefault();check(fitIn.value);});
+  fitIn.addEventListener('input',()=>{if(checkedFor&&!out.classList.contains('checking'))out.classList.toggle('stale',fitIn.value.trim()!==checkedFor);});
+  document.querySelectorAll('#fitChips .chip').forEach(c=>c.addEventListener('click',()=>{fitIn.value=c.textContent;check(c.textContent);}));
+  check('160062',true);
 
   // ---------- who we supply carousel ----------
   const track=$('buyerTrack'),cards=[...track.children],prev=$('carPrev'),next=$('carNext');
