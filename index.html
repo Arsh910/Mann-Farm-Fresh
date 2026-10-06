@@ -384,13 +384,11 @@ dialog.picker::backdrop{background:rgba(10,14,11,.55);backdrop-filter:blur(2px)}
 .stepper li:not(:last-child)::after{content:"";flex:1;min-width:16px;height:2px;border-radius:2px;background:var(--line)}
 .stepper .dot{display:grid;place-items:center;width:32px;height:32px;border-radius:50%;border:1.5px solid #D4D4D4;background:#fff;font-weight:600;font-size:.86rem;flex:none}
 .stepper .dot svg{width:14px;height:14px}
-.stepper .lbl{white-space:nowrap}
 .stepper li[aria-current="step"]{color:var(--ink);font-weight:500}
 .stepper li[aria-current="step"] .dot{background:var(--lime);border-color:var(--lime);color:var(--ink)}
 .stepper li.done{color:var(--ink-2)}
 .stepper li.done .dot{background:var(--forest);border-color:var(--forest);color:var(--lime)}
 .stepper li.done::after{background:var(--forest)}
-@media (max-width:560px){.stepper .lbl{display:none}.stepper li[aria-current="step"] .lbl{display:inline}}
 .wz-panel h3:focus{outline:none}
 .wz-panel:not([hidden]){animation:wzIn .25s ease}
 @keyframes wzIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
@@ -527,15 +525,15 @@ footer{padding-top:clamp(64px,8vw,96px);overflow:hidden}
   <div class="quote">
     <div class="card wizard" id="listTool">
       <ol class="stepper" aria-label="Quote request steps">
-        <li data-s="1" aria-current="step"><span class="dot">1</span><span class="lbl">Add items</span></li>
-        <li data-s="2"><span class="dot">2</span><span class="lbl">Quantities</span></li>
-        <li data-s="3"><span class="dot">3</span><span class="lbl">Delivery</span></li>
-        <li data-s="4"><span class="dot">4</span><span class="lbl">Done</span></li>
+        <li data-s="1" aria-current="step" aria-label="Add items"><span class="dot">1</span></li>
+        <li data-s="2" aria-label="Quantities"><span class="dot">2</span></li>
+        <li data-s="3" aria-label="Delivery"><span class="dot">3</span></li>
+        <li data-s="4" aria-label="Done"><span class="dot">4</span></li>
       </ol>
 
       <!-- step 1: add items (search modal, paste or upload) -->
       <div class="wz-panel" id="wz1" data-step="1">
-        <div class="card-head"><div><span class="step-label">Step 1 of 4</span><h3 tabindex="-1">What do you need?</h3></div></div>
+        <div class="card-head"><div><span class="step-label">Step 1 of 4 · Add items</span><h3 tabindex="-1">What do you need?</h3></div></div>
         <div class="card-body">
           <button type="button" class="search-trigger" id="openPicker" aria-haspopup="dialog" aria-controls="picker">
             <span class="st-icon"><svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="9" cy="9" r="6" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="m14 14 4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></span>
@@ -585,7 +583,7 @@ lemon 2 dozen</textarea>
       <!-- step 2: check quantities -->
       <div class="wz-panel" id="wz2" data-step="2" hidden>
         <div class="card-head">
-          <div><span class="step-label">Step 2 of 4</span><h3 tabindex="-1">Check your quantities</h3></div>
+          <div><span class="step-label">Step 2 of 4 · Quantities</span><h3 tabindex="-1">Check your quantities</h3></div>
           <button type="button" class="link-btn add-more" id="addMore">+ Add more items</button>
         </div>
         <div class="card-body">
@@ -603,7 +601,7 @@ lemon 2 dozen</textarea>
 
       <!-- step 3: delivery and contact -->
       <div class="wz-panel" id="wz3" data-step="3" hidden>
-        <div class="card-head"><div><span class="step-label">Step 3 of 4</span><h3 tabindex="-1">Where should we deliver?</h3></div></div>
+        <div class="card-head"><div><span class="step-label">Step 3 of 4 · Delivery</span><h3 tabindex="-1">Where should we deliver?</h3></div></div>
         <div class="card-body" id="fit">
           <form class="fit-form" id="fitForm">
             <input id="fitInput" name="location" autocomplete="postal-code" placeholder="Pincode or city…" aria-label="Pincode or city" value="160062">
