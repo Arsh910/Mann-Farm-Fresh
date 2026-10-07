@@ -252,8 +252,6 @@ section{padding-block:clamp(72px,9vw,128px)}
 .prod-missing:hover{border-color:#D3AE5C}
 .prod-missing .nm small{color:var(--ink-2)}
 .prod-missing button{background:var(--accent)}
-.or{display:flex;align-items:center;gap:14px;margin:24px 0 18px;color:var(--muted);font-size:.86rem}
-.or::before,.or::after{content:"";flex:1;height:1px;background:var(--line)}
 .toast{position:fixed;left:50%;bottom:calc(20px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);background:var(--ink);color:#fff;padding:12px 18px;border-radius:999px;font-size:.95rem;z-index:80;box-shadow:0 10px 30px rgba(0,0,0,.25);max-width:calc(100vw - 32px);display:flex;gap:10px;align-items:center}
 .toast a{color:var(--accent)}
 
@@ -368,14 +366,6 @@ section{padding-block:clamp(72px,9vw,128px)}
 .ref{font-weight:600}
 .side{display:grid;gap:20px}
 /* step 1: search trigger + picked chips */
-.search-trigger{display:flex;align-items:center;gap:12px;width:100%;padding:10px 14px;border:1.5px solid var(--line);border-radius:var(--r);background:#fff;text-align:left;cursor:pointer;transition:border-color .2s ease,box-shadow .2s ease}
-.search-trigger:hover{border-color:var(--ink);box-shadow:0 0 0 4px rgba(197,211,185,.55)}
-.st-icon{display:grid;place-items:center;width:36px;height:36px;border-radius:50%;background:var(--accent);flex:none}
-.st-icon svg{width:16px;height:16px}
-.st-txt{flex:1;min-width:0}
-.st-txt b{display:block;font-weight:500;font-size:.98rem}
-.st-txt small{display:block;color:var(--muted);font-size:.82rem;margin-top:1px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.st-go{font-size:1.2rem;color:var(--muted)}
 .picked{margin-top:14px;padding:14px;border-radius:var(--r);background:var(--soft)}
 .picked-head{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:10px;font-weight:500;font-size:.95rem}
 .picked-chips{display:flex;flex-wrap:wrap;gap:6px}
@@ -384,7 +374,15 @@ section{padding-block:clamp(72px,9vw,128px)}
 .pchip button{display:grid;place-items:center;width:26px;height:26px;border-radius:50%;border:0;background:transparent;color:var(--muted);cursor:pointer}
 .pchip button:hover{background:var(--soft);color:var(--ink)}
 .pchip button svg{width:12px;height:12px}
-#wz1 .tabs{display:inline-flex;margin-bottom:16px}
+/* step 1: paste / upload toggle with the product search beside it */
+.list-tools{display:flex;align-items:center;gap:8px;margin-bottom:16px}
+#wz1 .tabs{display:inline-flex;min-width:0}
+#wz1 .tabs button{white-space:nowrap}
+@media (max-width:380px){.tab-more{display:none}#wz1 .tabs button{padding-inline:18px}}
+.search-btn{display:grid;place-items:center;width:48px;height:48px;flex:none;border-radius:50%;border:0;background:var(--soft);color:var(--ink);cursor:pointer;transition:background-color .2s ease,color .2s ease}
+.search-btn svg{width:18px;height:18px}
+.search-btn:hover{background:var(--ink-2);color:#fff}
+.list-tools + .picked{margin:0 0 16px}
 /* step 2: quantities */
 .add-more{color:var(--leaf);font-weight:500}
 .qty-list{max-height:none;overflow:visible}
@@ -689,22 +687,18 @@ footer .muted{color:#C8D3BD}
       <div class="wz-panel" id="wz1" data-step="1">
         <div class="card-head"><div><span class="step-label">Step 1 of 4 · Add items</span><h3 tabindex="-1">What do you need?</h3></div></div>
         <div class="card-body">
-          <button type="button" class="search-trigger" id="openPicker" aria-haspopup="dialog" aria-controls="picker">
-            <span class="st-icon"><svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="9" cy="9" r="6" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="m14 14 4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></span>
-            <span class="st-txt"><b>Search our products</b><small>Find items in English or Hindi and tap to add</small></span>
-            <span class="st-go" aria-hidden="true">→</span>
-          </button>
+          <div class="list-tools">
+            <div class="tabs" role="tablist" aria-label="How to send your list">
+              <button type="button" role="tab" aria-selected="true" aria-controls="tabPaste" data-tab="paste">Paste<span class="tab-more"> a list</span></button>
+              <button type="button" role="tab" aria-selected="false" aria-controls="tabUpload" data-tab="upload">Upload<span class="tab-more"> a photo</span></button>
+            </div>
+            <button type="button" class="search-btn" id="openPicker" aria-haspopup="dialog" aria-controls="picker" aria-label="Search our products" title="Search our products"><svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="9" cy="9" r="6" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="m14 14 4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></button>
+          </div>
           <div class="picked" id="picked" hidden>
             <div class="picked-head"><span id="pickedCount"></span><button type="button" class="link-btn" id="editPicked">Edit</button></div>
             <div class="picked-chips" id="pickedChips"></div>
           </div>
 
-          <div class="or"><span>or send your own list</span></div>
-
-          <div class="tabs" role="tablist" aria-label="How to send your list">
-            <button type="button" role="tab" aria-selected="true" aria-controls="tabPaste" data-tab="paste">Paste a list</button>
-            <button type="button" role="tab" aria-selected="false" aria-controls="tabUpload" data-tab="upload">Upload a photo</button>
-          </div>
           <div id="tabPaste" role="tabpanel">
             <label class="field-label" for="listInput">Paste your list</label>
             <p class="list-hint">One item per line, in Hindi or English. For example <kbd>aloo 50 kg</kbd> or <kbd>tamatar 25kg</kbd></p>
