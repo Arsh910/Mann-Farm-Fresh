@@ -1250,7 +1250,7 @@ lemon 2 dozen</textarea>
   };
   function svg(lo,hi){const w=$('gSvg').getBoundingClientRect().width||520,fs=Math.min(20,Math.max(12,12*520/w)).toFixed(1);let s='<line x1="10" y1="92" x2="510" y2="92" stroke="#E6E6E6" stroke-width="1"/>';[40,45,50,55,60,65,70,75].forEach((mm,i)=>{const x=34+i*64,r=mm/3.2,on=mm>=lo&&mm<=hi;
     s+=`<circle cx="${x}" cy="${88-r}" r="${r}" fill="${on?'#D2452F':'none'}" stroke="${on?'#D2452F':'#CFCFCF'}" stroke-width="1.4"/>`;
-    s+=`<text x="${x}" y="114" text-anchor="middle" font-family="DM Sans,sans-serif" font-size="${fs}" fill="${on?'#111111':'#8C8C8C'}">${w<480?mm:mm+' mm'}</text>`;});return s;}
+    s+=`<text x="${x}" y="114" text-anchor="middle" font-family="Inter,sans-serif" font-size="${fs}" fill="${on?'#111111':'#8C8C8C'}">${w<480?mm:mm+' mm'}</text>`;});return s;}
   function setGrade(k){const g=G[k];
     $('gName').textContent=g.name;$('gCode').textContent=g.code;$('gSize').textContent=g.size;$('gRipe').textContent=g.ripe;$('gPack').textContent=g.pack;$('gUse').textContent=g.use;$('gradeWhy').textContent=g.why;$('gSvg').innerHTML=svg(g.lo,g.hi);
     document.querySelectorAll('.seg button').forEach(b=>b.setAttribute('aria-pressed',b.dataset.g===k));}
