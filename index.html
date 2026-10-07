@@ -99,6 +99,13 @@ nav.main a[aria-current="true"]::after{transform:scaleX(1)}
 .menu-btn svg{width:22px;height:22px}
 .mnav{position:fixed;inset:0;z-index:70;background:var(--forest);color:#fff;padding:20px var(--gut) calc(24px + env(safe-area-inset-bottom,0px));display:flex;flex-direction:column;overscroll-behavior:contain}
 .mnav[hidden]{display:none}
+/* slide in from the right; links follow a beat later */
+.mnav{transform:translateX(100%);transition:transform .42s cubic-bezier(.22,1,.36,1);will-change:transform}
+.mnav.open{transform:none}
+.mnav ul li,.mnav > .btn,.mnav > p{opacity:0;transform:translateX(28px);transition:opacity .3s ease,transform .45s cubic-bezier(.22,1,.36,1)}
+.mnav.open ul li,.mnav.open > .btn,.mnav.open > p{opacity:1;transform:none}
+.mnav.open ul li:nth-child(1){transition-delay:.08s}.mnav.open ul li:nth-child(2){transition-delay:.12s}.mnav.open ul li:nth-child(3){transition-delay:.16s}
+.mnav.open ul li:nth-child(4){transition-delay:.2s}.mnav.open ul li:nth-child(5){transition-delay:.24s}.mnav.open > .btn{transition-delay:.28s}.mnav.open > p{transition-delay:.32s}
 .mnav-top{display:flex;justify-content:space-between;align-items:center;height:48px}
 .mnav-top button{width:48px;height:48px;border-radius:50%;border:0;background:rgba(255,255,255,.1);color:#fff;cursor:pointer;display:grid;place-items:center}
 .mnav ul{list-style:none;margin:28px 0 auto;padding:0}
@@ -943,8 +950,10 @@ lemon 2 dozen</textarea>
 
   // mobile menu
   const mnav=$('mnav'),mb=$('menuBtn');
-  const openMenu=()=>{mnav.hidden=false;mb.setAttribute('aria-expanded','true');document.body.style.overflow='hidden';$('menuClose').focus();};
-  const closeMenu=()=>{mnav.hidden=true;mb.setAttribute('aria-expanded','false');document.body.style.overflow='';};
+  let menuT=0;
+  const openMenu=()=>{clearTimeout(menuT);mnav.hidden=false;mnav.offsetWidth;mnav.classList.add('open');mb.setAttribute('aria-expanded','true');document.body.style.overflow='hidden';$('menuClose').focus({preventScroll:true});};
+  // slide out, then hide once the animation is done (timer, so it also works with reduced motion)
+  const closeMenu=()=>{if(mnav.hidden)return;mnav.classList.remove('open');mb.setAttribute('aria-expanded','false');document.body.style.overflow='';clearTimeout(menuT);menuT=setTimeout(()=>{mnav.hidden=true;},420);};
   mb.addEventListener('click',openMenu);$('menuClose').addEventListener('click',()=>{closeMenu();mb.focus();});
   mnav.addEventListener('click',e=>{if(e.target.closest('a'))closeMenu();});
   document.addEventListener('keydown',e=>{if(e.key==='Escape'&&!mnav.hidden){closeMenu();mb.focus();}});
@@ -1099,7 +1108,7 @@ lemon 2 dozen</textarea>
   $('pickerDone').addEventListener('click',()=>picker.close());
   picker.addEventListener('click',e=>{if(e.target===picker)picker.close();});
   picker.addEventListener('close',()=>{renderPicked();if(!$('wz2').hidden)renderList();});
-  document.querySelectorAll('[data-picker]').forEach(a=>a.addEventListener('click',e=>{e.preventDefault();$('mnav').hidden=true;document.body.style.overflow='';if(!$('wz1').hidden){$('quote').scrollIntoView({block:'start'});openPicker();}else $('quote').scrollIntoView({block:'start'});}));
+  document.querySelectorAll('[data-picker]').forEach(a=>a.addEventListener('click',e=>{e.preventDefault();closeMenu();if(!$('wz1').hidden){$('quote').scrollIntoView({block:'start'});openPicker();}else $('quote').scrollIntoView({block:'start'});}));
 
   // ---------- quote wizard ----------
   const wizard=$('listTool');let lastArea='';
