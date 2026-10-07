@@ -485,6 +485,10 @@ dialog.sent::backdrop{background:rgba(10,14,11,.55);backdrop-filter:blur(2px)}
 .result .res-card .status{margin-bottom:2px}
 .result.stale{opacity:.5}
 .result .res-card + dl{margin-top:6px}
+.res-line{display:flex;justify-content:space-between;align-items:center;gap:8px 12px;flex-wrap:wrap}
+.res-line .status{margin:0}
+.res-more{border:0;background:transparent;padding:6px 0;min-height:36px;color:var(--leaf);font:inherit;font-size:.9rem;font-weight:500;text-decoration:underline;text-underline-offset:3px;cursor:pointer}
+#fitDetails{margin-top:6px}
 @media (prefers-reduced-motion:reduce){.btn .spinner,.result.checking .spinner{animation-duration:1.6s}}
 .status{display:inline-flex;align-items:center;gap:8px;font-weight:600;font-size:.92rem;margin-bottom:6px}
 .status::before{content:"";width:10px;height:10px;border-radius:50%;background:currentColor}
@@ -716,7 +720,7 @@ lemon 2 dozen</textarea>
           <label class="field-label" for="fitInput">Delivery pincode or city</label>
           <p class="list-hint">We'll check that we deliver there and show your order cut-off, delivery window and minimum order.</p>
           <form class="fit-form" id="fitForm">
-            <input id="fitInput" name="location" autocomplete="postal-code" placeholder="e.g. 160062 or Mohali…" value="160062">
+            <input id="fitInput" name="location" autocomplete="postal-code" placeholder="e.g. 160062 or Mohali…" inputmode="text">
             <button class="btn dark sm" id="fitBtn" type="submit"><span class="fit-btn-txt">Check<span class="fit-more"> delivery</span></span><i><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M5 11 11 5M6 5h5v5" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="spinner" aria-hidden="true"></span></i></button>
           </form>
           <div class="chips" id="fitChips">
@@ -724,15 +728,17 @@ lemon 2 dozen</textarea>
           </div>
           <div class="result" id="fitResult" aria-live="polite"></div>
 
+          <div id="contactBlock" hidden>
           <h4 class="sub-h">How can we reach you?</h4>
           <div class="fields">
             <label class="field"><span>Business name <small class="muted">(optional)</small></span><input id="bizName" name="organization" autocomplete="organization" placeholder="e.g. Sharma Dhaba…"></label>
             <label class="field"><span>Phone or WhatsApp</span><input id="bizPhone" name="tel" type="tel" inputmode="tel" autocomplete="tel" placeholder="98765 43210…" aria-describedby="phoneErr"><small class="err" id="phoneErr" hidden>Enter a 10-digit mobile number so we can send your quote.</small></label>
           </div>
+          </div>
         </div>
         <div class="card-foot">
           <button class="btn ghost on-light sm" id="wzBack3" type="button">← Back</button>
-          <button class="btn dark sm" id="reviewBtn" type="button">Send for quote<i><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M5 11 11 5M6 5h5v5" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></i></button>
+          <button class="btn dark sm" id="reviewBtn" type="button" hidden>Send for quote<i><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M5 11 11 5M6 5h5v5" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></i></button>
         </div>
       </div>
 
@@ -1152,8 +1158,11 @@ lemon 2 dozen</textarea>
     let r=null;for(const x of ROUTES)if(x.test.test(v))r=x;
     lastArea=r?`${r.area} · ${v}`:v;checkedFor=v;
     out.className='result';
-    out.innerHTML=r?`<div class="res-card"><p class="status ok">Yes, we deliver to ${esc(v)}</p><p class="hint" style="margin-top:0">${r.area} route. Here's how delivery works for you:</p></div><dl><dt>Order by</dt><dd>${r.cut}</dd><dt>Delivery</dt><dd>${r.win}</dd><dt>Days</dt><dd>${r.days}</dd><dt>Minimum order</dt><dd>${r.min}</dd></dl><p class="fine">Sample route rules for the prototype.</p>`
+    out.innerHTML=r?`<div class="res-card res-line"><p class="status ok">Yes, we can deliver to ${esc(v)}</p><button type="button" class="res-more" aria-expanded="false" aria-controls="fitDetails">See details</button></div><div id="fitDetails" hidden><dl><dt>Route</dt><dd>${r.area}</dd><dt>Order by</dt><dd>${r.cut}</dd><dt>Delivery</dt><dd>${r.win}</dd><dt>Days</dt><dd>${r.days}</dd><dt>Minimum order</dt><dd>${r.min}</dd></dl><p class="fine">Sample route rules for the prototype.</p></div>`
       :`<div class="res-card warn"><p class="status warn">No fixed route to ${esc(v)} yet</p><p class="hint" style="margin-top:0">You can still send your list. Our team will confirm delivery within 2 working hours.</p></div>`;
+    const more=out.querySelector('.res-more');
+    if(more)more.addEventListener('click',()=>{const open=more.getAttribute('aria-expanded')!=='true';more.setAttribute('aria-expanded',open);more.textContent=open?'Hide details':'See details';$('fitDetails').hidden=!open;});
+    $('contactBlock').hidden=false;$('reviewBtn').hidden=false;
   }
   function check(v,instant){
     v=v.trim();clearTimeout(checkT);
@@ -1169,7 +1178,6 @@ lemon 2 dozen</textarea>
   $('fitForm').addEventListener('submit',e=>{e.preventDefault();check(fitIn.value);});
   fitIn.addEventListener('input',()=>{if(checkedFor&&!out.classList.contains('checking'))out.classList.toggle('stale',fitIn.value.trim()!==checkedFor);});
   document.querySelectorAll('#fitChips .chip').forEach(c=>c.addEventListener('click',()=>{fitIn.value=c.textContent;check(c.textContent);}));
-  check('160062',true);
 
   // ---------- who we supply carousel ----------
   const track=$('buyerTrack'),cards=[...track.children],prev=$('carPrev'),next=$('carNext');
