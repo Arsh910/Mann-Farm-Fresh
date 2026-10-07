@@ -44,7 +44,7 @@ body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--font);font
 .wrap{max-width:1760px;margin:0 auto;padding-inline:var(--gut)}
 h1,h2,h3{margin:0;font-weight:500;letter-spacing:-.02em;text-wrap:balance}
 h1{font-size:clamp(2.6rem,5.4vw,6.8rem);line-height:1}
-h2{font-size:clamp(2rem,3.8vw,4.6rem);line-height:1.04;text-transform:uppercase;letter-spacing:-.008em}
+h2{font-size:clamp(2rem,3.8vw,4.2rem);line-height:1.06;letter-spacing:-.03em}
 h3{font-size:1.25rem;line-height:1.25;letter-spacing:-.01em}
 p{margin:0;text-wrap:pretty}
 a{color:inherit}
@@ -128,6 +128,7 @@ nav.main a[aria-current="true"]::after{transform:scaleX(1)}
 /* section frame */
 section{padding-block:clamp(72px,9vw,128px)}
 .dark{background:var(--forest);color:#fff}
+.dark + .dark{border-top:1px solid var(--rule-dark)}
 .soft{background:var(--soft)}
 .head{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(0,.6fr);gap:20px 64px;align-items:start;margin-bottom:clamp(36px,5vw,64px)}
 .head p{color:var(--muted);font-size:1.05rem;max-width:38ch;padding-top:6px}
@@ -224,7 +225,7 @@ section{padding-block:clamp(72px,9vw,128px)}
 .car-btn{display:grid;place-items:center;width:52px;height:52px;border-radius:50%;border:1.5px solid var(--rule-dark);background:transparent;color:#fff;cursor:pointer;transition:background-color .2s ease,border-color .2s ease,color .2s ease,opacity .2s ease}
 .car-btn svg{width:18px;height:18px}
 .car-btn:hover:not(:disabled){background:var(--lime);border-color:var(--lime);color:var(--ink)}
-.car-btn:disabled{opacity:.35;cursor:default}
+.car-btn:disabled{opacity:.5;border-style:dashed;cursor:default}
 .buyers{list-style:none;margin:0;padding:0 0 4px;display:flex;gap:20px;overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;overscroll-behavior-x:contain;scrollbar-width:none;-webkit-overflow-scrolling:touch}
 .buyers::-webkit-scrollbar{display:none}
 .buyers:focus-visible{outline-offset:6px}
@@ -407,6 +408,17 @@ dialog.picker::backdrop{background:rgba(10,14,11,.55);backdrop-filter:blur(2px)}
 .stepper li.done::after{background:var(--forest)}
 .wz-panel h3:focus{outline:none}
 .wz-panel:not([hidden]){animation:wzIn .25s ease}
+@media (max-width:960px),(pointer:coarse){
+  .wizard{height:auto;overflow:clip}
+  .wz-panel:not([hidden]){flex:none}
+  .wz-panel > .card-body,.done-panel{overflow:visible;scrollbar-gutter:auto}
+  .wz-panel > .card-foot{position:sticky;bottom:0;z-index:2;padding-bottom:calc(16px + env(safe-area-inset-bottom,0px));box-shadow:0 -8px 20px rgba(0,0,0,.06)}
+  .parsed{overscroll-behavior:auto}
+  .wz-panel > .card-foot{padding-top:10px;padding-left:16px;padding-right:16px;gap:8px 12px}
+  .wz-panel > .card-foot .count{flex:1 1 0;min-width:0;font-size:.84rem;line-height:1.35}
+  .wz-panel > .card-foot .count.is-err{flex-basis:100%;order:-1}
+  .wz-panel > .card-foot .btn{flex:none}
+}
 @keyframes wzIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
 .count.is-err{color:var(--tomato);font-weight:500}
 .sub-h{margin:28px 0 14px;padding-top:24px;border-top:1px solid var(--line);font-size:1.05rem;font-weight:500}
@@ -483,6 +495,9 @@ dialog.sent::backdrop{background:rgba(10,14,11,.55);backdrop-filter:blur(2px)}
 .contact-card h3{font-size:1.15rem}
 .contact-card a.phone{display:block;margin-top:8px;font-size:clamp(1.6rem,3vw,2.1rem);font-weight:500;letter-spacing:-.02em;text-decoration:none;color:var(--lime);font-variant-numeric:tabular-nums}
 .contact-card p{margin-top:6px;color:var(--on-dark-2);font-size:.95rem}
+.side-checks{margin:16px 0 0;color:var(--on-dark-2);font-size:.95rem}
+.side-checks li i{width:24px;height:24px;color:var(--ink)}
+@media (min-width:961px){.side{position:sticky;top:calc(var(--head-h) + 24px)}}
 
 /* faq */
 .faq{border-top:1px solid var(--line)}
@@ -530,7 +545,7 @@ footer{padding-top:clamp(64px,8vw,96px);overflow:hidden}
 <header class="site" id="siteHeader"><div class="wrap">
   <a class="logo" href="#top" translate="no"><svg class="mark" viewBox="0 0 32 32" aria-hidden="true"><path d="M16 29V16" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/><path d="M16 18C16 10.5 11 5 3.5 5 3.5 12.5 8.5 18 16 18Z" fill="currentColor"/><path d="M16 21.5c0-6.5 4.6-11 12.5-11 0 6.5-5 11-12.5 11Z" fill="currentColor" opacity=".7"/></svg><span>Mann Farm Fresh<small>Direct from our farms</small></span></a>
   <nav class="main" aria-label="Main" id="mainNav">
-    <a href="#quote" data-picker>Produce</a><a href="#how">How it works</a><a href="#quality">Quality</a><a href="#buyers">Who we supply</a><a href="#faq">FAQ</a>
+    <a href="#quote" data-picker>Browse produce</a><a href="#how">How it works</a><a href="#quality">Quality</a><a href="#buyers">Who we supply</a><a href="#faq">FAQ</a>
   </nav>
   <a class="nav-cta" href="#quote">Get a quote<svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
   <button class="menu-btn" id="menuBtn" type="button" aria-expanded="false" aria-controls="mnav" aria-label="Open menu"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 8h16M4 16h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button>
@@ -539,7 +554,7 @@ footer{padding-top:clamp(64px,8vw,96px);overflow:hidden}
 <div class="mnav" id="mnav" hidden role="dialog" aria-modal="true" aria-label="Menu">
   <div class="mnav-top"><a class="logo" href="#top" translate="no"><svg class="mark" viewBox="0 0 32 32" aria-hidden="true"><path d="M16 29V16" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/><path d="M16 18C16 10.5 11 5 3.5 5 3.5 12.5 8.5 18 16 18Z" fill="currentColor"/><path d="M16 21.5c0-6.5 4.6-11 12.5-11 0 6.5-5 11-12.5 11Z" fill="currentColor" opacity=".7"/></svg><span>Mann Farm Fresh<small>Direct from our farms</small></span></a><button type="button" id="menuClose" aria-label="Close menu"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button></div>
   <ul>
-    <li><a href="#quote" data-picker>Produce</a></li><li><a href="#how">How it works</a></li><li><a href="#quality">Quality</a></li><li><a href="#buyers">Who we supply</a></li><li><a href="#faq">FAQ</a></li>
+    <li><a href="#quote" data-picker>Browse produce</a></li><li><a href="#how">How it works</a></li><li><a href="#quality">Quality</a></li><li><a href="#buyers">Who we supply</a></li><li><a href="#faq">FAQ</a></li>
   </ul>
   <a class="btn" href="#quote">Get a quote<i><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M5 11 11 5M6 5h5v5" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></i></a>
   <p>Or call / WhatsApp <a href="tel:+919872178832">+91&nbsp;98721&nbsp;78832</a></p>
@@ -562,7 +577,158 @@ footer{padding-top:clamp(64px,8vw,96px);overflow:hidden}
   </div>
 </section>
 
-<!-- 2. GET A QUOTE: calculator with product search, right under the hero -->
+
+<dialog class="sent" id="sentDetails" aria-labelledby="sentTitle">
+  <div class="sent-head">
+    <div><h3 id="sentTitle">Your quote request</h3><p class="muted">Reference <b class="ref" id="refNo"></b></p></div>
+    <button type="button" class="pk-close" id="sentClose" aria-label="Close"><svg viewBox="0 0 14 14" width="14" height="14" aria-hidden="true"><path d="M3.5 3.5l7 7M10.5 3.5l-7 7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></button>
+  </div>
+  <div class="sent-body">
+    <dl class="summary">
+      <div><dt>Deliver to</dt><dd id="sumArea"></dd></div>
+      <div><dt>We'll contact</dt><dd id="sumPhone"></dd></div>
+      <div><dt>Items</dt><dd id="sumItems"></dd></div>
+    </dl>
+    <ul class="sent-items" id="sentItems"></ul>
+    <p class="hint">This is a quote request, not an order. Prototype only: nothing has been sent.</p>
+  </div>
+  <div class="sent-foot">
+    <button class="btn ghost on-light sm" id="wzRestart" type="button">Start a new list</button>
+    <button class="btn dark sm" id="sentDone" type="button" style="padding-right:18px">Close</button>
+  </div>
+</dialog>
+
+<dialog class="picker" id="picker" aria-labelledby="pickerTitle">
+  <div class="pk-head">
+    <div><h3 id="pickerTitle">Add products</h3><p class="muted">Tap + to add. Tap ✓ again to remove.</p></div>
+    <button type="button" class="pk-close" id="pickerClose" aria-label="Close"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button>
+  </div>
+  <div class="pk-search">
+    <div class="search"><svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="9" cy="9" r="6" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="m14 14 4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg><input id="catSearch" name="produce-search" type="search" autocomplete="off" spellcheck="false" placeholder="Search tamatar, bhindi, mushroom…" aria-label="Search products" aria-controls="catGrid"></div>
+    <div class="cat-tabs" id="catTabs" role="group" aria-label="Product groups"></div>
+  </div>
+  <div class="pk-body">
+    <p class="cat-count" id="catCount" aria-live="polite"></p>
+    <div class="cat-grid" id="catGrid"></div>
+  </div>
+  <div class="pk-foot"><span id="pkCount">Nothing selected yet</span><button class="btn dark sm" type="button" id="pickerDone">Done<i><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M5 11 11 5M6 5h5v5" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></i></button></div>
+</dialog>
+
+
+<!-- 3. WHY MANN -->
+<section class="dark" id="why"><div class="wrap">
+  <div class="head">
+    <h2>Grown for your kitchen, not the mandi</h2>
+    <p>We agree with our farmers what to grow before the seed goes in. So quality is planned, not left to chance.</p>
+  </div>
+  <div class="why">
+    <img src="img/farmer.jpg" alt="Harpreet Singh Mann with a farmer, checking plants in the field" width="800" height="1000" loading="lazy">
+    <img src="img/harvest.jpg" alt="Fresh harvest going into clean Mann crates" width="800" height="1000" loading="lazy">
+    <div class="stats">
+      <div class="stat"><b><em>0</em></b><h3>Middlemen</h3><p>Our farmer, then Mann grading, then you. No agent, mandi or trader.</p></div>
+      <div class="stat"><b>7<em>am</em></b><h3>Delivery</h3><p>At your door before your prep starts.</p></div>
+      <div class="stat"><b>20<em>+</em></b><h3>Years in the field</h3><p>Growing for kitchens across Punjab, Tricity and Delhi NCR.</p></div>
+    </div>
+  </div>
+  <div class="note"><b>Design note</b>This replaces the old hero facts, yellow strip and comparison box. Three numbers say the same thing faster.</div>
+</div></section>
+
+<!-- 4. HOW IT WORKS -->
+<section id="how"><div class="wrap">
+  <div class="head">
+    <h2>How it works</h2>
+    <p>Five simple steps from our fields to your door.</p>
+  </div>
+  <ol class="steps">
+    <li class="step"><img src="img/s1.jpg" alt="" width="600" height="750" loading="lazy"><span class="n">1</span><h3>Plan</h3><p>We agree the crop, variety and harvest date with each farmer.</p></li>
+    <li class="step"><img src="img/s2.jpg" alt="" width="600" height="750" loading="lazy"><span class="n">2</span><h3>Grow</h3><p>Our field team visits all season to check seed, water and sprays.</p></li>
+    <li class="step"><img src="img/s3.jpg" alt="" width="600" height="750" loading="lazy"><span class="n">3</span><h3>Harvest</h3><p>Picked when your grade is ready, not when prices peak.</p></li>
+    <li class="step"><img src="img/s4.jpg" alt="" width="600" height="750" loading="lazy"><span class="n">4</span><h3>Grade</h3><p>Every lot is sorted by size, colour and condition.</p></li>
+    <li class="step"><img src="img/s5.jpg" alt="" width="600" height="750" loading="lazy"><span class="n">5</span><h3>Deliver</h3><p>Weighed, photographed and checked with you at the door.</p></li>
+  </ol>
+</div></section>
+
+<!-- 5. QUALITY -->
+<section id="quality"><div class="wrap">
+  <div class="head">
+    <h2>One tomato, three grades</h2>
+    <p>Choose the grade for how you use it. What you order is what arrives.</p>
+  </div>
+  <div class="quality">
+    <img src="img/tomato.jpg" alt="Tomatoes of different grades on a table" width="1000" height="800" loading="lazy">
+    <div class="grade" aria-live="polite">
+      <div class="seg" role="group" aria-label="Choose grade">
+        <button type="button" aria-pressed="true" data-g="gravy">Gravy</button>
+        <button type="button" aria-pressed="false" data-g="salad">Salad</button>
+        <button type="button" aria-pressed="false" data-g="retail">Retail shelf</button>
+      </div>
+      <div class="grade-title"><h3>Tomato <span id="gName" style="font-size:inherit;color:var(--muted)"></span></h3><span id="gCode"></span></div>
+      <p class="why-txt" id="gradeWhy"></p>
+      <dl class="specs">
+        <div><dt>Size</dt><dd id="gSize"></dd></div>
+        <div><dt>Ripeness</dt><dd id="gRipe"></dd></div>
+        <div><dt>Pack</dt><dd id="gPack"></dd></div>
+        <div><dt>Best for</dt><dd id="gUse"></dd></div>
+      </dl>
+      <div class="sizes"><svg id="gSvg" viewBox="0 0 520 124" role="img" aria-label="Size band diagram"></svg></div>
+    </div>
+  </div>
+  <div class="note"><b>Design note</b>Variety and tolerance moved off the card to keep it to four facts a chef can check at the door. Sample specs only.</div>
+</div></section>
+
+<!-- 6. WHO WE SUPPLY -->
+<section class="dark" id="buyers"><div class="wrap">
+  <div class="head">
+    <h2>Who we supply</h2>
+    <div class="head-side">
+      <p>Every business buys differently. We plan crops, grades and delivery around yours.</p>
+      <div class="car-nav">
+        <button class="car-btn" type="button" id="carPrev" aria-controls="buyerTrack" aria-label="Previous"><svg viewBox="0 0 18 18" aria-hidden="true"><path d="M11 4 6 9l5 5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        <button class="car-btn" type="button" id="carNext" aria-controls="buyerTrack" aria-label="Next"><svg viewBox="0 0 18 18" aria-hidden="true"><path d="m7 4 5 5-5 5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+      </div>
+    </div>
+  </div>
+  <ul class="buyers" id="buyerTrack" tabindex="0" role="region" aria-roledescription="carousel" aria-label="Who we supply. Use arrow keys or swipe to see more.">
+    <li class="buyer"><img src="img/restaurant.jpg" alt="Chef unpacking a crate in a restaurant kitchen" width="900" height="600" loading="lazy"><h3>Restaurants and cloud kitchens</h3><p>Small daily drops before 7am, sized to your menu.</p></li>
+    <li class="buyer"><img src="img/hotel.jpg" alt="Hotel buffet with fresh salads and fruit" width="900" height="600" loading="lazy"><h3>Hotels and banquets</h3><p>Planned supply for buffets and events, with GST billing.</p></li>
+    <li class="buyer"><img src="img/caterer.jpg" alt="Catering team preparing vegetables in bulk" width="900" height="600" loading="lazy"><h3>Caterers</h3><p>Bulk orders planned around your event dates.</p></li>
+    <li class="buyer"><img src="img/retail.jpg" alt="Retail shelf of uniform fruit and vegetables" width="900" height="600" loading="lazy"><h3>Retail and modern trade</h3><p>Shelf-grade, evenly sized, packed to your format.</p></li>
+    <li class="buyer"><img src="img/canteen.jpg" alt="Canteen serving line" width="900" height="600" loading="lazy"><h3>Institutions and canteens</h3><p>Fixed weekly lists with monthly billing.</p></li>
+    <li class="buyer"><img src="img/qcomm.jpg" alt="Dark store racks with packed produce" width="900" height="600" loading="lazy"><h3>Quick commerce</h3><p>Frequent restocking with the same grade at every store.</p></li>
+  </ul>
+  <div class="car-foot"><div class="car-bar" aria-hidden="true"><span id="carBar"></span></div><span class="car-count" id="carCount" aria-live="polite"></span></div>
+</div></section>
+
+<!-- 7. TRIAL + PROOF -->
+<section><div class="wrap trial">
+  <div>
+    <h2>Try us on five items</h2>
+    <p class="muted" style="margin-top:18px;font-size:1.08rem;max-width:46ch">Keep your current supplier. We deliver your five biggest items for one week, side by side, and you compare.</p>
+    <ul class="checks">
+      <li><i><svg viewBox="0 0 14 14" aria-hidden="true"><path d="M3 7.5l2.5 2.5L11 4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></i>A WhatsApp photo of your crates before they leave</li>
+      <li><i><svg viewBox="0 0 14 14" aria-hidden="true"><path d="M3 7.5l2.5 2.5L11 4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></i>Net weight per item, matching your GST invoice</li>
+      <li><i><svg viewBox="0 0 14 14" aria-hidden="true"><path d="M3 7.5l2.5 2.5L11 4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></i>A farm lot number, so every crate is traceable</li>
+    </ul>
+    <a class="btn dark" href="#quote">Start a one-week trial<i><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M5 11 11 5M6 5h5v5" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></i></a>
+  </div>
+  <div class="score">
+    <h3>Example trial scorecard</h3>
+    <table>
+      <thead><tr><th scope="col">Check</th><th scope="col">Current</th><th scope="col">Mann</th></tr></thead>
+      <tbody>
+        <tr><td>On time before prep</td><td>4 / 6</td><td class="win">6 / 6</td></tr>
+        <tr><td>Weight as invoiced</td><td>96%</td><td class="win">100%</td></tr>
+        <tr><td>Usable after trimming</td><td>82%</td><td class="win">90%</td></tr>
+        <tr><td>Items rejected</td><td>3</td><td class="win">0</td></tr>
+      </tbody>
+    </table>
+    <p class="fine">Illustrative figures. Your trial records your real numbers.</p>
+  </div>
+</div>
+<div class="wrap"><div class="note"><b>Design note</b>The WhatsApp mock-up and the weekly farm board were folded in here or held back to cut reading load. Both still live in index.new.html. Scorecard figures are examples and must never go live as claims.</div></div>
+</section>
+
+<!-- 7b. GET A QUOTE: after the proof, so first-time visitors are convinced before we ask for a list -->
 <section class="dark" id="quote"><div class="wrap">
   <div class="head">
     <h2>Send your list. Get a quote by lunch.</h2>
@@ -702,159 +868,18 @@ lemon 2 dozen</textarea>
         <a class="phone" href="tel:+919872178832">+91&nbsp;98721&nbsp;78832</a>
         <p>Call or WhatsApp · Mon to Sat, 7am to 7pm</p>
       </div>
-    </div>
-  </div>
-</div></section>
-
-<dialog class="sent" id="sentDetails" aria-labelledby="sentTitle">
-  <div class="sent-head">
-    <div><h3 id="sentTitle">Your quote request</h3><p class="muted">Reference <b class="ref" id="refNo"></b></p></div>
-    <button type="button" class="pk-close" id="sentClose" aria-label="Close"><svg viewBox="0 0 14 14" width="14" height="14" aria-hidden="true"><path d="M3.5 3.5l7 7M10.5 3.5l-7 7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></button>
-  </div>
-  <div class="sent-body">
-    <dl class="summary">
-      <div><dt>Deliver to</dt><dd id="sumArea"></dd></div>
-      <div><dt>We'll contact</dt><dd id="sumPhone"></dd></div>
-      <div><dt>Items</dt><dd id="sumItems"></dd></div>
-    </dl>
-    <ul class="sent-items" id="sentItems"></ul>
-    <p class="hint">This is a quote request, not an order. Prototype only: nothing has been sent.</p>
-  </div>
-  <div class="sent-foot">
-    <button class="btn ghost on-light sm" id="wzRestart" type="button">Start a new list</button>
-    <button class="btn dark sm" id="sentDone" type="button" style="padding-right:18px">Close</button>
-  </div>
-</dialog>
-
-<dialog class="picker" id="picker" aria-labelledby="pickerTitle">
-  <div class="pk-head">
-    <div><h3 id="pickerTitle">Add products</h3><p class="muted">Tap + to add. Tap ✓ again to remove.</p></div>
-    <button type="button" class="pk-close" id="pickerClose" aria-label="Close"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button>
-  </div>
-  <div class="pk-search">
-    <div class="search"><svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="9" cy="9" r="6" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="m14 14 4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg><input id="catSearch" name="produce-search" type="search" autocomplete="off" spellcheck="false" placeholder="Search tamatar, bhindi, mushroom…" aria-label="Search products" aria-controls="catGrid"></div>
-    <div class="cat-tabs" id="catTabs" role="group" aria-label="Product groups"></div>
-  </div>
-  <div class="pk-body">
-    <p class="cat-count" id="catCount" aria-live="polite"></p>
-    <div class="cat-grid" id="catGrid"></div>
-  </div>
-  <div class="pk-foot"><span id="pkCount">Nothing selected yet</span><button class="btn dark sm" type="button" id="pickerDone">Done<i><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M5 11 11 5M6 5h5v5" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></i></button></div>
-</dialog>
-
-
-<!-- 3. WHY MANN -->
-<section class="dark" id="how"><div class="wrap">
-  <div class="head">
-    <h2>Grown for your kitchen, not the mandi</h2>
-    <p>We agree with our farmers what to grow before the seed goes in. So quality is planned, not left to chance.</p>
-  </div>
-  <div class="why">
-    <img src="img/farmer.jpg" alt="Harpreet Singh Mann with a farmer, checking plants in the field" width="800" height="1000" loading="lazy">
-    <img src="img/harvest.jpg" alt="Fresh harvest going into clean Mann crates" width="800" height="1000" loading="lazy">
-    <div class="stats">
-      <div class="stat"><b><em>0</em></b><h3>Middlemen</h3><p>Our farmer, then Mann grading, then you. No agent, mandi or trader.</p></div>
-      <div class="stat"><b>7<em>am</em></b><h3>Delivery</h3><p>At your door before your prep starts.</p></div>
-      <div class="stat"><b>20<em>+</em></b><h3>Years in the field</h3><p>Growing for kitchens across Punjab, Tricity and Delhi NCR.</p></div>
-    </div>
-  </div>
-  <div class="note"><b>Design note</b>This replaces the old hero facts, yellow strip and comparison box. Three numbers say the same thing faster.</div>
-</div></section>
-
-<!-- 4. HOW IT WORKS -->
-<section><div class="wrap">
-  <div class="head">
-    <h2>How it works</h2>
-    <p>Five simple steps from our fields to your door.</p>
-  </div>
-  <ol class="steps">
-    <li class="step"><img src="img/s1.jpg" alt="" width="600" height="750" loading="lazy"><span class="n">1</span><h3>Plan</h3><p>We agree the crop, variety and harvest date with each farmer.</p></li>
-    <li class="step"><img src="img/s2.jpg" alt="" width="600" height="750" loading="lazy"><span class="n">2</span><h3>Grow</h3><p>Our field team visits all season to check seed, water and sprays.</p></li>
-    <li class="step"><img src="img/s3.jpg" alt="" width="600" height="750" loading="lazy"><span class="n">3</span><h3>Harvest</h3><p>Picked when your grade is ready, not when prices peak.</p></li>
-    <li class="step"><img src="img/s4.jpg" alt="" width="600" height="750" loading="lazy"><span class="n">4</span><h3>Grade</h3><p>Every lot is sorted by size, colour and condition.</p></li>
-    <li class="step"><img src="img/s5.jpg" alt="" width="600" height="750" loading="lazy"><span class="n">5</span><h3>Deliver</h3><p>Weighed, photographed and checked with you at the door.</p></li>
-  </ol>
-</div></section>
-
-<!-- 5. QUALITY -->
-<section id="quality"><div class="wrap">
-  <div class="head">
-    <h2>One tomato, three grades</h2>
-    <p>Choose the grade for how you use it. What you order is what arrives.</p>
-  </div>
-  <div class="quality">
-    <img src="img/tomato.jpg" alt="Tomatoes of different grades on a table" width="1000" height="800" loading="lazy">
-    <div class="grade" aria-live="polite">
-      <div class="seg" role="group" aria-label="Choose grade">
-        <button type="button" aria-pressed="true" data-g="gravy">Gravy</button>
-        <button type="button" aria-pressed="false" data-g="salad">Salad</button>
-        <button type="button" aria-pressed="false" data-g="retail">Retail shelf</button>
-      </div>
-      <div class="grade-title"><h3>Tomato <span id="gName" style="font-size:inherit;color:var(--muted)"></span></h3><span id="gCode"></span></div>
-      <p class="why-txt" id="gradeWhy"></p>
-      <dl class="specs">
-        <div><dt>Size</dt><dd id="gSize"></dd></div>
-        <div><dt>Ripeness</dt><dd id="gRipe"></dd></div>
-        <div><dt>Pack</dt><dd id="gPack"></dd></div>
-        <div><dt>Best for</dt><dd id="gUse"></dd></div>
-      </dl>
-      <div class="sizes"><svg id="gSvg" viewBox="0 0 520 120" role="img" aria-label="Size band diagram"></svg></div>
-    </div>
-  </div>
-  <div class="note"><b>Design note</b>Variety and tolerance moved off the card to keep it to four facts a chef can check at the door. Sample specs only.</div>
-</div></section>
-
-<!-- 6. WHO WE SUPPLY -->
-<section class="dark" id="buyers"><div class="wrap">
-  <div class="head">
-    <h2>Who we supply</h2>
-    <div class="head-side">
-      <p>Every business buys differently. We plan crops, grades and delivery around yours.</p>
-      <div class="car-nav">
-        <button class="car-btn" type="button" id="carPrev" aria-controls="buyerTrack" aria-label="Previous"><svg viewBox="0 0 18 18" aria-hidden="true"><path d="M11 4 6 9l5 5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
-        <button class="car-btn" type="button" id="carNext" aria-controls="buyerTrack" aria-label="Next"><svg viewBox="0 0 18 18" aria-hidden="true"><path d="m7 4 5 5-5 5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+      <div class="contact-card">
+        <h3>Every quote includes</h3>
+        <ul class="checks side-checks">
+          <li><i><svg viewBox="0 0 14 14" aria-hidden="true"><path d="M3 7.5l2.5 2.5L11 4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></i>A reply within 2 working hours</li>
+          <li><i><svg viewBox="0 0 14 14" aria-hidden="true"><path d="M3 7.5l2.5 2.5L11 4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></i>Delivery before 7am across Tricity, Punjab and Delhi NCR</li>
+          <li><i><svg viewBox="0 0 14 14" aria-hidden="true"><path d="M3 7.5l2.5 2.5L11 4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></i>GST invoice with net weight per item</li>
+          <li><i><svg viewBox="0 0 14 14" aria-hidden="true"><path d="M3 7.5l2.5 2.5L11 4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></i>No commitment. Start with a one-week trial</li>
+        </ul>
       </div>
     </div>
   </div>
-  <ul class="buyers" id="buyerTrack" tabindex="0" role="region" aria-roledescription="carousel" aria-label="Who we supply. Use arrow keys or swipe to see more.">
-    <li class="buyer"><img src="img/restaurant.jpg" alt="Chef unpacking a crate in a restaurant kitchen" width="900" height="600" loading="lazy"><h3>Restaurants and cloud kitchens</h3><p>Small daily drops before 7am, sized to your menu.</p></li>
-    <li class="buyer"><img src="img/hotel.jpg" alt="Hotel buffet with fresh salads and fruit" width="900" height="600" loading="lazy"><h3>Hotels and banquets</h3><p>Planned supply for buffets and events, with GST billing.</p></li>
-    <li class="buyer"><img src="img/caterer.jpg" alt="Catering team preparing vegetables in bulk" width="900" height="600" loading="lazy"><h3>Caterers</h3><p>Bulk orders planned around your event dates.</p></li>
-    <li class="buyer"><img src="img/retail.jpg" alt="Retail shelf of uniform fruit and vegetables" width="900" height="600" loading="lazy"><h3>Retail and modern trade</h3><p>Shelf-grade, evenly sized, packed to your format.</p></li>
-    <li class="buyer"><img src="img/canteen.jpg" alt="Canteen serving line" width="900" height="600" loading="lazy"><h3>Institutions and canteens</h3><p>Fixed weekly lists with monthly billing.</p></li>
-    <li class="buyer"><img src="img/qcomm.jpg" alt="Dark store racks with packed produce" width="900" height="600" loading="lazy"><h3>Quick commerce</h3><p>Frequent restocking with the same grade at every store.</p></li>
-  </ul>
-  <div class="car-foot"><div class="car-bar" aria-hidden="true"><span id="carBar"></span></div><span class="car-count" id="carCount" aria-live="polite"></span></div>
 </div></section>
-
-<!-- 7. TRIAL + PROOF -->
-<section><div class="wrap trial">
-  <div>
-    <h2>Try us on five items</h2>
-    <p class="muted" style="margin-top:18px;font-size:1.08rem;max-width:46ch">Keep your current supplier. We deliver your five biggest items for one week, side by side, and you compare.</p>
-    <ul class="checks">
-      <li><i><svg viewBox="0 0 14 14" aria-hidden="true"><path d="M3 7.5l2.5 2.5L11 4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></i>A WhatsApp photo of your crates before they leave</li>
-      <li><i><svg viewBox="0 0 14 14" aria-hidden="true"><path d="M3 7.5l2.5 2.5L11 4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></i>Net weight per item, matching your GST invoice</li>
-      <li><i><svg viewBox="0 0 14 14" aria-hidden="true"><path d="M3 7.5l2.5 2.5L11 4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></i>A farm lot number, so every crate is traceable</li>
-    </ul>
-    <a class="btn dark" href="#quote">Start a one-week trial<i><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M5 11 11 5M6 5h5v5" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></i></a>
-  </div>
-  <div class="score">
-    <h3>Example trial scorecard</h3>
-    <table>
-      <thead><tr><th scope="col">Check</th><th scope="col">Current</th><th scope="col">Mann</th></tr></thead>
-      <tbody>
-        <tr><td>On time before prep</td><td>4 / 6</td><td class="win">6 / 6</td></tr>
-        <tr><td>Weight as invoiced</td><td>96%</td><td class="win">100%</td></tr>
-        <tr><td>Usable after trimming</td><td>82%</td><td class="win">90%</td></tr>
-        <tr><td>Items rejected</td><td>3</td><td class="win">0</td></tr>
-      </tbody>
-    </table>
-    <p class="fine">Illustrative figures. Your trial records your real numbers.</p>
-  </div>
-</div>
-<div class="wrap"><div class="note"><b>Design note</b>The WhatsApp mock-up and the weekly farm board were folded in here or held back to cut reading load. Both still live in index.new.html. Scorecard figures are examples and must never go live as claims.</div></div>
-</section>
 
 <!-- 8. FAQ -->
 <section id="faq"><div class="wrap">
@@ -881,7 +906,7 @@ lemon 2 dozen</textarea>
       <p>Contract-farmed produce for kitchens and stores across Tricity, Punjab and Delhi NCR.</p>
       <a class="home-link" href="#home" id="home"><span><small>Buying for your home?</small>Shop family boxes</span><i aria-hidden="true">→</i></a>
     </div>
-    <div><h4>Explore</h4><ul><li><a href="#quote" data-picker>Produce</a></li><li><a href="#how">How it works</a></li><li><a href="#quality">Quality</a></li><li><a href="#buyers">Who we supply</a></li></ul></div>
+    <div><h4>Explore</h4><ul><li><a href="#quote" data-picker>Browse produce</a></li><li><a href="#how">How it works</a></li><li><a href="#quality">Quality</a></li><li><a href="#buyers">Who we supply</a></li></ul></div>
     <div><h4>Order</h4><ul><li><a href="#quote">Get a quote</a></li><li><a href="#quote">Check delivery</a></li><li><a href="#faq">FAQ</a></li></ul></div>
     <div><h4>Contact</h4><ul><li><a href="tel:+919872178832">+91&nbsp;98721&nbsp;78832</a></li><li><span class="muted">Mon to Sat, 7am to 7pm</span></li></ul></div>
   </div>
@@ -899,7 +924,7 @@ lemon 2 dozen</textarea>
   // header: solid once the hero scrolls away
 
   // nav: highlight the section in view, so people always know where they are
-  const links=[...document.querySelectorAll('#mainNav a')];
+  const links=[...document.querySelectorAll('#mainNav a:not([data-picker])')];
   const spy=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)links.forEach(a=>a.setAttribute('aria-current',a.hash==='#'+e.target.id));}),{rootMargin:'-45% 0px -50% 0px'});
   links.forEach(a=>{const s=document.querySelector(a.hash);if(s)spy.observe(s);});
 
@@ -1168,14 +1193,16 @@ lemon 2 dozen</textarea>
     salad:{name:"· Salad",code:"TOM-S1",size:"55 to 65 mm",ripe:"Firm, red, no soft spots",pack:"10 kg crate",use:"Salads, burgers, garnish",lo:55,hi:65,why:"Firm, even tomatoes that slice cleanly and hold their shape on a plate."},
     retail:{name:"· Retail",code:"TOM-R1",size:"60 to 70 mm",ripe:"Turning, 3 to 5 day shelf life",pack:"5 kg tray",use:"Store shelves, home boxes",lo:60,hi:70,why:"Picked early so they ripen on the shelf. Even size and colour so the display looks full."}
   };
-  function svg(lo,hi){let s='<line x1="10" y1="92" x2="510" y2="92" stroke="#E6E6E6" stroke-width="1"/>';[40,45,50,55,60,65,70,75].forEach((mm,i)=>{const x=34+i*64,r=mm/3.2,on=mm>=lo&&mm<=hi;
+  function svg(lo,hi){const w=$('gSvg').getBoundingClientRect().width||520,fs=Math.min(20,Math.max(12,12*520/w)).toFixed(1);let s='<line x1="10" y1="92" x2="510" y2="92" stroke="#E6E6E6" stroke-width="1"/>';[40,45,50,55,60,65,70,75].forEach((mm,i)=>{const x=34+i*64,r=mm/3.2,on=mm>=lo&&mm<=hi;
     s+=`<circle cx="${x}" cy="${88-r}" r="${r}" fill="${on?'#D2452F':'none'}" stroke="${on?'#D2452F':'#CFCFCF'}" stroke-width="1.4"/>`;
-    s+=`<text x="${x}" y="113" text-anchor="middle" font-family="DM Sans,sans-serif" font-size="12" fill="${on?'#111111':'#8C8C8C'}">${mm} mm</text>`;});return s;}
+    s+=`<text x="${x}" y="114" text-anchor="middle" font-family="DM Sans,sans-serif" font-size="${fs}" fill="${on?'#111111':'#8C8C8C'}">${w<480?mm:mm+' mm'}</text>`;});return s;}
   function setGrade(k){const g=G[k];
     $('gName').textContent=g.name;$('gCode').textContent=g.code;$('gSize').textContent=g.size;$('gRipe').textContent=g.ripe;$('gPack').textContent=g.pack;$('gUse').textContent=g.use;$('gradeWhy').textContent=g.why;$('gSvg').innerHTML=svg(g.lo,g.hi);
     document.querySelectorAll('.seg button').forEach(b=>b.setAttribute('aria-pressed',b.dataset.g===k));}
   document.querySelectorAll('.seg button').forEach(b=>b.addEventListener('click',()=>setGrade(b.dataset.g)));
   setGrade('gravy');
+  let gradeNow='gravy';document.querySelectorAll('.seg button').forEach(b=>b.addEventListener('click',()=>gradeNow=b.dataset.g));
+  addEventListener('resize',()=>setGrade(gradeNow));
 })();
 </script>
 </body></html>
