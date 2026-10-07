@@ -305,7 +305,7 @@ section{padding-block:clamp(72px,9vw,128px)}
 .legend span{display:inline-flex;align-items:center;gap:6px}
 .legend span::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--ok)}
 .legend span.l-bad::before{background:#E0A11B}
-.parsed{display:grid;gap:8px;max-height:340px;overflow:auto;overscroll-behavior:contain;padding:2px}
+.parsed{display:grid;gap:8px;max-height:340px;overflow:auto;padding:2px}
 .parsed:empty::before{content:"Your items will appear here as you type.";display:block;padding:20px;border:1.5px dashed var(--line);border-radius:12px;color:var(--muted);text-align:center;font-size:.92rem}
 .prow{display:grid;grid-template-columns:30px minmax(0,1fr) auto 36px;gap:12px;align-items:center;padding:10px 8px 10px 12px;border:1.5px solid var(--line);border-radius:12px;background:#fff}
 .prow.bad{background:#FFF8E8;border-color:#F0DCAE}
@@ -393,7 +393,7 @@ dialog.picker::backdrop{background:rgba(10,14,11,.55);backdrop-filter:blur(2px)}
 /* quote wizard */
 .wizard{display:flex;flex-direction:column;height:clamp(560px,calc(100svh - var(--head-h) - 48px),780px)}
 .wz-panel:not([hidden]){display:flex;flex-direction:column;flex:1;min-height:0}
-.wz-panel > .card-body{flex:1;min-height:0;overflow-y:auto;overscroll-behavior:contain;scrollbar-gutter:stable}
+.wz-panel > .card-body{flex:1;min-height:0;overflow-y:auto;overscroll-behavior-y:auto;scrollbar-gutter:stable}
 .wz-panel > .card-head,.wz-panel > .card-foot{flex:none}
 .stepper{list-style:none;margin:0;padding:18px 24px;display:flex;align-items:center;gap:10px;background:var(--soft);border-bottom:1px solid var(--line)}
 .stepper li{display:flex;align-items:center;gap:10px;font-size:.92rem;color:var(--muted);min-width:0;flex:1}
@@ -408,13 +408,12 @@ dialog.picker::backdrop{background:rgba(10,14,11,.55);backdrop-filter:blur(2px)}
 .stepper li.done::after{background:var(--forest)}
 .wz-panel h3:focus{outline:none}
 .wz-panel:not([hidden]){animation:wzIn .25s ease}
+/* phones: the wizard keeps a fixed height that fits under the header; long lists scroll inside the card */
 @media (max-width:960px),(pointer:coarse){
-  .wizard{height:auto;overflow:clip}
-  .wz-panel:not([hidden]){flex:none}
-  .wz-panel > .card-body,.done-panel{overflow:visible;scrollbar-gutter:auto}
-  .wz-panel > .card-foot{position:sticky;bottom:0;z-index:2;padding-bottom:calc(16px + env(safe-area-inset-bottom,0px));box-shadow:0 -8px 20px rgba(0,0,0,.06)}
-  .parsed{overscroll-behavior:auto}
-  .wz-panel > .card-foot{padding-top:10px;padding-left:16px;padding-right:16px;gap:8px 12px}
+  .wizard{height:clamp(480px,calc(100svh - var(--head-h) - 40px),680px)}
+  .wz-panel > .card-foot{padding:10px 16px;gap:8px 12px}
+  .wz-panel.done-panel .done-icon{width:72px;height:72px;margin-bottom:16px;box-shadow:0 0 0 10px rgba(220,243,95,.3)}
+  .wz-panel.done-panel .done-icon svg{width:34px;height:34px}
   .wz-panel > .card-foot .count{flex:1 1 0;min-width:0;font-size:.84rem;line-height:1.35}
   .wz-panel > .card-foot .count.is-err{flex-basis:100%;order:-1}
   .wz-panel > .card-foot .btn{flex:none}
@@ -429,8 +428,12 @@ dialog.picker::backdrop{background:rgba(10,14,11,.55);backdrop-filter:blur(2px)}
 .field input:focus{outline:none;border-color:var(--ink);box-shadow:0 0 0 4px rgba(220,243,95,.55)}
 .field input[aria-invalid="true"]{border-color:var(--tomato)}
 .err{color:var(--tomato);font-size:.86rem;font-weight:400}
-.done-panel{padding:clamp(28px,4vw,48px) 24px;text-align:center;flex-direction:column;align-items:center;overflow-y:auto;overscroll-behavior:contain}
-.done-panel:not([hidden]){display:flex;justify-content:center}
+.done-panel{padding:clamp(28px,4vw,48px) 24px;text-align:center;flex-direction:column;align-items:center;overflow-y:auto;overscroll-behavior-y:auto}
+.done-panel:not([hidden]){display:flex;justify-content:flex-start}
+/* centred when it fits, scrolls from the top when it does not (justify-content:center would cut off the top) */
+.done-panel > *{flex-shrink:0}
+.done-panel > :first-child{margin-top:auto}
+.done-panel > :last-child{margin-bottom:auto}
 .done-panel .done-icon{width:96px;height:96px;margin-bottom:22px;box-shadow:0 0 0 12px rgba(220,243,95,.3)}
 .done-panel .done-icon svg{width:44px;height:44px}
 .see-details{margin:6px 0 18px;color:var(--leaf);text-decoration:underline;text-underline-offset:3px;font-size:.9rem}
