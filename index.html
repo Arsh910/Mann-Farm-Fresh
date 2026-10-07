@@ -461,9 +461,13 @@ dialog.sent::backdrop{background:rgba(10,14,11,.55);backdrop-filter:blur(2px)}
 .next-steps b{display:grid;place-items:center;width:26px;height:26px;border-radius:50%;background:var(--lime);color:var(--ink);font-size:.8rem;flex:none}
 @media (prefers-reduced-motion:reduce){.wz-panel:not([hidden]){animation:none}}
 
-.fit-form{display:flex;gap:8px;flex-wrap:wrap}
-.fit-form input{flex:1 1 160px;min-width:0;min-height:52px;border:1.5px solid var(--line);border-radius:999px;padding:0 20px;background:var(--soft);font-size:1rem}
-.fit-form input:focus{outline:none;border-color:var(--ink);background:#fff}
+/* the check button sits inside the input pill, so nothing wraps or jumps while it loads */
+.fit-form{display:flex;align-items:center;gap:6px;padding:4px;border:1.5px solid var(--line);border-radius:999px;background:var(--soft);transition:border-color .2s ease,background-color .2s ease}
+.fit-form:focus-within{border-color:var(--ink);background:#fff}
+.fit-form input{flex:1;min-width:0;min-height:44px;border:0;border-radius:999px;padding:0 6px 0 16px;background:transparent;font-size:1rem;color:var(--ink);text-overflow:ellipsis}
+.fit-form input:focus{outline:none}
+.fit-form .btn{flex:none}
+@media (max-width:420px){.fit-more{display:none}}
 .chips{display:flex;gap:6px;flex-wrap:wrap;margin-top:12px}
 .chip{border:1.5px solid var(--line);border-radius:999px;padding:6px 14px;min-height:38px;font-size:.88rem;background:#fff;cursor:pointer;color:var(--ink-2)}
 .chip:hover{border-color:var(--ink);color:var(--ink)}
@@ -713,7 +717,7 @@ lemon 2 dozen</textarea>
           <p class="list-hint">We'll check that we deliver there and show your order cut-off, delivery window and minimum order.</p>
           <form class="fit-form" id="fitForm">
             <input id="fitInput" name="location" autocomplete="postal-code" placeholder="e.g. 160062 or Mohali…" value="160062">
-            <button class="btn dark sm" id="fitBtn" type="submit"><span class="fit-btn-txt">Check delivery</span><i><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M5 11 11 5M6 5h5v5" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="spinner" aria-hidden="true"></span></i></button>
+            <button class="btn dark sm" id="fitBtn" type="submit"><span class="fit-btn-txt">Check<span class="fit-more"> delivery</span></span><i><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M5 11 11 5M6 5h5v5" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="spinner" aria-hidden="true"></span></i></button>
           </form>
           <div class="chips" id="fitChips">
             <span class="chips-label">Popular:</span><button class="chip" type="button">Chandigarh</button><button class="chip" type="button">Zirakpur</button><button class="chip" type="button">Ludhiana</button><button class="chip" type="button">Gurugram</button>
@@ -1153,12 +1157,12 @@ lemon 2 dozen</textarea>
   }
   function check(v,instant){
     v=v.trim();clearTimeout(checkT);
-    if(!v){out.className='result';out.innerHTML='<p class="hint" style="margin-top:0">Enter a pincode or city above, then tap <b>Check delivery</b>.</p>';fitIn.focus();return;}
+    if(!v){out.className='result';out.innerHTML='<p class="hint" style="margin-top:0">Enter a pincode or city above, then tap <b>Check</b>.</p>';fitIn.focus();return;}
     if(instant){render(v);return;}
-    fitBtn.classList.add('loading');fitBtn.setAttribute('aria-busy','true');fitBtn.querySelector('.fit-btn-txt').textContent='Checking…';
+    fitBtn.classList.add('loading');fitBtn.setAttribute('aria-busy','true');
     out.className='result checking';out.innerHTML=`<span class="spinner" aria-hidden="true"></span><span>Checking delivery to <b>${esc(v)}</b>…</span>`;
     checkT=setTimeout(()=>{
-      fitBtn.classList.remove('loading');fitBtn.removeAttribute('aria-busy');fitBtn.querySelector('.fit-btn-txt').textContent='Check delivery';
+      fitBtn.classList.remove('loading');fitBtn.removeAttribute('aria-busy');
       render(v);
     },700);
   }
