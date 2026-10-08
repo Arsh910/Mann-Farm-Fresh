@@ -2,7 +2,7 @@
 <title>Mann Farm Fresh · Contract-farmed produce for business</title>
 <meta name="description" content="Contract-farmed vegetables, herbs and fruit from Punjab. Graded to your use, delivered before 7am.">
 <meta name="theme-color" content="#28331F">
-<script>if(!matchMedia("(prefers-reduced-motion: reduce)").matches){document.documentElement.classList.add("anim");setTimeout(function(){if(!window.gsap)document.documentElement.classList.remove("anim")},3000)}</script>
+<script>if(!matchMedia("(prefers-reduced-motion: reduce)").matches){document.documentElement.classList.add("anim");setTimeout(function(){if(!window.gsap)document.documentElement.classList.remove("anim")},1500)}</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap">
@@ -138,7 +138,13 @@ nav.main a[aria-current="true"]::after{transform:scaleX(1)}
 .mnav li a::after{content:"→";color:var(--accent);font-size:1.2rem;flex:none}
 .mnav .btn{margin-top:24px;justify-content:space-between;width:100%}
 .mnav p{margin-top:16px;color:var(--on-dark-2);font-size:.95rem}
-@media (max-width:1080px){nav.main,.nav-cta{display:none}.menu-btn{display:grid}}
+/* call button: number on wide screens, round icon next to the menu on smaller ones */
+.call-btn{display:inline-flex;align-items:center;gap:10px;min-height:46px;padding:0 18px 0 14px;border-radius:999px;border:1px solid var(--line);background:var(--bg);color:var(--ink);text-decoration:none;font-size:.95rem;font-weight:500;white-space:nowrap;font-variant-numeric:tabular-nums;transition:background-color .2s ease,border-color .2s ease,color .2s ease}
+.call-btn svg{width:18px;height:18px;flex:none;color:var(--leaf);transition:color .2s ease}
+.call-btn + .nav-cta{margin-left:-12px}
+.call-btn:hover{background:var(--ink-2);border-color:var(--ink-2);color:#fff}.call-btn:hover svg{color:#fff}
+@media (max-width:1320px){.call-btn{width:46px;padding:0;justify-content:center}.call-btn span{display:none}}
+@media (max-width:1080px){nav.main,.nav-cta{display:none}.menu-btn{display:grid;margin-left:8px}.call-btn{margin-left:auto;background:var(--ink-2);border-color:var(--ink-2);color:#fff}.call-btn svg{color:#fff}}
 @media (max-width:420px){.logo small{display:none}}
 .mnav .logo{color:#fff}.mnav .logo small{color:var(--on-dark-2)}.mnav .logo .mark{color:var(--accent)}
 
@@ -517,6 +523,14 @@ dialog.sent::backdrop{background:rgba(10,14,11,.55);backdrop-filter:blur(2px)}
 .btn.loading i svg{display:none}
 .btn.loading .spinner{display:block}
 @keyframes spin{to{transform:rotate(360deg)}}
+/* slow connections: photos show a soft shimmer until they arrive, then fade in */
+img.is-loading{background:linear-gradient(100deg,var(--sk1) 30%,var(--sk2) 50%,var(--sk1) 70%) 0 0/200% 100%;animation:shimmer 1.3s linear infinite;color:transparent}
+img.is-loaded{animation:imgIn .45s ease both}
+:root{--sk1:#EFECE2;--sk2:#F8F6EF}.dark,.mnav,footer{--sk1:rgba(255,255,255,.07);--sk2:rgba(255,255,255,.14)}
+@keyframes shimmer{to{background-position:-200% 0}}
+@keyframes imgIn{from{opacity:0}to{opacity:1}}
+.hero{background:var(--forest)}
+.hero > img.is-loading{background:none;animation:none}
 .result{margin-top:12px}
 .result.checking{display:flex;align-items:center;gap:10px;min-height:36px;color:var(--ink-2);font-size:.92rem}
 .result.checking .spinner{display:block;width:16px;height:16px;border-radius:50%;border:2px solid var(--ink-2);border-right-color:transparent;animation:spin .7s linear infinite;flex:none}
@@ -599,6 +613,7 @@ footer .muted{color:#C8D3BD}
   <nav class="main" aria-label="Main" id="mainNav">
     <a href="#quote" data-picker>Browse produce</a><a href="#how">How it works</a><a href="#quality">Quality</a><a href="#buyers">Who we supply</a><a href="#faq">FAQ</a>
   </nav>
+  <a class="call-btn" href="tel:+919872178832" aria-label="Call Mann Farm Fresh on +91 98721 78832"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.6 3.5h2.6l1.4 4-2 1.3a12 12 0 0 0 6.6 6.6l1.3-2 4 1.4v2.6a2 2 0 0 1-2.2 2A17 17 0 0 1 4.6 5.7a2 2 0 0 1 2-2.2Z" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></svg><span>+91&nbsp;98721&nbsp;78832</span></a>
   <a class="nav-cta" href="#quote">Get a quote<svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
   <button class="menu-btn" id="menuBtn" type="button" aria-expanded="false" aria-controls="mnav" aria-label="Open menu"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 8h16M4 16h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button>
 </div></header>
@@ -782,7 +797,7 @@ lemon 2 dozen</textarea>
         </div>
         <div class="card-foot">
           <button class="btn ghost on-light sm" id="wzBack3" type="button">← Back</button>
-          <button class="btn dark sm" id="reviewBtn" type="button" hidden>Send for quote<i><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M5 11 11 5M6 5h5v5" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></i></button>
+          <button class="btn dark sm" id="reviewBtn" type="button" hidden><span class="send-txt">Send for quote</span><i><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M5 11 11 5M6 5h5v5" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="spinner" aria-hidden="true"></span></i></button>
         </div>
       </div>
 
@@ -978,6 +993,13 @@ lemon 2 dozen</textarea>
 <script>
 (function(){
   const $=id=>document.getElementById(id);
+  // photos: shimmer placeholder until each one arrives (helps on slow connections)
+  document.querySelectorAll('main img, .mnav img').forEach(img=>{
+    if(img.complete&&img.naturalWidth)return;
+    img.classList.add('is-loading');
+    const done=()=>{img.classList.remove('is-loading');if(!img.closest('.hero'))img.classList.add('is-loaded');};
+    img.addEventListener('load',done,{once:true});img.addEventListener('error',()=>img.classList.remove('is-loading'),{once:true});
+  });
   const esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
 
 
@@ -1179,6 +1201,10 @@ lemon 2 dozen</textarea>
     const bad=digits.length!==10;
     ph.setAttribute('aria-invalid',bad);$('phoneErr').hidden=!bad;
     if(bad){ph.focus();return;}
+    const rb=$('reviewBtn');if(rb.classList.contains('loading'))return;
+    rb.classList.add('loading');rb.setAttribute('aria-busy','true');rb.querySelector('.send-txt').textContent='Sending…';$('wzBack3').disabled=true;
+    // prototype: stands in for the network request, so the button shows progress and cannot be sent twice
+    setTimeout(()=>{rb.classList.remove('loading');rb.removeAttribute('aria-busy');rb.querySelector('.send-txt').textContent='Send for quote';$('wzBack3').disabled=false;
     const biz=$('bizName').value.trim();
     $('refNo').textContent='MFF-Q'+(1000+Math.floor(Math.random()*9000));
     $('sumItems').textContent=[rows.length?plural(rows.length,'item'):'',fileChosen()?$('fileIn').files[0].name:''].filter(Boolean).join(' + ');
@@ -1187,6 +1213,7 @@ lemon 2 dozen</textarea>
     $('sentItems').innerHTML=rows.map(r=>`<li${r.ok?'':' class="flag"'}><span>${esc(r.name)}</span><span>${esc(r.qty)} ${esc(r.unit)}</span></li>`).join('')
       +(fileChosen()?`<li><span>📎 ${esc($('fileIn').files[0].name)}</span><span>We'll read it</span></li>`:'');
     go(4);
+    },900);
   });
   const sent=$('sentDetails');
   $('seeDetails').addEventListener('click',()=>sent.showModal());
