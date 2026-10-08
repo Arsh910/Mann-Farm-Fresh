@@ -77,8 +77,14 @@
       .fromTo(heroLines, { opacity: 0, y: 24 }, { opacity: 1, y: 0, duration: 0.6, stagger: 0.09 }, '-=0.55')
       .add(() => root.classList.remove('anim'));
   };
-  if (heroImg && heroImg.decode) heroImg.decode().catch(() => {}).then(() => requestAnimationFrame(playHero));
-  else requestAnimationFrame(playHero);
+  // On a slow connection don't hold the headline back for the photo: wait at most 1.2s.
+  // If the page already gave up on the intro (libraries arrived late), leave the hero as it is.
+  if (root.classList.contains('anim')) {
+    const ready = heroImg && heroImg.decode ? heroImg.decode().catch(() => {}) : Promise.resolve();
+    let played = false;
+    const go = () => { if (!played) { played = true; requestAnimationFrame(playHero); } };
+    ready.then(go); setTimeout(go, 1200);
+  }
 
   // hero photo drifts slower than the page
   if (heroImg) gsap.to(heroImg, { yPercent: 10, ease: 'none', scrollTrigger: { trigger: '.hero', start: 'top top', end: 'bottom top', scrub: 0.2 } });
