@@ -84,6 +84,9 @@ button,a,input,select,textarea,summary{touch-action:manipulation;-webkit-tap-hig
 .btn.sm{min-height:44px;padding:4px 4px 4px 18px;font-size:.94rem;gap:10px}
 .btn.sm i{width:36px;height:36px}
 .btn.ghost.sm{padding:4px 18px}
+/* call button: outlined pill with a phone icon, paired with Get a quote */
+.btn.call{gap:10px;padding:6px 24px 6px 20px}
+.btn.call svg{width:19px;height:19px;flex:none}
 
 /* design notes (for the client review only) */
 .note{display:none;border:1.5px dashed #C9A400;background:#FFF8D6;color:var(--ink);border-radius:12px;padding:12px 16px;font-size:.9rem;margin-top:24px;max-width:72ch}
@@ -125,7 +128,7 @@ nav.main a[aria-current="true"]::after{transform:scaleX(1)}
 .mnav ul li,.mnav > .btn,.mnav > p{opacity:0;transform:translateX(28px);transition:opacity .3s ease,transform .45s cubic-bezier(.22,1,.36,1)}
 .mnav.open ul li,.mnav.open > .btn,.mnav.open > p{opacity:1;transform:none}
 .mnav.open ul li:nth-child(1){transition-delay:.08s}.mnav.open ul li:nth-child(2){transition-delay:.12s}.mnav.open ul li:nth-child(3){transition-delay:.16s}
-.mnav.open ul li:nth-child(4){transition-delay:.2s}.mnav.open ul li:nth-child(5){transition-delay:.24s}.mnav.open > .btn{transition-delay:.28s}.mnav.open > p{transition-delay:.32s}
+.mnav.open ul li:nth-child(4){transition-delay:.2s}.mnav.open ul li:nth-child(5){transition-delay:.24s}.mnav.open > .btn{transition-delay:.28s}.mnav.open > .btn.call{transition-delay:.31s}.mnav.open > p{transition-delay:.32s}
 .mnav-top{display:flex;justify-content:space-between;align-items:center;height:48px}
 .mnav-top button{width:48px;height:48px;border-radius:50%;border:0;background:rgba(255,255,255,.1);color:#fff;cursor:pointer;display:grid;place-items:center}
 .mnav ul{list-style:none;margin:24px 0 auto;padding:0;display:grid;gap:8px}
@@ -137,6 +140,7 @@ nav.main a[aria-current="true"]::after{transform:scaleX(1)}
 .mnav li small{display:block;margin-top:2px;font-size:.84rem;color:var(--on-dark-2);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .mnav li a::after{content:"→";color:var(--accent);font-size:1.2rem;flex:none}
 .mnav .btn{margin-top:24px;justify-content:space-between;width:100%}
+.mnav .btn.call{margin-top:10px;justify-content:center}
 .mnav p{margin-top:16px;color:var(--on-dark-2);font-size:.95rem}
 /* call button: number on wide screens, round icon next to the menu on smaller ones */
 .call-btn{display:inline-flex;align-items:center;gap:10px;min-height:46px;padding:0 18px 0 14px;border-radius:999px;border:1px solid var(--line);background:var(--bg);color:var(--ink);text-decoration:none;font-size:.95rem;font-weight:500;white-space:nowrap;font-variant-numeric:tabular-nums;transition:background-color .2s ease,border-color .2s ease,color .2s ease}
@@ -146,6 +150,8 @@ nav.main a[aria-current="true"]::after{transform:scaleX(1)}
 @media (max-width:1320px){.call-btn{width:46px;padding:0;justify-content:center}.call-btn span{display:none}}
 @media (max-width:1080px){nav.main,.nav-cta{display:none}.menu-btn{display:grid;margin-left:8px}.call-btn{margin-left:auto;background:var(--ink-2);border-color:var(--ink-2);color:#fff}.call-btn svg{color:#fff}}
 @media (max-width:420px){.logo small{display:none}}
+/* small phones: logo, call and menu must all fit on one row */
+@media (max-width:380px){header.site .wrap{gap:8px}.logo{gap:8px}.logo .mark{width:28px;height:28px}.logo span{font-size:1.05rem}.call-btn,.menu-btn{width:42px;height:42px;min-height:42px}}
 .mnav .logo{color:#fff}.mnav .logo small{color:var(--on-dark-2)}.mnav .logo .mark{color:var(--accent)}
 
 /* hero */
@@ -159,6 +165,7 @@ nav.main a[aria-current="true"]::after{transform:scaleX(1)}
 .hero h1{margin-top:20px;max-width:13ch;text-shadow:0 2px 24px rgba(0,0,0,.18)}
 .hero p.sub{margin-top:20px;max-width:46ch;font-size:1.15rem;color:rgba(255,255,255,.88)}
 .hero-ctas{display:flex;gap:12px;flex-wrap:wrap;margin-top:32px}
+@media (max-width:360px){.hero-ctas .btn{flex:1 1 100%;justify-content:space-between}.hero-ctas .btn.call{justify-content:center}}
 .hero-facts{list-style:none;margin:0;padding:0;display:grid;gap:14px;min-width:240px}
 .hero-facts li{display:flex;gap:12px;align-items:center;padding:14px 18px;border-radius:var(--r);background:rgba(44,53,46,.8);box-shadow:inset 0 0 0 1px rgba(255,255,255,.1);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);font-size:1rem;font-weight:500;color:#fff}
 .hero-facts li svg{width:20px;height:20px;color:var(--accent);flex:none}
@@ -220,7 +227,7 @@ section{padding-block:clamp(72px,9vw,128px)}
 .specs dd{margin:2px 0 0;font-weight:500}
 .sizes svg{width:100%;height:auto;display:block}
 .grade .why-txt{color:var(--ink-2);font-size:.98rem}
-@media (max-width:860px){.quality{grid-template-columns:1fr}.quality > .px{min-height:240px;aspect-ratio:16/10}}
+@media (max-width:860px){.quality{grid-template-columns:1fr}.quality > .px{width:100%;min-height:0;aspect-ratio:16/10}}
 
 /* produce */
 .cat-bar{display:flex;gap:12px;flex-wrap:wrap;align-items:center;margin-bottom:16px}
@@ -628,7 +635,8 @@ footer .muted{color:#C8D3BD}
     <li><a href="#faq"><img src="img/field.jpg" alt="" width="60" height="60" loading="lazy"><span><b>FAQ</b><small>Prices, credit, WhatsApp orders</small></span></a></li>
   </ul>
   <a class="btn" href="#quote">Get a quote<i><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M5 11 11 5M6 5h5v5" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></i></a>
-  <p>Or call / WhatsApp <a href="tel:+919872178832">+91&nbsp;98721&nbsp;78832</a></p>
+  <a class="btn ghost call" href="tel:+919872178832"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.6 3.5h2.6l1.4 4-2 1.3a12 12 0 0 0 6.6 6.6l1.3-2 4 1.4v2.6a2 2 0 0 1-2.2 2A17 17 0 0 1 4.6 5.7a2 2 0 0 1 2-2.2Z" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></svg>Call +91&nbsp;98721&nbsp;78832</a>
+  <p>Call or WhatsApp · Mon to Sat, 7am to 7pm</p>
 </div>
 
 <main id="main">
@@ -642,7 +650,7 @@ footer .muted{color:#C8D3BD}
       <p class="sub hero-in">Fresh vegetables, herbs and fruit grown by our own farmers for your kitchen or store. Delivered before 7am.</p>
       <div class="hero-ctas hero-in">
         <a class="btn" href="#quote">Get a quote<i><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M5 11 11 5M6 5h5v5" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></i></a>
-        <a class="btn ghost" href="#how">How it works</a>
+        <a class="btn ghost call" href="tel:+919872178832" aria-label="Call us on +91 98721 78832"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.6 3.5h2.6l1.4 4-2 1.3a12 12 0 0 0 6.6 6.6l1.3-2 4 1.4v2.6a2 2 0 0 1-2.2 2A17 17 0 0 1 4.6 5.7a2 2 0 0 1 2-2.2Z" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></svg>Call us</a>
       </div>
     </div>
   </div>
