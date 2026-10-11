@@ -1,7 +1,7 @@
 <!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Mann Farm Fresh · Contract-farmed produce for business</title>
 <meta name="description" content="Contract-farmed vegetables, herbs and fruit from Punjab. Graded to your use, delivered before 7am.">
-<meta name="theme-color" content="#28331F">
+<meta name="theme-color" content="#1F4A35">
 <script>if(!matchMedia("(prefers-reduced-motion: reduce)").matches){document.documentElement.classList.add("anim");setTimeout(function(){if(!window.gsap)document.documentElement.classList.remove("anim")},1500)}</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -11,21 +11,21 @@
    pill buttons with a circle arrow. UX rule for this page: one job per section, short copy, one primary action ("Get a quote"),
    and every section reachable from the nav on any screen size. */
 :root{
-  /* palette after Flamingo Estate: cream paper, deep sage ink, pale sage accent. Tomato stays for produce. */
-  --bg:#FCFBF6;
-  --soft:#F3F1E7;
-  --ink:#2C352E;
-  --ink-2:#2F3C27;
-  --muted:#646D5F;
-  --line:#E4E1D5;
-  --forest:#28331F;
-  --forest-2:#1F2818;
-  --leaf:#4F6340;
+  /* palette from the previous Mann site: farming green and light green. Tomato stays for produce. */
+  --bg:#FBFDFB;
+  --soft:#E7F2EA;
+  --ink:#1C2A24;
+  --ink-2:#1F4A35;
+  --muted:#5A6B64;
+  --line:#D1DFD8;
+  --forest:#1F4A35;
+  --forest-2:#163828;
+  --leaf:#2F6A4A;
   --on-dark:#FFFFFF;
-  --on-dark-2:#D6E0CE;
+  --on-dark-2:#D1DFD8;
   --rule-dark:rgba(255,255,255,.18);
-  --accent:#D6E0CE;
-  --accent-2:#C5D3B9;
+  --accent:#E7F2EA;
+  --accent-2:#D1DFD8;
   --tomato:#C8442D;
   --ok:#3F6B35;
   --warn:#94600E;
@@ -94,7 +94,7 @@ button,a,input,select,textarea,summary{touch-action:manipulation;-webkit-tap-hig
 body.show-notes .note{display:block}
 
 /* header: solid light bar (inspiration/theme/image.png) */
-header.site{position:fixed;inset:0 0 auto;z-index:50;transition:transform .45s cubic-bezier(.16,1,.3,1);background:rgba(252,251,246,.94);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+header.site{position:fixed;inset:0 0 auto;z-index:50;transition:transform .45s cubic-bezier(.16,1,.3,1);background:rgba(255,255,255,.94);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
 header.site.is-hidden{transform:translateY(-100%)}
 header.site .wrap{display:flex;align-items:center;gap:24px;height:calc(var(--head-h) - var(--bar-h))}
 /* scrolling announcement bar (Flamingo Estate style) */
@@ -322,8 +322,8 @@ section{padding-block:clamp(72px,9vw,128px)}
 .hint{font-size:.88rem;color:var(--muted);margin-top:8px}
 .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
 .drop{display:flex;flex-direction:column;align-items:center;gap:6px;border:2px dashed #D4D4D4;border-radius:var(--r-lg);padding:36px 20px;text-align:center;background:var(--soft);cursor:pointer;transition:border-color .2s ease,background-color .2s ease}
-.drop:hover,.drop.over{border-color:var(--ink);background:#F5F7F0}
-.drop:focus-within{border-color:var(--ink);box-shadow:0 0 0 4px rgba(197,211,185,.6)}
+.drop:hover,.drop.over{border-color:var(--ink);background:#F3F9F5}
+.drop:focus-within{border-color:var(--ink);box-shadow:0 0 0 4px rgba(47,106,74,.2)}
 .drop-icon{display:grid;place-items:center;width:52px;height:52px;border-radius:50%;background:var(--accent);color:var(--ink);margin-bottom:8px;transition:transform .2s ease}
 .drop-icon svg{width:24px;height:24px}
 .drop:hover .drop-icon,.drop.over .drop-icon{transform:translateY(-2px)}
@@ -342,7 +342,7 @@ section{padding-block:clamp(72px,9vw,128px)}
 .list-hint{font-size:.92rem;color:var(--muted);margin:0 0 12px}
 .list-hint kbd{font-family:var(--font);font-size:.86rem;background:var(--soft);border:1px solid var(--line);border-radius:6px;padding:1px 7px;color:var(--ink)}
 .composer{border:1.5px solid var(--line);border-radius:var(--r);background:#fff;transition:border-color .2s ease,box-shadow .2s ease}
-.composer:focus-within{border-color:var(--ink);box-shadow:0 0 0 4px rgba(197,211,185,.6)}
+.composer:focus-within{border-color:var(--ink);box-shadow:0 0 0 4px rgba(47,106,74,.2)}
 .composer textarea{display:block;width:100%;min-height:150px;border:0;background:transparent;padding:16px 18px;font-family:var(--font);font-size:1.02rem;line-height:1.75;resize:vertical;outline:none;color:var(--ink)}
 .composer textarea::placeholder{color:#A0A0A0}
 .composer-bar{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:8px 8px 8px 18px;border-top:1px solid var(--line);background:var(--soft);border-radius:0 0 var(--r) var(--r);font-size:.86rem;color:var(--muted)}
@@ -358,7 +358,7 @@ section{padding-block:clamp(72px,9vw,128px)}
 .parsed:empty::before{content:"Your items will appear here as you type.";display:block;padding:20px;border:1.5px dashed var(--line);border-radius:12px;color:var(--muted);text-align:center;font-size:.92rem}
 .prow{display:grid;grid-template-columns:30px minmax(0,1fr) auto 36px;gap:12px;align-items:center;padding:10px 8px 10px 12px;border:1.5px solid var(--line);border-radius:12px;background:#fff}
 .prow.bad{background:#FFF8E8;border-color:#F0DCAE}
-.pi{display:grid;place-items:center;width:30px;height:30px;border-radius:50%;background:#E1E9D9;color:var(--ok)}
+.pi{display:grid;place-items:center;width:30px;height:30px;border-radius:50%;background:#D9EBDF;color:var(--ok)}
 .pi svg{width:14px;height:14px}
 .prow.bad .pi{background:#FBE7BC;color:var(--warn);font-weight:700;font-size:.9rem}
 .prow .nm{min-width:0;font-weight:500;line-height:1.3}
@@ -374,7 +374,7 @@ section{padding-block:clamp(72px,9vw,128px)}
 @media (max-width:520px){.prow{grid-template-columns:30px minmax(0,1fr) 36px;grid-template-areas:"i n r" ". q q";row-gap:8px}.pi{grid-area:i}.prow .nm{grid-area:n}.rm{grid-area:r}.qty{grid-area:q;justify-self:start}}
 .card-foot{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:16px 24px;border-top:1px solid var(--line);background:var(--soft);flex-wrap:wrap}
 .count{font-size:.92rem;color:var(--ink-2);font-variant-numeric:tabular-nums}
-.review{padding:20px 24px;background:#EDF1E7;border-top:1px solid var(--line)}
+.review{padding:20px 24px;background:#E7F2EA;border-top:1px solid var(--line)}
 .review h3{font-size:1.2rem;margin-bottom:6px}
 .ref{font-weight:600}
 .side{display:grid;gap:20px}
@@ -403,7 +403,7 @@ section{padding-block:clamp(72px,9vw,128px)}
 .qty-list .qty select{min-height:46px}
 .prow.missing{border-color:var(--tomato);background:#FFF5F3}
 .prow.missing .qty{border-color:var(--tomato)}
-.file-note{display:flex;gap:12px;align-items:flex-start;padding:14px 16px;border-radius:var(--r);background:#EDF1E7;margin-bottom:16px;font-size:.95rem}
+.file-note{display:flex;gap:12px;align-items:flex-start;padding:14px 16px;border-radius:var(--r);background:#E7F2EA;margin-bottom:16px;font-size:.95rem}
 .count.is-err{color:var(--tomato);font-weight:500}
 .card-foot .count:empty{display:none}
 /* step 4: next steps on light background */
@@ -411,7 +411,7 @@ section{padding-block:clamp(72px,9vw,128px)}
 .done-next h4{margin:0;font-size:1rem;font-weight:500}
 .done-next .next-steps li{color:var(--ink-2)}
 /* product picker modal */
-dialog.picker{width:min(820px,calc(100vw - 32px));height:min(86vh,760px);max-height:none;padding:0;border:0;border-radius:var(--r-lg);background:#fff;color:var(--ink);box-shadow:0 30px 80px rgba(0,0,0,.35);overflow:hidden}
+dialog.picker{width:min(1080px,calc(100vw - 32px));height:min(88vh,820px);max-height:none;padding:0;border:0;border-radius:var(--r-lg);background:#fff;color:var(--ink);box-shadow:0 30px 80px rgba(0,0,0,.35);overflow:hidden}
 dialog.picker[open]{display:flex;flex-direction:column}
 dialog.picker::backdrop{background:rgba(10,14,11,.55);backdrop-filter:blur(2px)}
 .pk-head{display:flex;justify-content:space-between;align-items:flex-start;gap:16px;padding:22px 24px 12px}
@@ -419,15 +419,37 @@ dialog.picker::backdrop{background:rgba(10,14,11,.55);backdrop-filter:blur(2px)}
 .pk-head p{font-size:.92rem;margin-top:4px}
 .pk-close{display:grid;place-items:center;width:44px;height:44px;border-radius:50%;border:1px solid var(--line);background:#fff;cursor:pointer;flex:none}
 .pk-close:hover{background:var(--soft)}
-.pk-search{padding:0 24px 12px;border-bottom:1px solid var(--line)}
+.pk-search{padding:0 24px 14px;border-bottom:1px solid var(--line)}
+/* categories down the left side (previous site layout) */
+.pk-main{flex:1;min-height:0;display:grid;grid-template-columns:240px minmax(0,1fr)}
+.pk-side{overflow:auto;overscroll-behavior:contain;border-right:1px solid var(--line);padding:12px 12px 24px 16px}
+.pk-side h5{margin:18px 10px 6px;font-size:.7rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.pk-side button{display:flex;justify-content:space-between;align-items:center;gap:8px;width:100%;min-height:38px;padding:7px 10px;border:0;border-radius:10px;background:none;text-align:left;font-size:.93rem;color:var(--ink-2);cursor:pointer}
+.pk-side button small{font-size:.78rem;color:var(--muted);font-variant-numeric:tabular-nums}
+.pk-side button:hover{background:#F3F9F5}
+.pk-side button[aria-pressed="true"]{background:var(--soft);color:var(--ink);font-weight:500}
+.pk-side button.grp{font-weight:500;color:var(--ink)}
+.pk-side .all{font-weight:500}
 .pk-search .search input{min-height:54px}
 .pk-search .cat-tabs{margin:12px 0 0;gap:6px}
 .pk-search .cat-tabs button{min-height:38px;padding:6px 14px;font-size:.88rem}
 .pk-body{flex:1;min-height:0;overflow:auto;overscroll-behavior:contain;padding:14px 24px 20px}
 .pk-body .cat-count{margin:0 0 10px;font-size:.88rem}
-.pk-body .cat-grid{grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:8px}
+.pk-body .cat-grid{grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:8px;align-items:start}
+/* product row: Add, then a quantity stepper with unit once added */
+.pk-body .prod{flex-wrap:wrap;row-gap:10px}
+.prod .add{flex:none;display:inline-flex;align-items:center;gap:6px;min-height:40px;padding:0 16px 0 12px;border:0;border-radius:999px;background:var(--soft);color:var(--ink);font-weight:500;font-size:.9rem;cursor:pointer;width:auto;height:auto}
+.prod .add svg{width:16px;height:16px}
+.prod .add:hover{background:var(--accent-2)}
+.qstep{flex-basis:100%;display:flex;align-items:center;gap:6px}
+.qstep .qbtn{width:40px;height:40px;flex:none;border-radius:50%;border:1.5px solid var(--line);background:#fff;color:var(--ink);font-size:1.25rem;line-height:1;cursor:pointer;display:grid;place-items:center}
+.qstep .qbtn:hover{border-color:var(--ink-2)}
+.qstep input{width:64px;min-height:40px;border:1.5px solid var(--line);border-radius:10px;text-align:center;font-size:1rem;font-variant-numeric:tabular-nums;background:#fff;color:var(--ink)}
+.qstep input:focus{outline:none;border-color:var(--ink-2)}
+.qstep select{min-height:40px;border:1.5px solid var(--line);border-radius:10px;padding:0 8px;background:#fff;color:var(--ink);font-size:.95rem;cursor:pointer}
+.qstep .rm{margin-left:auto;width:36px;height:36px}
 .pk-body .prod{padding:10px 10px 10px 14px;gap:10px}
-.prod.on{border-color:var(--ink);background:#F5F7F0}
+.prod.on{border-color:var(--ink);background:#F3F9F5}
 .prod-missing{border-style:dashed;border-color:#E0C68A;background:#FFF8E8;grid-column:1/-1}
 .prod-missing .nm small{color:var(--ink-2)}
 .prod-missing button{background:var(--accent)}
@@ -435,9 +457,16 @@ dialog.picker::backdrop{background:rgba(10,14,11,.55);backdrop-filter:blur(2px)}
 @media (max-width:600px){
   dialog.picker{width:100vw;max-width:100vw;height:100dvh;max-height:100dvh;margin:0;border-radius:0}
   .pk-head,.pk-search,.pk-body,.pk-foot{padding-left:16px;padding-right:16px}
-  .pk-body .cat-grid{grid-template-columns:1fr 1fr}
-  .pk-search .cat-tabs{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none}
-  .pk-search .cat-tabs button{flex:none}
+  .pk-body .cat-grid{grid-template-columns:1fr}
+}
+/* phones and small tablets: the category column becomes a scrolling row above the products */
+@media (max-width:760px){
+  .pk-main{grid-template-columns:1fr;grid-template-rows:auto minmax(0,1fr)}
+  .pk-side{display:flex;gap:6px;overflow-x:auto;overflow-y:hidden;border-right:0;border-bottom:1px solid var(--line);padding:10px 16px;scrollbar-width:none}
+  .pk-side h5{display:none}
+  .pk-side button{flex:none;width:auto;min-height:36px;border:1.5px solid var(--line);border-radius:999px;padding:6px 14px;white-space:nowrap}
+  .pk-side button small{display:none}
+  .pk-side button[aria-pressed="true"]{background:var(--ink-2);border-color:var(--ink-2);color:#fff}
 }
 /* quote wizard */
 .wizard{display:flex;flex-direction:column;height:clamp(560px,calc(100svh - var(--head-h) - 48px),780px)}
@@ -461,7 +490,7 @@ dialog.picker::backdrop{background:rgba(10,14,11,.55);backdrop-filter:blur(2px)}
 @media (max-width:960px),(pointer:coarse){
   .wizard{height:clamp(480px,calc(100svh - var(--head-h) - 40px),680px)}
   .wz-panel > .card-foot{padding:10px 16px;gap:8px 12px}
-  .wz-panel.done-panel .done-icon{width:72px;height:72px;margin-bottom:16px;box-shadow:0 0 0 10px rgba(214,224,206,.55)}
+  .wz-panel.done-panel .done-icon{width:72px;height:72px;margin-bottom:16px;box-shadow:0 0 0 10px rgba(231,242,234,.9)}
   .wz-panel.done-panel .done-icon svg{width:34px;height:34px}
   .wz-panel > .card-foot .count{flex:1 1 0;min-width:0;font-size:.84rem;line-height:1.35}
   .wz-panel > .card-foot .count.is-err{flex-basis:100%;order:-1}
@@ -475,7 +504,7 @@ dialog.picker::backdrop{background:rgba(10,14,11,.55);backdrop-filter:blur(2px)}
 @media (max-width:560px){.fields{grid-template-columns:1fr}}
 .field{display:grid;gap:6px;align-content:start;font-weight:500;font-size:.95rem}
 .field input{min-height:52px;border:1.5px solid var(--line);border-radius:var(--r);padding:0 16px;background:#fff;font-size:1rem;font-weight:400;color:var(--ink)}
-.field input:focus{outline:none;border-color:var(--ink);box-shadow:0 0 0 4px rgba(197,211,185,.6)}
+.field input:focus{outline:none;border-color:var(--ink);box-shadow:0 0 0 4px rgba(47,106,74,.2)}
 .field input[aria-invalid="true"]{border-color:var(--tomato)}
 .err{color:var(--tomato);font-size:.86rem;font-weight:400}
 .done-panel{padding:clamp(28px,4vw,48px) 24px;text-align:center;flex-direction:column;align-items:center;overflow-y:auto;overscroll-behavior-y:auto}
@@ -484,7 +513,7 @@ dialog.picker::backdrop{background:rgba(10,14,11,.55);backdrop-filter:blur(2px)}
 .done-panel > *{flex-shrink:0}
 .done-panel > :first-child{margin-top:auto}
 .done-panel > :last-child{margin-bottom:auto}
-.done-panel .done-icon{width:96px;height:96px;margin-bottom:22px;box-shadow:0 0 0 12px rgba(214,224,206,.55)}
+.done-panel .done-icon{width:96px;height:96px;margin-bottom:22px;box-shadow:0 0 0 12px rgba(231,242,234,.9)}
 .done-panel .done-icon svg{width:44px;height:44px}
 .see-details{margin:6px 0 18px;color:var(--leaf);text-decoration:underline;text-underline-offset:3px;font-size:.9rem}
 /* sent quote details modal */
@@ -533,7 +562,7 @@ dialog.sent::backdrop{background:rgba(10,14,11,.55);backdrop-filter:blur(2px)}
 /* slow connections: photos show a soft shimmer until they arrive, then fade in */
 img.is-loading{background:linear-gradient(100deg,var(--sk1) 30%,var(--sk2) 50%,var(--sk1) 70%) 0 0/200% 100%;animation:shimmer 1.3s linear infinite;color:transparent}
 img.is-loaded{animation:imgIn .45s ease both}
-:root{--sk1:#EFECE2;--sk2:#F8F6EF}.dark,.mnav,footer{--sk1:rgba(255,255,255,.07);--sk2:rgba(255,255,255,.14)}
+:root{--sk1:#E7F2EA;--sk2:#F3F9F5}.dark,.mnav,footer{--sk1:rgba(255,255,255,.07);--sk2:rgba(255,255,255,.14)}
 @keyframes shimmer{to{background-position:-200% 0}}
 @keyframes imgIn{from{opacity:0}to{opacity:1}}
 .hero{background:var(--forest)}
@@ -586,12 +615,12 @@ footer{padding-top:clamp(64px,8vw,96px);overflow:hidden;background:var(--forest)
 .foot{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:32px}
 .foot h4{margin:0 0 14px;font-size:1rem;font-weight:500}
 .foot ul{list-style:none;margin:0;padding:0;display:grid;gap:10px}
-.foot a{color:#C8D3BD;text-decoration:none}
+.foot a{color:#C9DCCF;text-decoration:none}
 .foot a:hover{color:#fff}
-.foot p{color:#C8D3BD;max-width:32ch;margin-top:12px}
-footer .muted{color:#C8D3BD}
+.foot p{color:#C9DCCF;max-width:32ch;margin-top:12px}
+footer .muted{color:#C9DCCF}
 .foot h4{color:var(--accent)}
-.foot .logo{color:#fff}.foot .logo .mark{color:var(--accent)}.foot .logo small{color:#C8D3BD}
+.foot .logo{color:#fff}.foot .logo .mark{color:var(--accent)}.foot .logo small{color:#C9DCCF}
 .home-link{display:inline-flex;margin-top:20px;gap:14px;align-items:center;padding:12px 14px 12px 18px;border-radius:999px;background:var(--bg);color:var(--ink)!important;font-weight:500;line-height:1.3;transition:background-color .2s ease}
 .home-link small{display:block;font-weight:400;font-size:.85rem;color:var(--muted)}
 .home-link i{display:grid;place-items:center;width:34px;height:34px;border-radius:50%;background:var(--ink-2);color:#fff;font-style:normal;flex:none;transition:transform .2s ease}
@@ -599,7 +628,7 @@ footer .muted{color:#C8D3BD}
 .home-link:hover i{transform:translateX(3px)}
 @media (max-width:860px){.foot{grid-template-columns:1fr 1fr}}
 @media (max-width:480px){.foot{grid-template-columns:1fr}}
-.legal{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;padding-block:28px 12px;font-size:.88rem;color:#C8D3BD;margin-top:48px;border-top:1px solid var(--rule-dark)}
+.legal{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;padding-block:28px 12px;font-size:.88rem;color:#C9DCCF;margin-top:48px;border-top:1px solid var(--rule-dark)}
 .wordmark{font-size:clamp(5rem,23vw,22rem);font-weight:600;line-height:.8;letter-spacing:-.05em;text-align:center;white-space:nowrap;margin:0 0 -.06em;
   background:url(img/field.jpg) center/cover,var(--forest);-webkit-background-clip:text;background-clip:text;color:transparent;user-select:none}
 
@@ -679,16 +708,18 @@ footer .muted{color:#C8D3BD}
 
 <dialog class="picker" id="picker" aria-labelledby="pickerTitle">
   <div class="pk-head">
-    <div><h3 id="pickerTitle">Add products</h3><p class="muted">Tap + to add. Tap ✓ again to remove.</p></div>
+    <div><h3 id="pickerTitle">Add products</h3><p class="muted">Pick a category, tap Add, then set the quantity.</p></div>
     <button type="button" class="pk-close" id="pickerClose" aria-label="Close"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button>
   </div>
   <div class="pk-search">
     <div class="search"><svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="9" cy="9" r="6" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="m14 14 4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg><input id="catSearch" name="produce-search" type="search" autocomplete="off" spellcheck="false" placeholder="Search tamatar, bhindi, mushroom…" aria-label="Search products" aria-controls="catGrid"></div>
-    <div class="cat-tabs" id="catTabs" role="group" aria-label="Product groups"></div>
   </div>
-  <div class="pk-body">
-    <p class="cat-count" id="catCount" aria-live="polite"></p>
-    <div class="cat-grid" id="catGrid"></div>
+  <div class="pk-main">
+    <nav class="pk-side" id="catTabs" aria-label="Product categories"></nav>
+    <div class="pk-body">
+      <p class="cat-count" id="catCount" aria-live="polite"></p>
+      <div class="cat-grid" id="catGrid"></div>
+    </div>
   </div>
   <div class="pk-foot"><span id="pkCount">Nothing selected yet</span><button class="btn dark sm" type="button" id="pickerDone">Done<i><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M5 11 11 5M6 5h5v5" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></i></button></div>
 </dialog>
@@ -1047,9 +1078,7 @@ lemon 2 dozen</textarea>
     "Specialty":{
       "Specialty and Asian":["Asparagus","Baby Corn","Lotus Stem|kamal kakdi","Ginger|adrak","Thai Ginger|galangal","Turmeric|haldi","Drumstick|sahjan","Sweet Corn|bhutta","Banana Leaves|kele ke patte"],
       "Mushrooms":["Button Mushroom|mushroom,khumb","Enoki Mushroom|enoki","Shimeji Mushroom|shimji,shimeji","Shiitake Mushroom|shiitake"],
-      "Sprouts and microgreens":["Sprouts","Microgreens","Edible Flowers"]
-    },
-    "Processed and frozen":{
+      "Sprouts and microgreens":["Sprouts","Microgreens","Edible Flowers"],
       "Processed and frozen":["Soya Chaap","Frozen Green Peas|frozen matar","Staff Vegetables|staff veg"]
     }
   };
@@ -1080,7 +1109,7 @@ lemon 2 dozen</textarea>
   function buildRows(){
     const out=[];
     if(!uploadMode())parse(input.value).forEach((r,i)=>out.push({key:'t:'+r.line,src:'text',idx:i,name:r.name||(r.line.replace(/\d+(?:\.\d+)?\s*[a-zA-Z]*/,'').trim()||r.line),ok:!!r.name,from:r.name?`from “${r.line}”`:`Not in our list · our team will check`,qty:r.qty,unit:r.unit}));
-    picked.forEach((p,k)=>{if(!out.some(x=>x.ok&&x.name===p.name))out.push({key:'p:'+k,src:'pick',pk:k,name:p.name,ok:p.ok,from:p.ok?(p.hi||p.sub):'Not in our list · our team will check',qty:'',unit:'kg'});});
+    picked.forEach((p,k)=>{if(!out.some(x=>x.ok&&x.name===p.name))out.push({key:'p:'+k,src:'pick',pk:k,name:p.name,ok:p.ok,from:p.ok?(p.hi||p.sub):'Not in our list · our team will check',qty:p.qty||'',unit:p.unit||'kg'});});
     out.forEach(r=>{const m=memo[r.key];if(m){r.qty=m.qty;r.unit=m.unit;}});
     return out;
   }
@@ -1122,7 +1151,7 @@ lemon 2 dozen</textarea>
   function renderPicked(){
     const box=$('picked');box.hidden=!picked.size;
     $('pickedCount').textContent=`${plural(picked.size,'product')} picked`;
-    $('pickedChips').innerHTML=[...picked].map(([k,p])=>`<span class="pchip${p.ok?'':' bad'}">${esc(p.name)}<button type="button" data-unpick="${esc(k)}" aria-label="Remove ${esc(p.name)}">${ICON_X}</button></span>`).join('');
+    $('pickedChips').innerHTML=[...picked].map(([k,p])=>`<span class="pchip${p.ok?'':' bad'}">${esc(p.name)}${p.qty?` · ${esc(p.qty)} ${esc(p.unit)}`:''}<button type="button" data-unpick="${esc(k)}" aria-label="Remove ${esc(p.name)}">${ICON_X}</button></span>`).join('');
   }
   $('pickedChips').addEventListener('click',e=>{const b=e.target.closest('button[data-unpick]');if(!b)return;picked.delete(b.dataset.unpick);renderPicked();});
 
@@ -1148,15 +1177,33 @@ lemon 2 dozen</textarea>
 
   // ---------- product picker modal ----------
   const picker=$('picker'),cs=$('catSearch'),cTabs=$('catTabs'),cGrid=$('catGrid'),cCount=$('catCount');
-  let cg='All';
+  let cg='All';   // 'All', a group name, or 'sub:' + category
+  const STEP={kg:1,g:250,dozen:1,pcs:1,bunch:1,crate:1,box:1};
+  const MINUS='<svg viewBox="0 0 18 18" aria-hidden="true"><path d="M3 9h12" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>';
   function pickerCount(){$('pkCount').textContent=picked.size?`${plural(picked.size,'product')} selected`:'Nothing selected yet';}
+  function sideHTML(q){
+    const btn=(key,label,n,cls='')=>`<button type="button" class="${cls}" data-g="${esc(key)}" aria-pressed="${!q&&cg===key}">${esc(label)}<small>${n}</small></button>`;
+    let h=btn('All','All produce',ITEMS.length,'all');
+    for(const [g,subs] of Object.entries(PRODUCTS)){
+      h+=`<h5>${esc(g)}</h5>`;
+      for(const sub of Object.keys(subs))h+=btn('sub:'+sub,sub,subs[sub].length);
+    }
+    return h;
+  }
+  function qtyHTML(i,p){
+    const opts=unitOpts.map(u=>`<option${u===p.unit?' selected':''}>${u}</option>`).join('');
+    return `<div class="qstep"><button type="button" class="qbtn" data-dec="${esc(i.name)}" aria-label="Less ${esc(i.name)}">${MINUS}</button><input type="number" inputmode="decimal" min="0" step="any" value="${esc(p.qty)}" data-qty="${esc(i.name)}" aria-label="${esc(i.name)} quantity"><button type="button" class="qbtn" data-inc="${esc(i.name)}" aria-label="More ${esc(i.name)}">${PLUS}</button><select data-unit="${esc(i.name)}" aria-label="${esc(i.name)} unit">${opts}</select><button type="button" class="rm" data-key="${esc(i.name)}" aria-label="Remove ${esc(i.name)}">${ICON_X}</button></div>`;
+  }
   function cat(){
     const raw=cs.value.trim(),q=raw.toLowerCase();
-    cTabs.hidden=!!q;
-    cTabs.innerHTML=['All',...Object.keys(PRODUCTS)].map(g=>`<button type="button" data-g="${esc(g)}" aria-pressed="${g===cg}">${esc(g)}</button>`).join('');
-    const list=ITEMS.filter(i=>q?(i.aliases.some(a=>a.includes(q))||i.sub.toLowerCase().includes(q)):(cg==='All'||i.group===cg));
-    cCount.textContent=q?(list.length?`${list.length} match${list.length===1?'':'es'} for “${raw}”`:`No match for “${raw}”`):plural(list.length,'product');
-    const card=i=>{const on=picked.has(i.name);return `<div class="prod${on?' on':''}"><span class="nm">${esc(i.name)}<small>${i.hi?esc(i.hi):esc(i.sub)}</small></span><button type="button" data-key="${esc(i.name)}" class="${on?'added':''}" aria-pressed="${on}" aria-label="${on?'Remove':'Add'} ${esc(i.name)}">${on?TICK:PLUS}</button></div>`;};
+    cTabs.innerHTML=sideHTML(q);
+    const inCat=i=>cg==='All'||(cg.startsWith('sub:')?i.sub===cg.slice(4):i.group===cg);
+    const list=ITEMS.filter(i=>q?(i.aliases.some(a=>a.includes(q))||i.sub.toLowerCase().includes(q)):inCat(i));
+    const where=cg==='All'?'':` in ${cg.replace(/^sub:/,'')}`;
+    cCount.textContent=q?(list.length?`${list.length} match${list.length===1?'':'es'} for “${raw}”`:`No match for “${raw}”`):plural(list.length,'product')+where;
+    const card=i=>{const p=picked.get(i.name);return p
+      ?`<div class="prod on"><span class="nm">${esc(i.name)}<small>${i.hi?esc(i.hi):esc(i.sub)}</small></span>${qtyHTML(i,p)}</div>`
+      :`<div class="prod"><span class="nm">${esc(i.name)}<small>${i.hi?esc(i.hi):esc(i.sub)}</small></span><button type="button" class="add" data-key="${esc(i.name)}" aria-label="Add ${esc(i.name)}">${PLUS}Add</button></div>`;};
     let missing='';
     if(q&&!list.length){const k='raw:'+q,on=picked.has(k);missing=`<div class="prod prod-missing${on?' on':''}"><span class="nm">“${esc(raw)}” not found<small>${on?'Added. Our team will look into it.':"Don't worry, add it anyway and we'll look into it for you."}</small></span><button type="button" data-raw="${esc(raw)}" class="${on?'added':''}" aria-pressed="${on}" aria-label="${on?'Remove':'Add'} ${esc(raw)}">${on?TICK:PLUS}</button></div>`;}
     cGrid.innerHTML=list.map(card).join('')+missing;
@@ -1164,13 +1211,21 @@ lemon 2 dozen</textarea>
   }
   function toggle(b){
     if(b.dataset.raw!==undefined){const raw=b.dataset.raw,k='raw:'+raw.toLowerCase();picked.has(k)?picked.delete(k):picked.set(k,{name:raw,ok:false});}
-    else{const n=b.dataset.key;if(picked.has(n))picked.delete(n);else{const it=ITEMS.find(i=>i.name===n);picked.set(n,{name:n,hi:it.hi,sub:it.sub,ok:true});}}
+    else{const n=b.dataset.key;if(picked.has(n))picked.delete(n);else{const it=ITEMS.find(i=>i.name===n);picked.set(n,{name:n,hi:it.hi,sub:it.sub,ok:true,qty:'1',unit:'kg'});}delete memo['p:'+n];}
     cat();
+    const qi=b.dataset.key&&cGrid.querySelector(`input[data-qty="${CSS.escape(b.dataset.key)}"]`);if(qi){qi.focus();qi.select();}
   }
-  cGrid.addEventListener('click',e=>{const b=e.target.closest('button[data-key],button[data-raw]');if(b)toggle(b);});
-  cTabs.addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;cg=b.dataset.g;cat();});
+  cGrid.addEventListener('click',e=>{
+    const st=e.target.closest('button[data-inc],button[data-dec]');
+    if(st){const n=st.dataset.inc||st.dataset.dec,p=picked.get(n);if(!p)return;const step=STEP[p.unit]||1;let v=(parseFloat(p.qty)||0)+(st.dataset.inc?step:-step);
+      if(v<=0){picked.delete(n);delete memo['p:'+n];cat();return;}
+      p.qty=String(Math.round(v*100)/100);delete memo['p:'+n];const inp=st.parentElement.querySelector('input');inp.value=p.qty;pickerCount();return;}
+    const b=e.target.closest('button[data-key],button[data-raw]');if(b)toggle(b);});
+  cGrid.addEventListener('input',e=>{const i=e.target.closest('input[data-qty]');if(!i)return;const p=picked.get(i.dataset.qty);if(p){p.qty=i.value.trim();delete memo['p:'+i.dataset.qty];}});
+  cGrid.addEventListener('change',e=>{const u=e.target.closest('select[data-unit]');if(!u)return;const p=picked.get(u.dataset.unit);if(p){p.unit=u.value;delete memo['p:'+u.dataset.unit];}});
+  cTabs.addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;cg=b.dataset.g;cs.value='';cat();$('catGrid').closest('.pk-body').scrollTop=0;});
   cs.addEventListener('input',cat);
-  cs.addEventListener('keydown',e=>{if(e.key!=='Enter')return;e.preventDefault();const b=cGrid.querySelector('button[aria-pressed="false"]');if(b){toggle(b);cs.select();}});
+  cs.addEventListener('keydown',e=>{if(e.key!=='Enter')return;e.preventDefault();const b=cGrid.querySelector('button.add,button[data-raw][aria-pressed="false"]');if(b){toggle(b);}});
   function openPicker(){cs.value='';cg='All';cat();picker.showModal();cs.focus();}
   $('openPicker').addEventListener('click',openPicker);
   $('editPicked').addEventListener('click',openPicker);
