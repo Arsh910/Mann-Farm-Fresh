@@ -155,14 +155,24 @@ nav.main a[aria-current="true"]::after{transform:scaleX(1)}
 .mnav .logo{color:#fff}.mnav .logo small{color:var(--on-dark-2)}.mnav .logo .mark{color:var(--accent)}
 
 /* hero */
-.hero{position:relative;min-height:min(860px,calc(100svh - var(--head-h) - 24px));display:flex;align-items:flex-end;color:#fff;isolation:isolate;overflow:hidden;border-radius:28px;margin:calc(var(--head-h) + 12px) clamp(10px,1.4vw,24px) clamp(10px,1.4vw,24px);padding:120px 0 clamp(36px,6vw,80px)}
-@media (max-width:600px){.hero{border-radius:20px;min-height:calc(100svh - var(--head-h) - 90px)}section.hero::after{background:linear-gradient(180deg,rgba(20,26,20,.28) 0%,rgba(20,26,20,.5) 35%,rgba(20,26,20,.68) 100%)}}
+.hero{position:relative;min-height:min(860px,calc(100svh - var(--head-h) - 24px));display:flex;align-items:center;color:#fff;isolation:isolate;overflow:hidden;border-radius:28px;margin:calc(var(--head-h) + 12px) clamp(10px,1.4vw,24px) clamp(10px,1.4vw,24px);padding:clamp(40px,5vw,72px) 0}
+@media (max-width:600px){.hero{border-radius:20px;min-height:0;padding:36px 0 16px}section.hero::after{background:linear-gradient(180deg,rgba(20,26,20,.28) 0%,rgba(20,26,20,.5) 35%,rgba(20,26,20,.68) 100%)}}
 .hero > img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2}
-.hero::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(0,0,0,.12) 0%,rgba(0,0,0,0) 22%,rgba(0,0,0,0) 45%,rgba(0,0,0,.55) 100%),linear-gradient(90deg,rgba(0,0,0,.35) 0%,rgba(0,0,0,0) 60%)}
-.hero-inner{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:32px;align-items:end;width:100%}
+.hero::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(0,0,0,.12) 0%,rgba(0,0,0,0) 22%,rgba(0,0,0,0) 45%,rgba(0,0,0,.55) 100%),linear-gradient(90deg,rgba(0,0,0,.5) 0%,rgba(0,0,0,.28) 45%,rgba(0,0,0,0) 75%)}
+/* the quote form lives in the banner: copy on the left, form on the right */
+.hero-inner{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,560px);gap:clamp(28px,4vw,72px);align-items:center;width:100%}
+.hero h1{font-size:clamp(2.6rem,4.6vw,5.4rem)}
+.hero-checks{margin:24px 0 0;gap:10px;color:rgba(255,255,255,.92);font-size:.98rem}
+.hero-checks li i{width:24px;height:24px;background:var(--accent);color:var(--ink-2)}
+.hero-form{min-width:0}
+.hero-form .wizard{box-shadow:0 30px 70px rgba(0,0,0,.28)}
+.hero .card :focus-visible{outline-color:var(--ink-2)}
+@media (max-width:1080px){.hero-inner{grid-template-columns:1fr}.hero-form{max-width:640px}}
+@media (max-width:600px){ul.hero-checks{display:none}}
+@media (min-width:1081px){.hero-form .wizard{height:clamp(500px,calc(100svh - var(--head-h) - 170px),660px)}}
 .tag{display:inline-flex;align-items:center;gap:8px;padding:8px 16px;border-radius:999px;border:1px solid rgba(255,255,255,.6);font-size:.95rem;font-weight:500;color:#fff;background:rgba(0,0,0,.28);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
 .tag::before{content:none}
-.hero h1{margin-top:20px;max-width:13ch;text-shadow:0 2px 24px rgba(0,0,0,.18)}
+.hero h1{margin-top:20px;max-width:14ch;text-shadow:0 2px 24px rgba(0,0,0,.18)}
 .hero p.sub{margin-top:20px;max-width:46ch;font-size:1.15rem;color:rgba(255,255,255,.88)}
 .hero-ctas{display:flex;gap:12px;flex-wrap:wrap;margin-top:32px}
 @media (max-width:360px){.hero-ctas .btn{flex:1 1 100%;justify-content:space-between}.hero-ctas .btn.call{justify-content:center}}
@@ -673,65 +683,22 @@ footer .muted{color:#C9DCCF}
 <section class="hero" id="top">
   <img src="img/hero.jpg" alt="" width="1600" height="1000" fetchpriority="high">
   <div class="wrap hero-inner">
-    <div>
+    <div class="hero-copy">
       <span class="tag hero-in">Contract-farmed in Punjab</span>
       <h1 class="hero-in">Farm-planned. Kitchen-ready.</h1>
-      <p class="sub hero-in">Fresh vegetables, herbs and fruit grown by our own farmers for your kitchen or store. Delivered before 7am.</p>
+      <p class="sub hero-in">Fresh vegetables, herbs and fruit grown by our own farmers for your kitchen or store. Send your list and get a quote by lunch.</p>
+      <ul class="checks hero-checks hero-in">
+          <li><i><svg viewBox="0 0 14 14" aria-hidden="true"><path d="M3 7.5l2.5 2.5L11 4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></i>A reply within 2 working hours</li>
+          <li><i><svg viewBox="0 0 14 14" aria-hidden="true"><path d="M3 7.5l2.5 2.5L11 4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></i>Delivery before 7am across Tricity, Punjab and Delhi NCR</li>
+          <li><i><svg viewBox="0 0 14 14" aria-hidden="true"><path d="M3 7.5l2.5 2.5L11 4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></i>GST invoice with net weight per item</li>
+          <li><i><svg viewBox="0 0 14 14" aria-hidden="true"><path d="M3 7.5l2.5 2.5L11 4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></i>No commitment. Start with a one-week trial</li>
+        </ul>
       <div class="hero-ctas hero-in">
         <a class="btn" href="#quote">Get a quote<i><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M5 11 11 5M6 5h5v5" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></i></a>
         <a class="btn ghost call" href="tel:+919872178832" aria-label="Call us on +91 98721 78832"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.6 3.5h2.6l1.4 4-2 1.3a12 12 0 0 0 6.6 6.6l1.3-2 4 1.4v2.6a2 2 0 0 1-2.2 2A17 17 0 0 1 4.6 5.7a2 2 0 0 1 2-2.2Z" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></svg>Call us</a>
       </div>
     </div>
-  </div>
-</section>
-
-
-<dialog class="sent" id="sentDetails" aria-labelledby="sentTitle">
-  <div class="sent-head">
-    <div><h3 id="sentTitle">Your quote request</h3><p class="muted">Reference <b class="ref" id="refNo"></b></p></div>
-    <button type="button" class="pk-close" id="sentClose" aria-label="Close"><svg viewBox="0 0 14 14" width="14" height="14" aria-hidden="true"><path d="M3.5 3.5l7 7M10.5 3.5l-7 7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></button>
-  </div>
-  <div class="sent-body">
-    <dl class="summary">
-      <div><dt>Deliver to</dt><dd id="sumArea"></dd></div>
-      <div><dt>We'll contact</dt><dd id="sumPhone"></dd></div>
-      <div><dt>Items</dt><dd id="sumItems"></dd></div>
-    </dl>
-    <ul class="sent-items" id="sentItems"></ul>
-    <p class="hint">This is a quote request, not an order. Prototype only: nothing has been sent.</p>
-  </div>
-  <div class="sent-foot">
-    <button class="btn ghost on-light sm" id="wzRestart" type="button">Start a new list</button>
-    <button class="btn dark sm" id="sentDone" type="button" style="padding-right:18px">Close</button>
-  </div>
-</dialog>
-
-<dialog class="picker" id="picker" aria-labelledby="pickerTitle">
-  <div class="pk-head">
-    <div><h3 id="pickerTitle">Add products</h3><p class="muted">Pick a category, tap Add, then set the quantity.</p></div>
-    <button type="button" class="pk-close" id="pickerClose" aria-label="Close"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button>
-  </div>
-  <div class="pk-search">
-    <div class="search"><svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="9" cy="9" r="6" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="m14 14 4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg><input id="catSearch" name="produce-search" type="search" autocomplete="off" spellcheck="false" placeholder="Search tamatar, bhindi, mushroom…" aria-label="Search products" aria-controls="catGrid"></div>
-  </div>
-  <div class="pk-main">
-    <nav class="pk-side" id="catTabs" aria-label="Product categories"></nav>
-    <div class="pk-body">
-      <p class="cat-count" id="catCount" aria-live="polite"></p>
-      <div class="cat-grid" id="catGrid"></div>
-    </div>
-  </div>
-  <div class="pk-foot"><span id="pkCount">Nothing selected yet</span><button class="btn dark sm" type="button" id="pickerDone">Done<i><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M5 11 11 5M6 5h5v5" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></i></button></div>
-</dialog>
-
-
-<!-- 2. GET A QUOTE: calculator with product search, right under the hero -->
-<section class="dark" id="quote"><div class="wrap">
-  <div class="head">
-    <div><p class="eyebrow">Free quote · No commitment</p><h2>Send your list. Get a quote by lunch.</h2></div>
-    <p>Pick from our 94 products, paste your list or send a photo. Our team replies within 2 working hours.</p>
-  </div>
-  <div class="quote">
+    <div class="hero-form" id="quote">
     <div class="card wizard" id="listTool">
       <ol class="stepper" aria-label="Quote request steps">
         <li data-s="1" aria-current="step" aria-label="Add items"><span class="dot">1</span></li>
@@ -856,25 +823,49 @@ lemon 2 dozen</textarea>
         </div>
       </div>
     </div>
-
-    <div class="side">
-      <div class="contact-card">
-        <h3>Prefer to talk?</h3>
-        <a class="phone" href="tel:+919872178832">+91&nbsp;98721&nbsp;78832</a>
-        <p>Call or WhatsApp · Mon to Sat, 7am to 7pm</p>
-      </div>
-      <div class="contact-card">
-        <h3>Every quote includes</h3>
-        <ul class="checks side-checks">
-          <li><i><svg viewBox="0 0 14 14" aria-hidden="true"><path d="M3 7.5l2.5 2.5L11 4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></i>A reply within 2 working hours</li>
-          <li><i><svg viewBox="0 0 14 14" aria-hidden="true"><path d="M3 7.5l2.5 2.5L11 4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></i>Delivery before 7am across Tricity, Punjab and Delhi NCR</li>
-          <li><i><svg viewBox="0 0 14 14" aria-hidden="true"><path d="M3 7.5l2.5 2.5L11 4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></i>GST invoice with net weight per item</li>
-          <li><i><svg viewBox="0 0 14 14" aria-hidden="true"><path d="M3 7.5l2.5 2.5L11 4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></i>No commitment. Start with a one-week trial</li>
-        </ul>
-      </div>
     </div>
   </div>
-</div></section>
+</section>
+
+
+<dialog class="sent" id="sentDetails" aria-labelledby="sentTitle">
+  <div class="sent-head">
+    <div><h3 id="sentTitle">Your quote request</h3><p class="muted">Reference <b class="ref" id="refNo"></b></p></div>
+    <button type="button" class="pk-close" id="sentClose" aria-label="Close"><svg viewBox="0 0 14 14" width="14" height="14" aria-hidden="true"><path d="M3.5 3.5l7 7M10.5 3.5l-7 7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></button>
+  </div>
+  <div class="sent-body">
+    <dl class="summary">
+      <div><dt>Deliver to</dt><dd id="sumArea"></dd></div>
+      <div><dt>We'll contact</dt><dd id="sumPhone"></dd></div>
+      <div><dt>Items</dt><dd id="sumItems"></dd></div>
+    </dl>
+    <ul class="sent-items" id="sentItems"></ul>
+    <p class="hint">This is a quote request, not an order. Prototype only: nothing has been sent.</p>
+  </div>
+  <div class="sent-foot">
+    <button class="btn ghost on-light sm" id="wzRestart" type="button">Start a new list</button>
+    <button class="btn dark sm" id="sentDone" type="button" style="padding-right:18px">Close</button>
+  </div>
+</dialog>
+
+<dialog class="picker" id="picker" aria-labelledby="pickerTitle">
+  <div class="pk-head">
+    <div><h3 id="pickerTitle">Add products</h3><p class="muted">Pick a category, tap Add, then set the quantity.</p></div>
+    <button type="button" class="pk-close" id="pickerClose" aria-label="Close"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button>
+  </div>
+  <div class="pk-search">
+    <div class="search"><svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="9" cy="9" r="6" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="m14 14 4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg><input id="catSearch" name="produce-search" type="search" autocomplete="off" spellcheck="false" placeholder="Search tamatar, bhindi, mushroom…" aria-label="Search products" aria-controls="catGrid"></div>
+  </div>
+  <div class="pk-main">
+    <nav class="pk-side" id="catTabs" aria-label="Product categories"></nav>
+    <div class="pk-body">
+      <p class="cat-count" id="catCount" aria-live="polite"></p>
+      <div class="cat-grid" id="catGrid"></div>
+    </div>
+  </div>
+  <div class="pk-foot"><span id="pkCount">Nothing selected yet</span><button class="btn dark sm" type="button" id="pickerDone">Done<i><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M5 11 11 5M6 5h5v5" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></i></button></div>
+</dialog>
+
 
 <!-- 3. WHY MANN -->
 <section class="dark" id="why"><div class="wrap">
