@@ -44,9 +44,9 @@
     const n = M.nextDelivery(r);
     return `<div class="ck-res">
       <p class="status ok">Yes, we deliver to ${esc(v)}</p>
-      <p class="ck-when">${n ? `Next delivery <b>${esc(n.label)}, ${esc(r.win)}</b>` : `Delivery <b>${esc(r.win)}</b>`}</p>
-      ${n ? `<p class="ck-cut">Order by ${esc(n.orderBy)} to make it.</p>` : ''}
-      <dl class="ck-facts"><div><dt>Route</dt><dd>${esc(r.area)}</dd></div><div><dt>Delivery days</dt><dd>${esc(r.days)}</dd></div><div><dt>Order cut-off</dt><dd>${esc(r.cut)}</dd></div><div><dt>Minimum order</dt><dd>${esc(r.min)}</dd></div></dl>
+      <p class="ck-when">${n ? `Next delivery <b>${esc(n.label)}</b>` : 'Delivery on a schedule that suits you'}</p>
+      <p class="ck-cut">${n ? `Order by ${esc(n.orderBy)} to make it. ` : ''}The time slot is flexible: you choose what suits your kitchen or store.</p>
+      <dl class="ck-facts"><div><dt>Route</dt><dd>${esc(r.area)}</dd></div><div><dt>Delivery days</dt><dd>${esc(r.days)}</dd></div><div><dt>Time slot</dt><dd>Flexible, usually ${esc(r.win)}</dd></div><div><dt>Order cut-off</dt><dd>${esc(r.cut)}</dd></div><div><dt>Minimum order</dt><dd>${esc(r.min)}</dd></div></dl>
       <p class="fine">Sample route rules for the prototype.</p>
     </div>`;
   }
@@ -143,7 +143,7 @@
     $('pSupply').textContent = M.supplyFor(i);
     $('pPack').textContent = M.packFor(i) + (M.packFor(i) === 'Reusable crate' ? ' · custom bulk pack' : '');
     const cutOk = i.group === 'Vegetables' || i.group === 'Leafy and herbs';
-    $('pForms').textContent = cutOk ? 'Whole (retail) or cut (salad), on request' : 'Whole';
+    $('pForms').textContent = cutOk ? 'Whole, or prepared (cut), on request' : 'Whole';
     const box = $('pAdd');
     const renderAdd = () => {
       const q = M.basket.read()[i.name];
