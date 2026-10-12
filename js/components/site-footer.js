@@ -16,7 +16,7 @@
           <div class="wrap">
             <div class="foot">
               <div>
-                ${MANN.logo()}
+                ${MANN.logo(true)}
                 <p>Contract-farmed produce for kitchens and stores across Tricity, Punjab and Delhi NCR.</p>
                 <a class="home-link" href="${link('#home')}" id="home">
                   <span><small>Buying for your home?</small>Shop family boxes</span><i aria-hidden="true">→</i>

@@ -11,15 +11,10 @@
     'Quotes within 2 working hours'
   ];
 
-  // also used by the phone menu and the footer
-  MANN.logo = () => `
+  // also used by the phone menu and the footer, which sit on dark green and pass dark = true
+  MANN.logo = (dark = false) => `
     <a class="logo" href="${MANN.isHome() ? '#top' : 'index.html'}" translate="no">
-      <svg class="mark" viewBox="0 0 32 32" aria-hidden="true">
-        <path d="M16 29V16" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/>
-        <path d="M16 18C16 10.5 11 5 3.5 5 3.5 12.5 8.5 18 16 18Z" fill="currentColor"/>
-        <path d="M16 21.5c0-6.5 4.6-11 12.5-11 0 6.5-5 11-12.5 11Z" fill="currentColor" opacity=".7"/>
-      </svg>
-      <span>Mann Farm Fresh<small>Direct from our farms</small></span>
+      <img src="img/${dark ? 'logo-dark' : 'logo'}.png" alt="Mann Farm Fresh" width="654" height="240">
     </a>`;
 
   function navLinks() {

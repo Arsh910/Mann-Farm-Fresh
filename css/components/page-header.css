@@ -1,6 +1,7 @@
-/* Top of an inner page: breadcrumbs, title and lead paragraph. */
+/* Top of an inner page: breadcrumbs, title and lead paragraph.
+   ".inner .page-top" outranks the generic ".inner section" spacing, so the content clears the fixed header. */
 
-.page-top {
+.inner .page-top {
   padding-top: calc(var(--head-h) + clamp(36px, 5vw, 64px));
   padding-bottom: clamp(28px, 4vw, 48px);
 }

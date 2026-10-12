@@ -23,36 +23,13 @@ header.site .wrap {
 }
 
 .logo {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  text-decoration: none;
-  color: var(--ink);
-  white-space: nowrap;
-}
-
-.logo .mark {
-  width: 34px;
-  height: 34px;
-  color: var(--leaf);
+  display: block;
   flex: none;
 }
 
-.logo span {
-  display: block;
-  font-weight: 500;
-  font-size: 1.22rem;
-  line-height: 1.1;
-  letter-spacing: -0.025em;
-}
-
-.logo small {
-  display: block;
-  font-weight: 400;
-  font-size: 0.74rem;
-  color: var(--muted);
-  letter-spacing: 0;
-  margin-top: 2px;
+.logo img {
+  height: 46px;
+  width: auto;
 }
 
 nav.main {
@@ -248,26 +225,13 @@ nav.main a[aria-current="true"]::after {
   }
 }
 
-@media (max-width: 420px) {
-  .logo small {
-    display: none;
-  }
-}
-
 /* small phones: logo, call and menu must all fit on one row */
 @media (max-width: 380px) {
   header.site .wrap {
     gap: 8px;
   }
-  .logo {
-    gap: 8px;
-  }
-  .logo .mark {
-    width: 28px;
-    height: 28px;
-  }
-  .logo span {
-    font-size: 1.05rem;
+  .logo img {
+    height: 36px;
   }
   .call-btn,
   .menu-btn {

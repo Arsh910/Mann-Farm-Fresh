@@ -175,15 +175,3 @@
   color: var(--on-dark-2);
   font-size: 0.95rem;
 }
-
-.mnav .logo {
-  color: var(--white);
-}
-
-.mnav .logo small {
-  color: var(--on-dark-2);
-}
-
-.mnav .logo .mark {
-  color: var(--accent);
-}

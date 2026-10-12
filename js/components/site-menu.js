@@ -15,7 +15,7 @@
       this.innerHTML = `
         <div class="mnav" id="mnav" hidden role="dialog" aria-modal="true" aria-label="Menu">
           <div class="mnav-top">
-            ${MANN.logo()}
+            ${MANN.logo(true)}
             <button type="button" id="menuClose" aria-label="Close menu">${icon('close', 22)}</button>
           </div>
           <ul>

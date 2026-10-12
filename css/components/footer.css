@@ -48,18 +48,6 @@ footer .muted {
   color: var(--on-dark-3);
 }
 
-.foot .logo {
-  color: var(--white);
-}
-
-.foot .logo .mark {
-  color: var(--accent);
-}
-
-.foot .logo small {
-  color: var(--on-dark-3);
-}
-
 .home-link {
   display: inline-flex;
   margin-top: 20px;
