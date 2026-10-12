@@ -1,0 +1,67 @@
+/* Catalogue page: categories on the left, search and product cards on the right. */
+
+.cat-page {
+  display: grid;
+  grid-template-columns: 240px minmax(0, 1fr);
+  gap: clamp(20px, 3vw, 40px);
+  align-items: start;
+}
+
+.cat-page .pk-side {
+  position: sticky;
+  top: calc(var(--head-h) + 16px);
+  max-height: calc(100svh - var(--head-h) - 32px);
+  border: 0;
+  padding: 0 8px 0 0;
+}
+
+.cat-tools {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px 20px;
+  margin-bottom: 18px;
+}
+
+.cat-tools .search {
+  flex: 1 1 320px;
+}
+
+.cat-tools .cat-count {
+  margin: 0;
+}
+
+@media (max-width: 760px) {
+  .cat-page {
+    grid-template-columns: 1fr;
+  }
+  .cat-page .pk-side {
+    position: static;
+    max-height: none;
+    display: flex;
+    gap: 6px;
+    overflow-x: auto;
+    padding: 0 0 6px;
+    scrollbar-width: none;
+  }
+  .cat-page .pk-side h5 {
+    display: none;
+  }
+  .cat-page .pk-side button {
+    flex: none;
+    width: auto;
+    min-height: 36px;
+    border: 1.5px solid var(--line);
+    border-radius: var(--r-pill);
+    padding: 6px 14px;
+    white-space: nowrap;
+  }
+  .cat-page .pk-side button small {
+    display: none;
+  }
+  .cat-page .pk-side button[aria-pressed="true"] {
+    background: var(--forest);
+    border-color: var(--forest);
+    color: var(--white);
+  }
+}

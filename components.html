@@ -1,0 +1,509 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Components · Mann Farm Fresh</title>
+    <meta name="description" content="Design tokens and every reusable component of the Mann Farm Fresh site, in each state." />
+    <meta name="robots" content="noindex" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" />
+    <link rel="stylesheet" href="css/main.css" />
+    <link rel="stylesheet" href="css/pages/styleguide.css" />
+    <script src="js/core.js"></script>
+    <script src="js/icons.js"></script>
+    <script src="js/components/site-header.js"></script>
+    <script src="js/components/site-menu.js"></script>
+    <script src="js/components/site-footer.js"></script>
+  </head>
+  <!-- show-notes makes the design-note component visible on this page -->
+  <body data-page="styleguide" class="show-notes">
+    <a class="skip" href="#main">Skip to content</a>
+
+    <site-header></site-header>
+    <site-menu></site-menu>
+
+    <main id="main" class="sg">
+      <div class="wrap sg-top">
+        <p class="eyebrow">Design system</p>
+        <h1>Components</h1>
+        <p class="lead">
+          Tokens and every reusable component in each state. The header, phone menu and footer on this page are the
+          live components. Full quote-form steps and dialogs are on the home page.
+        </p>
+      </div>
+
+      <!-- Tokens: swatches are drawn by js/pages/styleguide.js from css/tokens.css -->
+      <section>
+        <div class="wrap">
+          <h2>Colour</h2>
+          <div class="sg-swatches" id="sgColors"></div>
+        </div>
+      </section>
+
+      <section>
+        <div class="wrap">
+          <h2>Shape</h2>
+          <div class="sg-swatches" id="sgRadii"></div>
+        </div>
+      </section>
+
+      <section>
+        <div class="wrap">
+          <h2>Type</h2>
+          <div class="sg-stack">
+            <div class="sg-item"><span class="sg-label">Heading 1</span><h1>Farm-planned. Kitchen-ready.</h1></div>
+            <div class="sg-item"><span class="sg-label">Heading 2</span><h2>Grown for your kitchen</h2></div>
+            <div class="sg-item"><span class="sg-label">Heading 3</span><h3>Washed, cut and ready to use</h3></div>
+            <div class="sg-item"><span class="sg-label">Eyebrow</span><p class="eyebrow">Why our model matters</p></div>
+            <div class="sg-item">
+              <span class="sg-label">Body</span>
+              <p>Fresh vegetables, herbs and fruit grown by our own farmers for your kitchen or store.</p>
+            </div>
+            <div class="sg-item">
+              <span class="sg-label">Muted</span>
+              <p class="muted">Five steps from agreeing the crop to a delivery in the slot you choose.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <div class="wrap">
+          <h2>Icons</h2>
+          <div class="sg-icons" id="sgIcons"></div>
+        </div>
+      </section>
+
+      <section>
+        <div class="wrap">
+          <h2>Buttons</h2>
+          <div class="sg-row">
+            <div class="sg-item">
+              <span class="sg-label">Dark</span>
+              <a class="btn dark" href="#main">Start a one-week trial<i><mann-icon name="arrow-up-right"></mann-icon></i></a>
+            </div>
+            <div class="sg-item">
+              <span class="sg-label">Ghost on light</span>
+              <a class="btn ghost on-light" href="#main">Go to your list</a>
+            </div>
+            <div class="sg-item">
+              <span class="sg-label">Call on light</span>
+              <a class="btn ghost on-light call" href="#main"><mann-icon name="phone"></mann-icon>Call us</a>
+            </div>
+            <div class="sg-item">
+              <span class="sg-label">Small dark</span>
+              <button class="btn dark sm" type="button">Next: quantities<i><mann-icon name="arrow-up-right"></mann-icon></i></button>
+            </div>
+            <div class="sg-item">
+              <span class="sg-label">Small, loading</span>
+              <button class="btn dark sm loading" type="button">
+                Sending…<i><mann-icon name="arrow-up-right"></mann-icon><span class="spinner" aria-hidden="true"></span></i>
+              </button>
+            </div>
+            <div class="sg-item">
+              <span class="sg-label">Small, no icon</span>
+              <button class="btn dark sm no-icon" type="button">Close</button>
+            </div>
+            <div class="sg-item">
+              <span class="sg-label">Small ghost</span>
+              <button class="btn ghost on-light sm" type="button">← Back</button>
+            </div>
+          </div>
+          <div class="dark sg-panel sg-row">
+            <div class="sg-item">
+              <span class="sg-label">Light, on dark</span>
+              <a class="btn" href="#main">Get a quote<i><mann-icon name="arrow-up-right"></mann-icon></i></a>
+            </div>
+            <div class="sg-item">
+              <span class="sg-label">Ghost, on dark</span>
+              <a class="btn ghost" href="#main">Place order</a>
+            </div>
+            <div class="sg-item">
+              <span class="sg-label">Call, on dark</span>
+              <a class="btn ghost call" href="#main"><mann-icon name="phone"></mann-icon>Call us</a>
+            </div>
+            <div class="sg-item">
+              <span class="sg-label">Carousel arrows</span>
+              <div class="car-nav">
+                <button class="car-btn" type="button" aria-label="Previous" disabled><mann-icon name="chevron-left"></mann-icon></button>
+                <button class="car-btn" type="button" aria-label="Next"><mann-icon name="chevron-right"></mann-icon></button>
+              </div>
+            </div>
+          </div>
+          <div class="sg-row">
+            <div class="sg-item">
+              <span class="sg-label">Header: quote</span>
+              <a class="nav-cta" href="#main">Get a quote<mann-icon name="arrow-right"></mann-icon></a>
+            </div>
+            <div class="sg-item"><span class="sg-label">Header: order</span><a class="nav-order" href="#main">Place order</a></div>
+            <div class="sg-item">
+              <span class="sg-label">Header: call</span>
+              <a class="call-btn" href="#main"><mann-icon name="phone"></mann-icon><span>+91&nbsp;98721&nbsp;78832</span></a>
+            </div>
+            <div class="sg-item"><span class="sg-label">Link button</span><button type="button" class="link-btn">Clear list</button></div>
+            <div class="sg-item">
+              <span class="sg-label">Text link</span>
+              <a class="text-link" href="#main">See all locations <span aria-hidden="true">→</span></a>
+            </div>
+            <div class="sg-item">
+              <span class="sg-label">Remove</span>
+              <button type="button" class="rm" aria-label="Remove"><mann-icon name="close-small"></mann-icon></button>
+            </div>
+            <div class="sg-item">
+              <span class="sg-label">Search trigger</span>
+              <button type="button" class="search-btn" aria-label="Search our products"><mann-icon name="search"></mann-icon></button>
+            </div>
+            <div class="sg-item">
+              <span class="sg-label">Dialog close</span>
+              <button type="button" class="pk-close" aria-label="Close"><mann-icon name="close" size="20"></mann-icon></button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <div class="wrap">
+          <h2>Labels and status</h2>
+          <div class="sg-row">
+            <div class="sg-item"><span class="sg-label">Offer tag</span><span class="ot">Prepared</span></div>
+            <div class="sg-item"><span class="sg-label">Offer tag, outline</span><span class="ot-line">Cut</span></div>
+            <div class="sg-item"><span class="sg-label">Status: ok</span><p class="status ok">Yes, we deliver to Mohali</p></div>
+            <div class="sg-item"><span class="sg-label">Status: warning</span><p class="status warn">No fixed route to Mumbai yet</p></div>
+            <div class="sg-item">
+              <span class="sg-label">Chips</span>
+              <div class="chips">
+                <span class="chips-label">Popular:</span>
+                <button class="chip" type="button">Chandigarh</button>
+                <button class="chip" type="button">Mohali</button>
+              </div>
+            </div>
+            <div class="sg-item">
+              <span class="sg-label">Picked product chips</span>
+              <div class="picked-chips">
+                <span class="pchip">Tomato · 5 kg<button type="button" aria-label="Remove Tomato"><mann-icon name="close-small"></mann-icon></button></span>
+                <span class="pchip bad">dragonfruit<button type="button" aria-label="Remove dragonfruit"><mann-icon name="close-small"></mann-icon></button></span>
+              </div>
+            </div>
+          </div>
+          <div class="hero sg-panel sg-row">
+            <div class="sg-item"><span class="sg-label">Hero tag</span><span class="tag">Contract-farmed in Punjab</span></div>
+          </div>
+          <div class="sg-item">
+            <span class="sg-label">Design note (client review only)</span>
+            <div class="note"><b>Design note</b>Answers are drafts. Each one is a promise.</div>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <div class="wrap">
+          <h2>Form controls</h2>
+          <div class="sg-grid">
+            <div class="sg-item">
+              <span class="sg-label">Text field</span>
+              <label class="field"><span>Phone or WhatsApp</span><input type="tel" placeholder="98765 43210…" /></label>
+            </div>
+            <div class="sg-item">
+              <span class="sg-label">Text field, error</span>
+              <label class="field">
+                <span>Phone or WhatsApp</span>
+                <input type="tel" value="98765" aria-invalid="true" />
+                <small class="err">Enter a 10-digit mobile number so we can send your quote.</small>
+              </label>
+            </div>
+            <div class="sg-item">
+              <span class="sg-label">Input with button</span>
+              <form class="fit-form">
+                <input placeholder="e.g. 160062 or Mohali…" aria-label="Pincode or city" />
+                <button class="btn dark sm" type="button">Check<i><mann-icon name="arrow-up-right"></mann-icon></i></button>
+              </form>
+            </div>
+            <div class="sg-item">
+              <span class="sg-label">Search</span>
+              <div class="search">
+                <mann-icon name="search"></mann-icon>
+                <input type="search" placeholder="Search tamatar, bhindi, mushroom…" aria-label="Search products" />
+              </div>
+            </div>
+            <div class="sg-item">
+              <span class="sg-label">Segmented tabs</span>
+              <div class="tabs sg-inline" role="tablist">
+                <button type="button" role="tab" aria-selected="true">Paste a list</button>
+                <button type="button" role="tab" aria-selected="false">Upload a photo</button>
+              </div>
+            </div>
+            <div class="sg-item">
+              <span class="sg-label">List composer</span>
+              <div class="composer">
+                <textarea aria-label="Paste your list">aloo 50 kg&#10;pyaz 40kg</textarea>
+                <div class="composer-bar"><span>2 matched</span><button type="button" class="link-btn">Clear list</button></div>
+              </div>
+            </div>
+            <div class="sg-item">
+              <span class="sg-label">Upload drop zone</span>
+              <label class="drop">
+                <span class="drop-icon" aria-hidden="true"><mann-icon name="upload"></mann-icon></span>
+                <span class="drop-title">Drop a photo or file here, or <u>browse</u></span>
+                <span class="drop-sub">A photo of your handwritten list works fine.</span>
+                <span class="drop-types" aria-hidden="true"><span>JPG</span><span>PNG</span><span>PDF</span></span>
+              </label>
+            </div>
+            <div class="sg-item">
+              <span class="sg-label">Attached file</span>
+              <div class="file-card">
+                <span class="fc-thumb" aria-hidden="true">PDF</span>
+                <span class="fc-info"><b>weekly-list.pdf</b><small><mann-icon name="check"></mann-icon><span>Attached · 84 KB</span></small></span>
+                <button type="button" class="link-btn">Change</button>
+                <button type="button" class="rm" aria-label="Remove file"><mann-icon name="close-small"></mann-icon></button>
+              </div>
+            </div>
+            <div class="sg-item">
+              <span class="sg-label">Quantity stepper</span>
+              <div id="sgStepper"></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <div class="wrap">
+          <h2>Quote form parts</h2>
+          <div class="sg-grid">
+            <div class="sg-item">
+              <span class="sg-label">Mode switch</span>
+              <div class="card">
+                <div class="mode" role="tablist">
+                  <button type="button" role="tab" aria-selected="true"><small>New customer</small><b>Get a quote</b></button>
+                  <button type="button" role="tab" aria-selected="false"><small>Existing customer</small><b>Place order</b></button>
+                </div>
+              </div>
+            </div>
+            <div class="sg-item">
+              <span class="sg-label">Stepper: done, current, upcoming</span>
+              <ol class="stepper">
+                <li class="done"><span class="dot"><mann-icon name="check"></mann-icon></span></li>
+                <li aria-current="step"><span class="dot">2</span></li>
+                <li><span class="dot">3</span></li>
+                <li><span class="dot">4</span></li>
+              </ol>
+            </div>
+            <div class="sg-item">
+              <span class="sg-label">Quantity rows: matched, to check, missing</span>
+              <div class="parsed qty-list">
+                <div class="prow ok">
+                  <span class="pi" aria-hidden="true"><mann-icon name="check"></mann-icon></span>
+                  <div class="nm">Potato<small>from “aloo 50 kg”</small></div>
+                  <div class="qty"><input value="50" aria-label="Quantity of Potato" /><select aria-label="Unit for Potato"><option>kg</option></select></div>
+                  <button type="button" class="rm" aria-label="Remove Potato"><mann-icon name="close-small"></mann-icon></button>
+                </div>
+                <div class="prow bad">
+                  <span class="pi" aria-hidden="true">!</span>
+                  <div class="nm">zzz<small>Not in our list · our team will check</small></div>
+                  <div class="qty"><input value="3" aria-label="Quantity of zzz" /><select aria-label="Unit for zzz"><option>kg</option></select></div>
+                  <button type="button" class="rm" aria-label="Remove zzz"><mann-icon name="close-small"></mann-icon></button>
+                </div>
+                <div class="prow ok missing">
+                  <span class="pi" aria-hidden="true"><mann-icon name="check"></mann-icon></span>
+                  <div class="nm">Onion<small>from “pyaz”</small></div>
+                  <div class="qty"><input placeholder="Qty" aria-invalid="true" aria-label="Quantity of Onion" /><select aria-label="Unit for Onion"><option>kg</option></select></div>
+                  <button type="button" class="rm" aria-label="Remove Onion"><mann-icon name="close-small"></mann-icon></button>
+                </div>
+              </div>
+            </div>
+            <div class="sg-item">
+              <span class="sg-label">What happens next</span>
+              <div class="done-next">
+                <h4>What happens next</h4>
+                <ol class="next-steps">
+                  <li><b>1</b>We check your list and delivery route.</li>
+                  <li><b>2</b>Within 2 working hours you get a quote.</li>
+                </ol>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <div class="wrap">
+          <h2>Products</h2>
+          <div class="sg-item">
+            <span class="sg-label">Product card: default and added to quote</span>
+            <div class="pgrid" id="sgCards"></div>
+          </div>
+          <div class="sg-item">
+            <span class="sg-label">Picker rows: default, added, not found</span>
+            <div class="pk-body sg-plain"><div class="cat-grid" id="sgPickerRows"></div></div>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <div class="wrap">
+          <h2>Delivery checker</h2>
+          <div class="sg-grid">
+            <div class="sg-item"><span class="sg-label">Live component</span><delivery-checker></delivery-checker></div>
+            <div class="sg-item">
+              <span class="sg-label">Result: no route</span>
+              <div class="ck-res ck-no">
+                <p class="status warn">No fixed route to Mumbai yet</p>
+                <p>You can still send your list. Our team confirms delivery within 2 working hours.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <div class="wrap">
+          <h2>Content blocks</h2>
+          <div class="sg-grid">
+            <div class="sg-item">
+              <span class="sg-label">Step</span>
+              <ol class="steps sg-one">
+                <li class="step">
+                  <img src="img/s1.jpg" alt="" width="600" height="750" loading="lazy" /><span class="n">1</span>
+                  <h3>Plan</h3>
+                  <p>We agree the crop, variety and harvest date with each farmer.</p>
+                </li>
+              </ol>
+            </div>
+            <div class="sg-item">
+              <span class="sg-label">Offer card</span>
+              <article class="offer-card">
+                <span class="px"><img src="img/hotel.jpg" alt="" width="900" height="600" loading="lazy" /></span>
+                <div class="offer-body">
+                  <div class="offer-tags"><span class="ot">Prepared</span><span class="ot-line">Cut</span></div>
+                  <h3>Washed, cut and ready to use</h3>
+                  <p>Peeled, diced, sliced or shredded to your spec.</p>
+                  <dl class="specs">
+                    <div><dt>Form</dt><dd>Cut: diced, sliced</dd></div>
+                    <div><dt>Pack</dt><dd>Food-safe packs, 1 to 5 kg</dd></div>
+                  </dl>
+                </div>
+              </article>
+            </div>
+            <div class="sg-item">
+              <span class="sg-label">Delivery region</span>
+              <ol class="markets">
+                <li class="market">
+                  <span class="num">01</span>
+                  <h3>Chandigarh Tricity</h3>
+                  <p>Chandigarh, Mohali, Panchkula, Zirakpur</p>
+                  <small>Daily · flexible time slot · order by 9 to 10pm the night before</small>
+                </li>
+              </ol>
+            </div>
+            <div class="sg-item">
+              <span class="sg-label">Checklist</span>
+              <ul class="checks sg-flat">
+                <li><i><mann-icon name="check"></mann-icon></i>A WhatsApp photo of your crates before they leave</li>
+                <li><i><mann-icon name="check"></mann-icon></i>Net weight per item, matching your GST invoice</li>
+              </ul>
+            </div>
+            <div class="sg-item">
+              <span class="sg-label">Scorecard</span>
+              <div class="score">
+                <h3>Example trial scorecard</h3>
+                <table>
+                  <thead>
+                    <tr><th scope="col">Check</th><th scope="col">Current</th><th scope="col">Mann</th></tr>
+                  </thead>
+                  <tbody>
+                    <tr><td>On time before prep</td><td>4 / 6</td><td class="win">6 / 6</td></tr>
+                    <tr><td>Items rejected</td><td>3</td><td class="win">0</td></tr>
+                  </tbody>
+                </table>
+                <p class="fine">Illustrative figures.</p>
+              </div>
+            </div>
+            <div class="sg-item">
+              <span class="sg-label">FAQ item: closed and open</span>
+              <div>
+                <details>
+                  <summary>Do you give credit?<i><mann-icon name="arrow-right"></mann-icon></i></summary>
+                  <p>Regular accounts can move to weekly or monthly billing after the first month.</p>
+                </details>
+                <details open>
+                  <summary>Can I order on WhatsApp?<i><mann-icon name="arrow-right"></mann-icon></i></summary>
+                  <p>Yes. Send your list before the cut-off for your route.</p>
+                </details>
+              </div>
+            </div>
+          </div>
+          <div class="sg-item">
+            <span class="sg-label">Location card</span>
+            <article class="loc">
+              <div>
+                <p class="num">01 · Region</p>
+                <h2>Chandigarh Tricity</h2>
+                <span class="status-pill">Operational</span>
+                <p>Our sourcing base. Orders are planned across the Tricity every day.</p>
+              </div>
+              <div>
+                <h4>Coverage</h4>
+                <ul><li>Chandigarh</li><li>Mohali</li><li>Panchkula</li></ul>
+                <h4>Delivery</h4>
+                <dl>
+                  <div><dt>Days</dt><dd>Daily</dd></div>
+                  <div><dt>Minimum order</dt><dd>₹2,000 to ₹2,500</dd></div>
+                </dl>
+              </div>
+            </article>
+          </div>
+          <div class="dark sg-panel sg-grid">
+            <div class="sg-item">
+              <span class="sg-label">Comparison row</span>
+              <div class="compare">
+                <div class="cmp-row">
+                  <h3>Quality</h3>
+                  <div class="cmp-pair">
+                    <p class="bad"><small>Mandi</small>Changes day to day</p>
+                    <p class="good"><small>Mann</small>The agreed grade, every delivery</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="sg-item">
+              <span class="sg-label">Stats</span>
+              <div class="stats">
+                <div class="stat"><b>20<em>+</em></b><h3>Years in the field</h3><p>Growing for kitchens across Punjab.</p></div>
+                <div class="stat"><b>Flexible</b><h3>Delivery timing</h3><p>You choose the time slot.</p></div>
+              </div>
+            </div>
+            <div class="sg-item">
+              <span class="sg-label">Buyer cards, with and without badge</span>
+              <ul class="buyers sg-two">
+                <li class="buyer">
+                  <span class="badge">HoReCa</span>
+                  <img src="img/restaurant.jpg" alt="" width="900" height="600" loading="lazy" />
+                  <h3>Restaurants and cloud kitchens</h3>
+                  <p>Small daily drops, sized to your menu.</p>
+                </li>
+                <li class="buyer">
+                  <img src="img/retail.jpg" alt="" width="900" height="600" loading="lazy" />
+                  <h3>Retail and modern trade</h3>
+                  <p>Shelf-grade, evenly sized.</p>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <order-band></order-band>
+    </main>
+
+    <site-footer></site-footer>
+
+    <script src="js/data.js"></script>
+    <script src="js/components/photo-loader.js"></script>
+    <script src="js/components/order-band.js"></script>
+    <script src="js/components/delivery-checker.js"></script>
+    <script src="js/components/qty-stepper.js"></script>
+    <script src="js/components/product-card.js"></script>
+    <script src="js/pages/styleguide.js"></script>
+  </body>
+</html>

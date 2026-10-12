@@ -1,0 +1,83 @@
+/* Home, "Prepared and whole": two offer cards. */
+
+.offer {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.offer-card {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  border-radius: var(--r-lg);
+  overflow: hidden;
+  background: var(--soft);
+}
+
+.offer-card .px {
+  width: 100%;
+  aspect-ratio: 16/9;
+  border-radius: 0;
+}
+
+.offer-body {
+  display: grid;
+  gap: 14px;
+  padding: clamp(20px, 3vw, 32px);
+}
+
+.offer-tags {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.ot {
+  display: inline-flex;
+  align-items: center;
+  min-height: 30px;
+  padding: 0 14px;
+  border-radius: var(--r-pill);
+  background: var(--forest);
+  color: var(--white);
+  font-size: 0.78rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.ot-line {
+  display: inline-flex;
+  align-items: center;
+  min-height: 30px;
+  padding: 0 14px;
+  border-radius: var(--r-pill);
+  border: 1.5px solid var(--forest);
+  color: var(--forest);
+  font-size: 0.78rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.offer-body h3 {
+  font-size: clamp(1.4rem, 2.2vw, 1.9rem);
+  letter-spacing: -0.03em;
+}
+
+.offer-body > p {
+  color: var(--forest);
+}
+
+.offer-note {
+  margin-top: 16px;
+  font-size: 0.88rem;
+  color: var(--muted);
+}
+
+@media (max-width: 860px) {
+  .offer {
+    grid-template-columns: 1fr;
+  }
+}

@@ -1,0 +1,83 @@
+/* Page frame: content width, section spacing, dark sections and the section heading block. */
+
+.wrap {
+  max-width: 1760px;
+  margin: 0 auto;
+  padding-inline: var(--gut);
+}
+
+section {
+  padding-block: clamp(72px, 9vw, 128px);
+}
+
+.dark {
+  background: var(--forest);
+  color: var(--white);
+}
+
+.dark + .dark {
+  border-top: 1px solid var(--rule-dark);
+}
+
+.head {
+  display: grid;
+  grid-template-columns: minmax(0, 1.4fr) minmax(0, 0.6fr);
+  gap: 20px 64px;
+  align-items: start;
+  margin-bottom: clamp(36px, 5vw, 64px);
+}
+
+.head p {
+  color: var(--muted);
+  font-size: 1.05rem;
+  max-width: 38ch;
+  padding-top: 6px;
+}
+
+.dark .head p {
+  color: var(--on-dark-2);
+}
+
+.head.tight {
+  margin-bottom: 20px;
+}
+
+.head .text-link {
+  margin-top: 0;
+}
+
+@media (max-width: 860px) {
+  .head {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* small caps label above a section title */
+.eyebrow,
+.head p.eyebrow,
+.dark .head p.eyebrow {
+  display: block;
+  margin: 0 0 14px;
+  padding: 0;
+  max-width: none;
+  font-family: var(--font);
+  font-size: 0.76rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--leaf);
+}
+
+.dark .eyebrow,
+.dark .head p.eyebrow {
+  color: var(--accent);
+}
+
+/* inner pages use tighter sections; .flush removes the top gap after the page header */
+.inner section {
+  padding-block: clamp(40px, 6vw, 80px);
+}
+
+.inner section.flush {
+  padding-top: 0;
+}

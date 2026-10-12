@@ -1,7 +1,6 @@
-// Motion, modelled on valmont.com: Lenis smooth scrolling, GSAP ScrollTrigger reveals,
-// SplitType line and word reveals, image parallax and a header that hides while scrolling down.
-// Everything is progressive: if the libraries fail to load or the viewer prefers reduced motion,
-// the page stays fully visible and works as before.
+// Motion: Lenis smooth scrolling, GSAP scroll reveals, SplitType text reveals, image parallax
+// and a header that hides on scroll down. Progressive: without the libraries, or with reduced
+// motion, the page stays fully visible.
 (function () {
   const root = document.documentElement;
   const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;

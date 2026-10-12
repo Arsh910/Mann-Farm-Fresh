@@ -1,0 +1,169 @@
+/* Home, "Who we supply": carousel of buyer types. */
+
+.head-side {
+  display: grid;
+  gap: 22px;
+  justify-items: start;
+}
+
+.car-nav {
+  display: flex;
+  gap: 10px;
+}
+
+.car-btn {
+  display: grid;
+  place-items: center;
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  border: 1.5px solid var(--rule-dark);
+  background: transparent;
+  color: var(--white);
+  cursor: pointer;
+  transition:
+    background-color 0.2s ease,
+    border-color 0.2s ease,
+    color 0.2s ease,
+    opacity 0.2s ease;
+}
+
+.car-btn svg {
+  width: 18px;
+  height: 18px;
+}
+
+.car-btn:hover:not(:disabled) {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: var(--ink);
+}
+
+.car-btn:disabled {
+  opacity: 0.5;
+  border-style: dashed;
+  cursor: default;
+}
+
+.buyers {
+  list-style: none;
+  margin: 0;
+  padding: 0 0 4px;
+  display: flex;
+  gap: 20px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  overscroll-behavior-x: contain;
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+}
+
+.buyers::-webkit-scrollbar {
+  display: none;
+}
+
+.buyers:focus-visible {
+  outline-offset: 6px;
+}
+
+.buyer {
+  flex: 0 0 calc((100% - 40px) / 3.25);
+  scroll-snap-align: start;
+  min-width: 0;
+  position: relative;
+}
+
+.buyer .badge {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  z-index: 1;
+  display: inline-flex;
+  align-items: center;
+  min-height: 28px;
+  padding: 0 12px;
+  border-radius: var(--r-pill);
+  background: var(--accent);
+  color: var(--forest);
+  font-size: 0.74rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.buyer img {
+  width: 100%;
+  aspect-ratio: 4/3;
+  object-fit: cover;
+  border-radius: var(--r-lg);
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
+.buyer h3 {
+  margin-top: 18px;
+}
+
+.buyer p {
+  margin-top: 6px;
+  color: var(--muted);
+  font-size: 0.98rem;
+}
+
+.dark .buyer p {
+  color: var(--on-dark-2);
+}
+
+.car-foot {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin-top: 36px;
+}
+
+.car-bar {
+  flex: 1;
+  height: 2px;
+  background: var(--rule-dark);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.car-bar span {
+  display: block;
+  height: 100%;
+  width: 0;
+  background: var(--accent);
+  transition: width 0.2s ease;
+}
+
+.car-count {
+  font-size: 0.95rem;
+  color: var(--on-dark-2);
+  font-variant-numeric: tabular-nums;
+  min-width: 4.5em;
+  text-align: right;
+}
+
+@media (max-width: 900px) {
+  .buyer {
+    flex-basis: calc((100% - 20px) / 2.15);
+  }
+}
+
+@media (max-width: 560px) {
+  .buyer {
+    flex-basis: 86%;
+  }
+  .car-btn {
+    width: 46px;
+    height: 46px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .buyers {
+    scroll-behavior: auto;
+  }
+}

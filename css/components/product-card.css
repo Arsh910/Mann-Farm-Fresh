@@ -1,0 +1,134 @@
+/* Product card and the grid it sits in. */
+
+.pgrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+  gap: 16px;
+}
+
+.pcard {
+  display: flex;
+  flex-direction: column;
+  border-radius: var(--r-lg);
+  border: 1.5px solid var(--line);
+  background: var(--white);
+  overflow: hidden;
+  min-width: 0;
+  transition: border-color 0.2s ease;
+}
+
+.pcard.on {
+  border-color: var(--forest);
+}
+
+.pcard-img {
+  position: relative;
+  display: grid;
+  place-items: center;
+  aspect-ratio: 4/3;
+  background: var(--soft);
+  text-decoration: none;
+}
+
+.pcard-mono {
+  font-size: 3.4rem;
+  font-weight: 400;
+  color: var(--forest);
+  opacity: 0.35;
+  letter-spacing: -0.04em;
+}
+
+.pcard-tag {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  padding: 4px 10px;
+  border-radius: var(--r-pill);
+  background: var(--white);
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--forest);
+}
+
+.pcard-body {
+  display: grid;
+  gap: 8px;
+  padding: 14px 16px 16px;
+}
+
+.pcard-body h3 {
+  font-size: 1.1rem;
+  font-weight: 500;
+}
+
+.pcard-body h3 a {
+  text-decoration: none;
+}
+
+.pcard-body h3 a:hover {
+  text-decoration: underline;
+}
+
+.pcard-body p {
+  font-size: 0.84rem;
+  color: var(--muted);
+}
+
+.pcard .add {
+  justify-self: start;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-height: 40px;
+  padding: 0 16px 0 12px;
+  border: 0;
+  border-radius: var(--r-pill);
+  background: var(--soft);
+  color: var(--ink);
+  font-weight: 500;
+  font-size: 0.9rem;
+  cursor: pointer;
+}
+
+.pcard .add svg {
+  width: 16px;
+  height: 16px;
+}
+
+.pcard .add:hover {
+  background: var(--line);
+}
+
+.pcard .qstep {
+  flex-wrap: wrap;
+  gap: 4px;
+}
+
+@media (max-width: 760px) {
+  .pgrid {
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+}
+
+@media (max-width: 340px) {
+  .pgrid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.pcard .qstep .qbtn {
+  width: 36px;
+  height: 36px;
+}
+
+.pcard .qstep input {
+  width: 54px;
+  min-height: 36px;
+}
+
+.pcard .qstep select {
+  min-height: 36px;
+}

@@ -1,0 +1,99 @@
+/* Category list beside a product grid. Used by the catalogue page and the product picker. */
+
+.pk-main {
+  flex: 1;
+  min-height: 0;
+  display: grid;
+  grid-template-columns: 240px minmax(0, 1fr);
+}
+
+.pk-side {
+  overflow: auto;
+  overscroll-behavior: contain;
+  border-right: 1px solid var(--line);
+  padding: 12px 12px 24px 16px;
+}
+
+.pk-side h5 {
+  margin: 18px 10px 6px;
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.pk-side button {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  min-height: 38px;
+  padding: 7px 10px;
+  border: 0;
+  border-radius: var(--r-sm);
+  background: none;
+  text-align: left;
+  font-size: 0.93rem;
+  color: var(--forest);
+  cursor: pointer;
+}
+
+.pk-side button small {
+  font-size: 0.78rem;
+  color: var(--muted);
+  font-variant-numeric: tabular-nums;
+}
+
+.pk-side button:hover {
+  background: var(--soft-2);
+}
+
+.pk-side button[aria-pressed="true"] {
+  background: var(--soft);
+  color: var(--ink);
+  font-weight: 500;
+}
+
+.pk-side .all {
+  font-weight: 500;
+}
+
+/* phones and small tablets: the category column becomes a scrolling row above the products */
+@media (max-width: 760px) {
+  .pk-main {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto minmax(0, 1fr);
+  }
+  .pk-side {
+    display: flex;
+    gap: 6px;
+    overflow-x: auto;
+    overflow-y: hidden;
+    border-right: 0;
+    border-bottom: 1px solid var(--line);
+    padding: 10px 16px;
+    scrollbar-width: none;
+  }
+  .pk-side h5 {
+    display: none;
+  }
+  .pk-side button {
+    flex: none;
+    width: auto;
+    min-height: 36px;
+    border: 1.5px solid var(--line);
+    border-radius: var(--r-pill);
+    padding: 6px 14px;
+    white-space: nowrap;
+  }
+  .pk-side button small {
+    display: none;
+  }
+  .pk-side button[aria-pressed="true"] {
+    background: var(--forest);
+    border-color: var(--forest);
+    color: var(--white);
+  }
+}

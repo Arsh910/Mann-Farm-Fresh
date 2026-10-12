@@ -1,0 +1,278 @@
+/* Fixed site header: logo, main navigation and the call, order and quote actions. */
+
+header.site {
+  position: fixed;
+  inset: 0 0 auto;
+  z-index: 50;
+  transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+  background: rgba(255, 255, 255, 0.94);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--line);
+}
+
+header.site.is-hidden {
+  transform: translateY(-100%);
+}
+
+header.site .wrap {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  height: calc(var(--head-h) - var(--bar-h));
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  color: var(--ink);
+  white-space: nowrap;
+}
+
+.logo .mark {
+  width: 34px;
+  height: 34px;
+  color: var(--leaf);
+  flex: none;
+}
+
+.logo span {
+  display: block;
+  font-weight: 500;
+  font-size: 1.22rem;
+  line-height: 1.1;
+  letter-spacing: -0.025em;
+}
+
+.logo small {
+  display: block;
+  font-weight: 400;
+  font-size: 0.74rem;
+  color: var(--muted);
+  letter-spacing: 0;
+  margin-top: 2px;
+}
+
+nav.main {
+  display: flex;
+  gap: 28px;
+  margin-inline: auto;
+  height: 100%;
+}
+
+nav.main a {
+  position: relative;
+  display: flex;
+  align-items: center;
+  height: 100%;
+  text-decoration: none;
+  color: var(--forest);
+  font-size: 0.95rem;
+  font-weight: 500;
+  transition: color 0.2s ease;
+  white-space: nowrap;
+}
+
+nav.main a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 18px;
+  height: 2px;
+  border-radius: 2px;
+  background: var(--leaf);
+  transform: scaleX(0);
+  transition: transform 0.2s ease;
+}
+
+nav.main a:hover {
+  color: var(--leaf);
+}
+
+nav.main a[aria-current="true"] {
+  color: var(--leaf);
+}
+
+nav.main a[aria-current="true"]::after {
+  transform: scaleX(1);
+}
+
+.nav-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 46px;
+  padding: 0 22px;
+  border-radius: var(--r-pill);
+  background: var(--forest);
+  color: var(--white);
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 0.95rem;
+  white-space: nowrap;
+  transition: background-color 0.2s ease;
+}
+
+.nav-cta svg {
+  width: 16px;
+  height: 16px;
+  transition: transform 0.2s ease;
+}
+
+.nav-cta:hover {
+  background: var(--forest-2);
+}
+
+.nav-cta:hover svg {
+  transform: translateX(3px);
+}
+
+.menu-btn {
+  display: none;
+  margin-left: auto;
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  border: 1px solid var(--line);
+  background: var(--bg);
+  color: var(--ink);
+  cursor: pointer;
+  place-items: center;
+}
+
+.menu-btn svg {
+  width: 22px;
+  height: 22px;
+}
+
+/* call button: number on wide screens, round icon next to the menu on smaller ones */
+.call-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 46px;
+  padding: 0 18px 0 14px;
+  border-radius: var(--r-pill);
+  border: 1px solid var(--line);
+  background: var(--bg);
+  color: var(--ink);
+  text-decoration: none;
+  font-size: 0.95rem;
+  font-weight: 500;
+  white-space: nowrap;
+  font-variant-numeric: tabular-nums;
+  transition:
+    background-color 0.2s ease,
+    border-color 0.2s ease,
+    color 0.2s ease;
+}
+
+.call-btn svg {
+  width: 18px;
+  height: 18px;
+  flex: none;
+  color: var(--leaf);
+  transition: color 0.2s ease;
+}
+
+.nav-order {
+  display: inline-flex;
+  align-items: center;
+  min-height: 46px;
+  padding: 0 20px;
+  border-radius: var(--r-pill);
+  border: 1.5px solid var(--forest);
+  color: var(--forest);
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 0.95rem;
+  white-space: nowrap;
+  transition:
+    background-color 0.2s ease,
+    color 0.2s ease;
+}
+
+.nav-order:hover {
+  background: var(--forest);
+  color: var(--white);
+}
+
+.call-btn:hover {
+  background: var(--forest);
+  border-color: var(--forest);
+  color: var(--white);
+}
+
+.call-btn:hover svg {
+  color: var(--white);
+}
+
+@media (max-width: 1559px) {
+  .call-btn {
+    width: 46px;
+    padding: 0;
+    justify-content: center;
+  }
+  .call-btn span {
+    display: none;
+  }
+  nav.main {
+    gap: 22px;
+  }
+  nav.main a[href$="#faq"] {
+    display: none;
+  }
+}
+
+@media (max-width: 1279px) {
+  nav.main,
+  .nav-cta,
+  .nav-order {
+    display: none;
+  }
+  .menu-btn {
+    display: grid;
+    margin-left: 8px;
+  }
+  .call-btn {
+    margin-left: auto;
+    background: var(--forest);
+    border-color: var(--forest);
+    color: var(--white);
+  }
+  .call-btn svg {
+    color: var(--white);
+  }
+}
+
+@media (max-width: 420px) {
+  .logo small {
+    display: none;
+  }
+}
+
+/* small phones: logo, call and menu must all fit on one row */
+@media (max-width: 380px) {
+  header.site .wrap {
+    gap: 8px;
+  }
+  .logo {
+    gap: 8px;
+  }
+  .logo .mark {
+    width: 28px;
+    height: 28px;
+  }
+  .logo span {
+    font-size: 1.05rem;
+  }
+  .call-btn,
+  .menu-btn {
+    width: 42px;
+    height: 42px;
+    min-height: 42px;
+  }
+}

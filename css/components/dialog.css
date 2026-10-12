@@ -1,0 +1,41 @@
+/* Dialog shell shared by the product picker and the sent summary. */
+
+dialog.picker,
+dialog.sent {
+  padding: 0;
+  border: 0;
+  border-radius: var(--r-lg);
+  background: var(--white);
+  color: var(--ink);
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.35);
+  overflow: hidden;
+}
+
+dialog.picker[open],
+dialog.sent[open] {
+  display: flex;
+  flex-direction: column;
+}
+
+dialog.picker::backdrop,
+dialog.sent::backdrop {
+  background: rgba(10, 14, 11, 0.55);
+  backdrop-filter: blur(2px);
+}
+
+/* round close button in the top corner */
+.pk-close {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 1px solid var(--line);
+  background: var(--white);
+  cursor: pointer;
+  flex: none;
+}
+
+.pk-close:hover {
+  background: var(--soft);
+}

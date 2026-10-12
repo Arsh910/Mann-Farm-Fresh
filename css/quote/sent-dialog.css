@@ -1,0 +1,102 @@
+/* Dialog that summarises the request after it is sent. */
+
+.ref {
+  font-weight: 600;
+}
+
+dialog.sent {
+  width: min(520px, calc(100vw - 32px));
+  max-height: min(86vh, 720px);
+}
+
+.sent-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 16px;
+  padding: 22px 24px 6px;
+}
+
+.sent-head h3 {
+  font-size: 1.3rem;
+}
+
+.sent-head p {
+  font-size: 0.92rem;
+  margin-top: 4px;
+}
+
+.sent-body {
+  flex: 1;
+  min-height: 0;
+  overflow: auto;
+  overscroll-behavior: contain;
+  padding: 0 24px 20px;
+}
+
+.sent-body .summary {
+  max-width: none;
+  margin: 14px 0 0;
+}
+
+.sent-items {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.sent-items li {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 9px 0;
+  border-bottom: 1px dashed var(--line);
+  font-size: 0.94rem;
+}
+
+.sent-items li span:last-child {
+  color: var(--forest);
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+.sent-items li.flag span:first-child {
+  color: var(--warn);
+}
+
+.sent-foot {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 24px;
+  border-top: 1px solid var(--line);
+  background: var(--soft);
+}
+
+.summary {
+  width: 100%;
+  max-width: 440px;
+  margin: 24px 0 14px;
+  text-align: left;
+  border-top: 1px solid var(--line);
+}
+
+.summary div {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.summary dt {
+  color: var(--muted);
+}
+
+.summary dd {
+  margin: 0;
+  font-weight: 500;
+  text-align: right;
+  overflow-wrap: anywhere;
+}

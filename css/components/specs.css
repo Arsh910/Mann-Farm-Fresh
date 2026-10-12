@@ -1,0 +1,28 @@
+/* Two-column list of label and value pairs. */
+
+.specs {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+  margin: 0;
+  border-top: 1px solid var(--line);
+}
+
+.specs div {
+  padding: 14px 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.specs div:nth-child(odd) {
+  padding-right: 16px;
+}
+
+.specs dt {
+  font-size: 0.82rem;
+  color: var(--muted);
+}
+
+.specs dd {
+  margin: 2px 0 0;
+  font-weight: 500;
+}

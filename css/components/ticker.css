@@ -1,0 +1,43 @@
+/* Scrolling announcement bar above the header. */
+
+.ticker {
+  height: var(--bar-h);
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  background: var(--forest);
+  color: var(--accent);
+  font-size: 0.74rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.ticker-track {
+  display: flex;
+  width: max-content;
+  animation: tick 45s linear infinite;
+}
+
+.ticker:hover .ticker-track {
+  animation-play-state: paused;
+}
+
+.ticker-track span {
+  display: flex;
+  align-items: center;
+}
+
+.ticker-track span::after {
+  content: "✦";
+  margin: 0 26px;
+  font-size: 0.6rem;
+  opacity: 0.7;
+}
+
+@keyframes tick {
+  to {
+    transform: translateX(-50%);
+  }
+}

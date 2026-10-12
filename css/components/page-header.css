@@ -1,0 +1,34 @@
+/* Top of an inner page: breadcrumbs, title and lead paragraph. */
+
+.page-top {
+  padding-top: calc(var(--head-h) + clamp(36px, 5vw, 64px));
+  padding-bottom: clamp(28px, 4vw, 48px);
+}
+
+.crumbs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  font-size: 0.88rem;
+  color: var(--muted);
+  margin-bottom: 18px;
+}
+
+.crumbs a {
+  color: var(--muted);
+}
+
+.crumbs span[aria-hidden] {
+  opacity: 0.6;
+}
+
+.page-top h1 {
+  font-size: clamp(2.4rem, 4.6vw, 4.4rem);
+}
+
+.page-top .lead {
+  margin-top: 14px;
+  max-width: 56ch;
+  font-size: 1.1rem;
+  color: var(--forest);
+}

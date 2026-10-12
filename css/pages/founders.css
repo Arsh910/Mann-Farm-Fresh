@@ -1,0 +1,83 @@
+/* Founders page: one card per founder, photo on top and the story below. */
+
+.founders {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 20px;
+  align-items: start;
+}
+
+.founder {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  border-radius: var(--r-lg);
+  overflow: hidden;
+  background: var(--soft);
+}
+
+/* the expertise tag sits on the bottom edge of the photo */
+.founder-photo {
+  position: relative;
+  display: grid;
+  place-items: center;
+  aspect-ratio: 4 / 3;
+  background: var(--line);
+}
+
+/* a portrait, once supplied, fills the frame */
+.founder-photo img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.founder-photo .ot {
+  position: absolute;
+  left: 16px;
+  bottom: 16px;
+}
+
+/* initials stand in until a portrait is supplied */
+.founder-mono {
+  font-size: clamp(4rem, 9vw, 7rem);
+  letter-spacing: -0.04em;
+  color: var(--forest);
+  opacity: 0.35;
+}
+
+.founder-body {
+  display: grid;
+  gap: 14px;
+  padding: clamp(20px, 3vw, 36px);
+}
+
+.founder-role {
+  font-size: 0.78rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--leaf);
+}
+
+.founder h2 {
+  font-size: clamp(1.9rem, 3vw, 2.8rem);
+  margin-top: -6px;
+}
+
+.founder-body > p:not(.founder-role) {
+  color: var(--forest);
+}
+
+.founder-body b {
+  font-weight: 500;
+  color: var(--ink);
+}
+
+@media (max-width: 860px) {
+  .founders {
+    grid-template-columns: 1fr;
+  }
+}

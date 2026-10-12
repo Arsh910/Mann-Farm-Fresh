@@ -1,0 +1,99 @@
+/* Delivery-time checker: pincode field, popular places and the result card. */
+
+.checker {
+  max-width: 640px;
+}
+
+.checker .chips {
+  margin-top: 12px;
+}
+
+.ck-out {
+  margin-top: 16px;
+}
+
+.ck-checking {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 40px;
+  color: var(--forest);
+}
+
+.ck-checking .spinner {
+  display: block;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  border: 2px solid currentColor;
+  border-right-color: transparent;
+  animation: spin 0.7s linear infinite;
+}
+
+.ck-res {
+  display: grid;
+  gap: 8px;
+  padding: 20px 22px;
+  border-radius: var(--r-lg);
+  background: var(--white);
+  border: 1.5px solid var(--line);
+  color: var(--ink);
+}
+
+.ck-res .status {
+  margin: 0;
+}
+
+.ck-when {
+  font-size: clamp(1.2rem, 2vw, 1.5rem);
+  letter-spacing: -0.02em;
+}
+
+.ck-when b {
+  font-weight: 500;
+  color: var(--forest);
+}
+
+.ck-cut {
+  color: var(--forest);
+}
+
+.ck-facts {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 12px;
+  margin: 8px 0 0;
+  padding-top: 14px;
+  border-top: 1px solid var(--line);
+}
+
+.ck-facts dt {
+  font-size: 0.8rem;
+  color: var(--muted);
+}
+
+.ck-facts dd {
+  margin: 2px 0 0;
+  font-weight: 500;
+  font-size: 0.95rem;
+}
+
+.ck-res .fine {
+  font-size: 0.8rem;
+  color: var(--muted);
+}
+
+.ck-no a {
+  color: var(--forest);
+  font-weight: 500;
+}
+
+@media (max-width: 640px) {
+  .ck-facts {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.dark .ck-res {
+  border-color: transparent;
+}

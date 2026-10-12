@@ -1,0 +1,31 @@
+/* List with a round tick in front of each line. */
+
+.checks {
+  list-style: none;
+  margin: 28px 0 32px;
+  padding: 0;
+  display: grid;
+  gap: 12px;
+}
+
+.checks li {
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+}
+
+.checks li i {
+  display: grid;
+  place-items: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: var(--accent);
+  flex: none;
+  margin-top: 1px;
+}
+
+.checks li i svg {
+  width: 14px;
+  height: 14px;
+}

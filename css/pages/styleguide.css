@@ -1,0 +1,160 @@
+/* Component gallery (components.html): page layout only. Components keep their own styles. */
+
+.sg-top {
+  padding-top: calc(var(--head-h) + 48px);
+  padding-bottom: 40px;
+}
+
+.sg-top h1 {
+  font-size: clamp(2.4rem, 4.6vw, 4.4rem);
+}
+
+.sg-top .lead {
+  margin-top: 14px;
+  max-width: 62ch;
+  color: var(--forest);
+}
+
+.sg > section {
+  padding-block: 40px;
+  border-top: 1px solid var(--line);
+}
+
+.sg > section > .wrap {
+  display: grid;
+  gap: 28px;
+}
+
+.sg > section > .wrap > h2 {
+  font-size: 1.8rem;
+}
+
+/* one example: a small label above the component */
+.sg-item {
+  display: grid;
+  gap: 10px;
+  align-content: start;
+  justify-items: start;
+  min-width: 0;
+}
+
+.sg-grid > .sg-item,
+.sg-stack > .sg-item,
+.sg > section > .wrap > .sg-item {
+  justify-items: stretch;
+}
+
+.sg-label {
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.sg-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px 32px;
+  align-items: flex-start;
+}
+
+.sg-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 340px), 1fr));
+  gap: 32px;
+  align-items: start;
+}
+
+.sg-stack {
+  display: grid;
+  gap: 24px;
+}
+
+/* dark or photo backdrop for components that are designed to sit on one */
+.sg-panel {
+  padding: 28px;
+  border-radius: var(--r-lg);
+  margin: 0;
+  min-height: 0;
+}
+
+.sg-panel .sg-label {
+  color: var(--on-dark-2);
+}
+
+/* tokens */
+.sg-swatches {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 20px;
+}
+
+.sg-swatch {
+  margin: 0;
+  display: grid;
+  gap: 8px;
+}
+
+.sg-swatch span {
+  height: 72px;
+  border: 1px solid var(--line);
+  border-radius: var(--r);
+}
+
+.sg-swatch b {
+  display: block;
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.sg-swatch small {
+  color: var(--muted);
+  font-size: 0.8rem;
+}
+
+.sg-icons {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+  gap: 16px;
+}
+
+.sg-icon {
+  display: grid;
+  gap: 8px;
+  justify-items: center;
+  padding: 18px 8px;
+  border: 1px solid var(--line);
+  border-radius: var(--r);
+  font-size: 0.8rem;
+  color: var(--muted);
+}
+
+.sg-icon svg {
+  width: 24px;
+  height: 24px;
+  color: var(--ink);
+}
+
+/* undo layout that only makes sense inside the real page */
+.sg-inline {
+  display: inline-flex;
+  justify-self: start;
+}
+
+.sg-flat {
+  margin: 0;
+}
+
+.sg-plain {
+  padding: 0;
+  overflow: visible;
+}
+
+.sg-one {
+  grid-template-columns: minmax(0, 260px);
+}
+
+.sg-two .buyer {
+  flex-basis: calc((100% - 20px) / 2);
+}

@@ -1,0 +1,47 @@
+/* Design tokens. Each custom property maps to one Figma variable of the same name. */
+:root {
+  /* surfaces */
+  --bg: #fbfdfb;
+  --white: #fff;
+  --soft: #e7f2ea;
+  --soft-2: #f3f9f5;
+  --line: #d1dfd8;
+  --line-strong: #d4d4d4;
+
+  /* greens and text */
+  --ink: #1c2a24;
+  --forest: #1f4a35;
+  --forest-2: #163828;
+  --leaf: #2f6a4a;
+  --muted: #5a6b64;
+
+  /* on dark green sections */
+  --accent: var(--soft);
+  --on-dark-2: var(--line);
+  --on-dark-3: #c9dccf;
+  --rule-dark: rgba(255, 255, 255, 0.18);
+
+  /* status */
+  --ok: #3f6b35;
+  --warn: #94600e;
+  --warn-bg: #fff8e8;
+  --warn-line: #f0dcae;
+  --tomato: #c8442d;
+
+  /* type */
+  --font: "Roboto", system-ui, -apple-system, "Segoe UI", Arial, sans-serif;
+
+  /* shape */
+  --r-sm: 10px;
+  --r: 12px;
+  --r-lg: 20px;
+  --r-pill: 999px;
+  --ring: 0 0 0 4px rgba(47, 106, 74, 0.2);
+
+  /* layout */
+  --gut: clamp(20px, 5vw, 112px);
+  --bar-h: 34px;
+  --head-h: calc(76px + var(--bar-h));
+
+  color-scheme: light;
+}

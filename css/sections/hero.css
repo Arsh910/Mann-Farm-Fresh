@@ -1,0 +1,155 @@
+/* Home hero: photo banner with the headline on the left and the quote form on the right. */
+
+/* first paint for the hero load animation; removed if the animation libraries do not load */
+html.anim .hero > img {
+  filter: blur(14px);
+  transform: scale(1.08);
+}
+
+html.anim .hero-in {
+  opacity: 0;
+}
+
+.hero {
+  position: relative;
+  min-height: min(860px, calc(100svh - var(--head-h) - 24px));
+  display: flex;
+  align-items: center;
+  color: var(--white);
+  isolation: isolate;
+  overflow: hidden;
+  border-radius: 28px;
+  margin: calc(var(--head-h) + 12px) clamp(10px, 1.4vw, 24px) clamp(10px, 1.4vw, 24px);
+  padding: clamp(40px, 5vw, 72px) 0;
+  background: var(--forest);
+}
+
+@media (max-width: 600px) {
+  .hero {
+    border-radius: var(--r-lg);
+    min-height: 0;
+    padding: 36px 0 16px;
+  }
+  section.hero::after {
+    background: linear-gradient(
+      180deg,
+      rgba(20, 26, 20, 0.28) 0%,
+      rgba(20, 26, 20, 0.5) 35%,
+      rgba(20, 26, 20, 0.68) 100%
+    );
+  }
+}
+
+.hero > img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -2;
+}
+
+.hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background:
+    linear-gradient(
+      180deg,
+      rgba(0, 0, 0, 0.12) 0%,
+      rgba(0, 0, 0, 0) 22%,
+      rgba(0, 0, 0, 0) 45%,
+      rgba(0, 0, 0, 0.55) 100%
+    ),
+    linear-gradient(90deg, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0.28) 45%, rgba(0, 0, 0, 0) 75%);
+}
+
+/* the quote form lives in the banner: copy on the left, form on the right */
+.hero-inner {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 560px);
+  gap: clamp(28px, 4vw, 72px);
+  align-items: center;
+  width: 100%;
+}
+
+.hero h1 {
+  font-size: clamp(2.6rem, 4.6vw, 5.4rem);
+  margin-top: 20px;
+  max-width: 14ch;
+  text-shadow: 0 2px 24px rgba(0, 0, 0, 0.18);
+}
+
+.hero-checks {
+  color: rgba(255, 255, 255, 0.92);
+  font-size: 0.98rem;
+}
+
+.hero-checks li i {
+  color: var(--forest);
+}
+
+.hero-form {
+  min-width: 0;
+}
+
+.hero-form .wizard {
+  box-shadow: 0 30px 70px rgba(0, 0, 0, 0.28);
+}
+
+.hero .card :focus-visible {
+  outline-color: var(--forest);
+}
+
+@media (max-width: 1080px) {
+  .hero-inner {
+    grid-template-columns: 1fr;
+  }
+  .hero-form {
+    max-width: 640px;
+  }
+}
+
+@media (max-width: 600px) {
+  ul.hero-checks {
+    display: none;
+  }
+}
+
+@media (min-width: 1081px) {
+  .hero-form .wizard {
+    height: clamp(500px, calc(100svh - var(--head-h) - 170px), 660px);
+  }
+}
+
+.tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  border-radius: var(--r-pill);
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--white);
+  background: rgba(0, 0, 0, 0.28);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.hero p.sub {
+  margin-top: 20px;
+  max-width: 46ch;
+  font-size: 1.15rem;
+  color: rgba(255, 255, 255, 0.88);
+}
+
+.hero .cta-row {
+  margin-top: 32px;
+}
+
+.hero > img.is-loading {
+  background: none;
+  animation: none;
+}

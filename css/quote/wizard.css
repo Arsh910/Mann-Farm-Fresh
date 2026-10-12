@@ -1,0 +1,266 @@
+/* Quote form shell: card, mode switch, stepper, panels and footer bar. */
+
+.card {
+  background: var(--white);
+  color: var(--ink);
+  border-radius: var(--r-lg);
+  overflow: hidden;
+  min-width: 0;
+}
+
+.card-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  padding: 20px 24px;
+  border-bottom: 1px solid var(--line);
+  flex-wrap: wrap;
+}
+
+.card-head h3 {
+  font-size: 1.3rem;
+}
+
+.step-label {
+  font-size: 0.82rem;
+  color: var(--muted);
+}
+
+.card-body {
+  padding: 20px 24px;
+}
+
+.list-hint {
+  font-size: 0.92rem;
+  color: var(--muted);
+  margin: 0 0 12px;
+}
+
+.list-hint kbd {
+  font-family: var(--font);
+  font-size: 0.86rem;
+  background: var(--soft);
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  padding: 1px 7px;
+  color: var(--ink);
+}
+
+.card-foot {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  padding: 16px 24px;
+  border-top: 1px solid var(--line);
+  background: var(--soft);
+  flex-wrap: wrap;
+}
+
+.count {
+  font-size: 0.92rem;
+  color: var(--forest);
+  font-variant-numeric: tabular-nums;
+}
+
+.count.is-err {
+  color: var(--tomato);
+  font-weight: 500;
+}
+
+.card-foot .count:empty {
+  display: none;
+}
+
+.wizard {
+  display: flex;
+  flex-direction: column;
+  height: clamp(560px, calc(100svh - var(--head-h) - 48px), 780px);
+}
+
+.wz-panel:not([hidden]) {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-height: 0;
+  animation: wzIn 0.25s ease;
+}
+
+.wz-panel > .card-body {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  overscroll-behavior-y: auto;
+  scrollbar-gutter: stable;
+}
+
+.wz-panel > .card-head,
+.wz-panel > .card-foot {
+  flex: none;
+}
+
+.stepper {
+  list-style: none;
+  margin: 0;
+  padding: 18px 24px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--soft);
+  border-bottom: 1px solid var(--line);
+}
+
+.stepper li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.92rem;
+  color: var(--muted);
+  min-width: 0;
+  flex: 1;
+}
+
+.stepper li:last-child {
+  flex: none;
+}
+
+.stepper li:not(:last-child)::after {
+  content: "";
+  flex: 1;
+  min-width: 16px;
+  height: 2px;
+  border-radius: 2px;
+  background: var(--line);
+}
+
+.stepper .dot {
+  display: grid;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 1.5px solid var(--line-strong);
+  background: var(--white);
+  font-weight: 600;
+  font-size: 0.86rem;
+  flex: none;
+}
+
+.stepper .dot svg {
+  width: 14px;
+  height: 14px;
+}
+
+.stepper li[aria-current="step"] {
+  color: var(--ink);
+  font-weight: 500;
+}
+
+.stepper li[aria-current="step"] .dot {
+  background: var(--forest);
+  border-color: var(--forest);
+  color: var(--white);
+}
+
+.stepper li.done {
+  color: var(--forest);
+}
+
+.stepper li.done .dot {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: var(--forest);
+}
+
+.stepper li.done::after {
+  background: var(--forest);
+}
+
+.wz-panel h3:focus {
+  outline: none;
+}
+
+/* phones: the form keeps a fixed height that fits under the header;
+   long lists scroll inside the card */
+@media (max-width: 960px), (pointer: coarse) {
+  .wizard {
+    height: clamp(480px, calc(100svh - var(--head-h) - 40px), 680px);
+  }
+  .wz-panel > .card-foot {
+    padding: 10px 16px;
+    gap: 8px 12px;
+  }
+  .wz-panel > .card-foot .count {
+    flex: 1 1 0;
+    min-width: 0;
+    font-size: 0.84rem;
+    line-height: 1.35;
+  }
+  .wz-panel > .card-foot .count.is-err {
+    flex-basis: 100%;
+    order: -1;
+  }
+  .wz-panel > .card-foot .btn {
+    flex: none;
+  }
+}
+
+@keyframes wzIn {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* new customer / existing customer switch at the top of the form */
+.mode {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  background: var(--white);
+  border-bottom: 1px solid var(--line);
+}
+
+.mode button {
+  display: grid;
+  gap: 1px;
+  padding: 10px 16px 8px;
+  border: 0;
+  border-bottom: 3px solid transparent;
+  background: var(--white);
+  text-align: left;
+  cursor: pointer;
+  color: var(--muted);
+  transition:
+    background-color 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.mode button small {
+  font-size: 0.74rem;
+  letter-spacing: 0.03em;
+}
+
+.mode button b {
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--forest);
+}
+
+.mode button:hover {
+  background: var(--soft);
+}
+
+.mode button[aria-selected="true"] {
+  border-bottom-color: var(--forest);
+  background: var(--soft);
+  color: var(--forest);
+}
+
+.mode button[aria-selected="true"] small {
+  color: var(--forest);
+}

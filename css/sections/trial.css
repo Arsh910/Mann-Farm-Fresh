@@ -1,0 +1,68 @@
+/* Home, trial: copy on the left, example scorecard on the right. */
+
+.trial {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: clamp(28px, 5vw, 72px);
+  align-items: center;
+}
+
+.score {
+  background: var(--soft);
+  border-radius: var(--r-lg);
+  padding: clamp(20px, 3vw, 32px);
+  min-width: 0;
+}
+
+.score h3 {
+  font-size: 1.05rem;
+  margin-bottom: 12px;
+}
+
+.score table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 1rem;
+}
+
+.score th,
+.score td {
+  padding: 14px 4px;
+  border-bottom: 1px solid var(--line);
+  text-align: left;
+}
+
+.score th {
+  font-size: 0.82rem;
+  font-weight: 500;
+  color: var(--muted);
+}
+
+.score th:not(:first-child),
+.score td:not(:first-child) {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+.score td.win {
+  font-weight: 600;
+  color: var(--ok);
+}
+
+.score .fine {
+  margin-top: 12px;
+  font-size: 0.82rem;
+  color: var(--muted);
+}
+
+@media (max-width: 860px) {
+  .trial {
+    grid-template-columns: 1fr;
+  }
+}
+
+.trial-lead {
+  margin-top: 18px;
+  font-size: 1.08rem;
+  max-width: 46ch;
+}

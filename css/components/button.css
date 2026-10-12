@@ -1,0 +1,202 @@
+/* Buttons: pill with a circle arrow, plus the link, remove and call variants. */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  min-height: 52px;
+  padding: 6px 6px 6px 24px;
+  border-radius: var(--r-pill);
+  border: 0;
+  font-weight: 500;
+  font-size: 1rem;
+  text-decoration: none;
+  cursor: pointer;
+  white-space: nowrap;
+  background: var(--bg);
+  color: var(--ink);
+  transition:
+    background-color 0.2s ease,
+    color 0.2s ease;
+}
+
+.btn i {
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--forest);
+  color: var(--bg);
+  flex: none;
+  transition: transform 0.25s ease;
+}
+
+.btn i svg {
+  width: 16px;
+  height: 16px;
+}
+
+.btn:hover {
+  background: var(--white);
+}
+
+.btn:hover i {
+  transform: rotate(45deg);
+}
+
+.btn.dark {
+  background: var(--forest);
+  color: var(--white);
+}
+
+.btn.dark i {
+  background: var(--accent);
+  color: var(--ink);
+}
+
+.btn.dark:hover {
+  background: var(--forest-2);
+}
+
+.btn.ghost {
+  background: transparent;
+  color: inherit;
+  box-shadow: inset 0 0 0 1.5px currentColor;
+  padding-right: 24px;
+}
+
+.btn.ghost:hover {
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.btn.ghost.on-light:hover {
+  background: var(--soft);
+}
+
+.btn.sm {
+  min-height: 44px;
+  padding: 4px 4px 4px 18px;
+  font-size: 0.94rem;
+  gap: 10px;
+}
+
+.btn.sm i {
+  width: 36px;
+  height: 36px;
+}
+
+.btn.ghost.sm {
+  padding: 4px 18px;
+}
+
+.btn.sm.no-icon {
+  padding-right: 18px;
+}
+
+/* call button: outlined pill with a phone icon, paired with Get a quote */
+.btn.call {
+  gap: 10px;
+  padding: 6px 24px 6px 20px;
+}
+
+.btn.call svg {
+  width: 19px;
+  height: 19px;
+  flex: none;
+}
+
+.link-btn {
+  border: 0;
+  background: transparent;
+  color: var(--forest);
+  font-size: 0.88rem;
+  font-weight: 500;
+  cursor: pointer;
+  padding: 8px 12px;
+  border-radius: var(--r-pill);
+}
+
+.link-btn:hover {
+  background: #ebebeb;
+  color: var(--ink);
+}
+
+.rm {
+  display: grid;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  border: 0;
+  border-radius: 50%;
+  background: transparent;
+  color: var(--muted);
+  cursor: pointer;
+}
+
+.rm svg {
+  width: 14px;
+  height: 14px;
+}
+
+.rm:hover {
+  background: var(--soft);
+  color: var(--ink);
+}
+
+.btn .spinner {
+  display: none;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  border: 2px solid currentColor;
+  border-right-color: transparent;
+  animation: spin 0.7s linear infinite;
+}
+
+.btn.loading {
+  pointer-events: none;
+  opacity: 0.85;
+}
+
+.btn.loading i svg {
+  display: none;
+}
+
+.btn.loading .spinner {
+  display: block;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.text-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 18px;
+  color: var(--forest);
+  font-weight: 500;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+/* a row of buttons that wraps; on very small phones each button takes the full width */
+.cta-row {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+@media (max-width: 360px) {
+  .cta-row .btn {
+    flex: 1 1 100%;
+    justify-content: space-between;
+  }
+  .cta-row .btn.call {
+    justify-content: center;
+  }
+}

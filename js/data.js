@@ -1,5 +1,5 @@
-// Shared data for every Mann Farm Fresh page: the catalogue, delivery routes,
-// next-delivery calculation and the quote basket that carries picks between pages.
+// Shared data for every page: the catalogue, delivery routes, the next-delivery
+// calculation and the quote basket that carries picks between pages.
 (function () {
 const PRODUCTS={
   "Vegetables":{
@@ -71,15 +71,21 @@ function nextDelivery(r, now = new Date()) {
   return null;
 }
 
-// Quote basket: products added on the catalogue or product pages wait here until the quote form picks them up
+// Quote basket: products added on the catalogue or product pages wait here until the
+// quote form picks them up. Every change fires 'basket:change' on the document.
 const KEY = 'mannQuote';
+const changed = () => document.dispatchEvent(new Event('basket:change'));
 const basket = {
   read() { try { return JSON.parse(localStorage.getItem(KEY)) || {}; } catch (e) { return {}; } },
-  write(b) { try { localStorage.setItem(KEY, JSON.stringify(b)); } catch (e) {} },
+  write(b) { try { localStorage.setItem(KEY, JSON.stringify(b)); } catch (e) {} changed(); },
   set(name, qty, unit) { const b = basket.read(); if (qty > 0) b[name] = { qty: String(qty), unit }; else delete b[name]; basket.write(b); },
-  clear() { try { localStorage.removeItem(KEY); } catch (e) {} },
+  clear() { try { localStorage.removeItem(KEY); } catch (e) {} changed(); },
   count() { return Object.keys(basket.read()).length; }
 };
 
-window.MANN = { PRODUCTS, ITEMS, ROUTES, findRoute, nextDelivery, packFor, supplyFor, slug, basket, UNITS: ['kg', 'g', 'dozen', 'pcs', 'bunch', 'crate', 'box'] };
+// Units a quantity can be given in, and how much one tap of + or - changes it
+const UNITS = ['kg', 'g', 'dozen', 'pcs', 'bunch', 'crate', 'box'];
+const QTY_STEP = { kg: 1, g: 250, dozen: 1, pcs: 1, bunch: 1, crate: 1, box: 1 };
+
+Object.assign(MANN, { PRODUCTS, ITEMS, ROUTES, UNITS, QTY_STEP, findRoute, nextDelivery, packFor, supplyFor, basket });
 })();

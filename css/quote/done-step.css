@@ -1,0 +1,135 @@
+/* Quote form, step 4: confirmation and what happens next. */
+
+.done-next {
+  width: 100%;
+  max-width: 440px;
+  text-align: left;
+  margin: 8px 0 6px;
+  padding: 18px;
+  border-radius: var(--r);
+  background: var(--soft);
+}
+
+.done-next h4 {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+.done-next .next-steps li {
+  color: var(--forest);
+}
+
+@media (max-width: 960px), (pointer: coarse) {
+  .wz-panel.done-panel .done-icon {
+    width: 72px;
+    height: 72px;
+    margin-bottom: 16px;
+    box-shadow: 0 0 0 10px rgba(231, 242, 234, 0.9);
+  }
+  .wz-panel.done-panel .done-icon svg {
+    width: 34px;
+    height: 34px;
+  }
+}
+
+.done-panel {
+  padding: clamp(28px, 4vw, 48px) 24px;
+  text-align: center;
+  flex-direction: column;
+  align-items: center;
+  overflow-y: auto;
+  overscroll-behavior-y: auto;
+}
+
+.done-panel:not([hidden]) {
+  display: flex;
+  justify-content: flex-start;
+}
+
+/* centred when it fits, scrolls from the top when it does not
+   (justify-content: center would cut off the top) */
+.done-panel > * {
+  flex-shrink: 0;
+}
+
+.done-panel > :first-child {
+  margin-top: auto;
+}
+
+.done-panel > :last-child {
+  margin-bottom: auto;
+}
+
+.done-panel .done-icon {
+  width: 96px;
+  height: 96px;
+  margin-bottom: 22px;
+  box-shadow: 0 0 0 12px rgba(231, 242, 234, 0.9);
+}
+
+.done-panel .done-icon svg {
+  width: 44px;
+  height: 44px;
+}
+
+.see-details {
+  margin: 6px 0 18px;
+  color: var(--leaf);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  font-size: 0.9rem;
+}
+
+.done-icon {
+  display: grid;
+  place-items: center;
+  width: 68px;
+  height: 68px;
+  border-radius: 50%;
+  background: var(--accent);
+  color: var(--ink);
+  margin-bottom: 18px;
+}
+
+.done-icon svg {
+  width: 30px;
+  height: 30px;
+}
+
+.done-panel h3 {
+  font-size: 1.6rem;
+}
+
+.done-panel > p.muted {
+  margin-top: 8px;
+  max-width: 42ch;
+}
+
+.next-steps {
+  list-style: none;
+  margin: 14px 0 0;
+  padding: 0;
+  display: grid;
+  gap: 12px;
+}
+
+.next-steps li {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  color: var(--on-dark-2);
+  font-size: 0.95rem;
+}
+
+.next-steps b {
+  display: grid;
+  place-items: center;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: var(--accent);
+  color: var(--ink);
+  font-size: 0.8rem;
+  flex: none;
+}

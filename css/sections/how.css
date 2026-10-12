@@ -1,0 +1,72 @@
+/* Home, "How it works": five numbered steps with photos. */
+
+.steps {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 20px;
+}
+
+.step img {
+  width: 100%;
+  aspect-ratio: 4/5;
+  object-fit: cover;
+  border-radius: var(--r-lg);
+}
+
+.step .n {
+  display: inline-grid;
+  place-items: center;
+  min-width: 34px;
+  height: 34px;
+  padding: 0 10px;
+  margin-top: 18px;
+  border-radius: var(--r-pill);
+  background: var(--soft);
+  font-size: 0.86rem;
+  font-weight: 600;
+}
+
+.step h3 {
+  margin-top: 12px;
+}
+
+.step p {
+  margin-top: 6px;
+  color: var(--muted);
+  font-size: 0.96rem;
+}
+
+@media (max-width: 1080px) {
+  .steps {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 680px) {
+  .steps {
+    grid-template-columns: 1fr;
+  }
+  .step {
+    display: grid;
+    grid-template-columns: 120px 1fr;
+    gap: 4px 18px;
+    align-items: start;
+  }
+  .step img {
+    grid-row: span 3;
+    aspect-ratio: 1;
+  }
+  .step .n {
+    margin-top: 0;
+    justify-self: start;
+  }
+  .step h3 {
+    margin-top: 0;
+  }
+  .step p {
+    margin-top: 0;
+  }
+}
