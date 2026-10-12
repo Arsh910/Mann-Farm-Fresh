@@ -25,7 +25,7 @@
               ${column('Explore', [
                 ['All products', 'products.html'],
                 ['How it works', link('#how')],
-                ['Prepared &amp; whole', link('#quality')],
+                ['Founders', 'founders.html'],
                 ['Who we supply', link('#buyers')],
                 ['Locations', 'locations.html']
               ])}

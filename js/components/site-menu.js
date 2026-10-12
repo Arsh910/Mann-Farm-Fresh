@@ -21,7 +21,7 @@
           <ul>
             ${item(link('#quote'), 'tomato', 'Browse produce', '94 vegetables, herbs and fruit', ' data-picker')}
             ${item(link('#how'), 's1', 'How it works', 'Plan, grow, harvest, grade, deliver')}
-            ${item(link('#quality'), 's4', 'Prepared &amp; whole', 'Cut and ready, or whole and graded')}
+            ${item('founders.html', 'farmer', 'Founders', 'The people behind your produce')}
             ${item(link('#buyers'), 'restaurant', 'Who we supply', 'Restaurants, hotels, caterers, retail')}
             ${item('locations.html', 'dispatch', 'Locations', 'Delivery times in your area')}
             ${item(link('#faq'), 'field', 'FAQ', 'Prices, credit, WhatsApp orders')}

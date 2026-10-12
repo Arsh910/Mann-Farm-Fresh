@@ -27,7 +27,7 @@
     const products = MANN.isHome() ? '<a href="#quote" data-picker>Products</a>' : '<a href="products.html">Products</a>';
     return `${products}
       <a href="${MANN.link('#how')}">How it works</a>
-      <a href="${MANN.link('#quality')}">Prepared &amp; whole</a>
+      <a href="founders.html">Founders</a>
       <a href="${MANN.link('#buyers')}">Who we supply</a>
       <a href="locations.html">Locations</a>
       <a href="${MANN.link('#faq')}">FAQ</a>`;
